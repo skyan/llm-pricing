@@ -1,0 +1,180 @@
+{
+  "last_updated": "2026-04-29T13:38:46.561456+00:00",
+  "usd_to_cny_rate": 7.25,
+  "providers": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "website": "https://platform.openai.com",
+      "pricing_page_url": "https://platform.openai.com/docs/pricing",
+      "models": [
+        {
+          "name": "gpt-4o",
+          "display_name": "GPT-4o",
+          "context_window": 128000,
+          "input_price": 18.2,
+          "cached_input_price": 9.1,
+          "output_price": 72.8,
+          "notes": null
+        },
+        {
+          "name": "gpt-4o-mini",
+          "display_name": "GPT-4o Mini",
+          "context_window": 128000,
+          "input_price": 1.1,
+          "cached_input_price": 0.55,
+          "output_price": 4.4,
+          "notes": null
+        },
+        {
+          "name": "o4-mini",
+          "display_name": "o4 Mini",
+          "context_window": 200000,
+          "input_price": 8.0,
+          "cached_input_price": 2.0,
+          "output_price": 32.0,
+          "notes": "Reasoning model"
+        }
+      ]
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "website": "https://www.anthropic.com",
+      "pricing_page_url": "https://claude.com/pricing",
+      "models": [
+        {
+          "name": "claude-opus-4-7",
+          "display_name": "Claude Opus 4.7",
+          "context_window": 200000,
+          "input_price": 109.5,
+          "cached_input_price": 10.95,
+          "output_price": 547.5,
+          "notes": null
+        },
+        {
+          "name": "claude-sonnet-4-6",
+          "display_name": "Claude Sonnet 4.6",
+          "context_window": 200000,
+          "input_price": 21.9,
+          "cached_input_price": 2.19,
+          "output_price": 109.5,
+          "notes": null
+        },
+        {
+          "name": "claude-haiku-4-5",
+          "display_name": "Claude Haiku 4.5",
+          "context_window": 200000,
+          "input_price": 7.3,
+          "cached_input_price": 0.73,
+          "output_price": 36.5,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "website": "https://ai.google.dev",
+      "pricing_page_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+      "models": [
+        {
+          "name": "gemini-2.5-flash",
+          "display_name": "Gemini 2.5 Flash",
+          "context_window": 1048576,
+          "input_price": 1.1,
+          "cached_input_price": 0.22,
+          "output_price": 4.4,
+          "notes": null
+        },
+        {
+          "name": "gemini-2.5-pro",
+          "display_name": "Gemini 2.5 Pro",
+          "context_window": 1048576,
+          "input_price": 9.1,
+          "cached_input_price": 1.82,
+          "output_price": 36.4,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "xai",
+      "name": "xAI",
+      "website": "https://x.ai",
+      "pricing_page_url": "https://docs.x.ai/docs/models",
+      "models": [
+        {
+          "name": "grok-4-1-fast",
+          "display_name": "Grok 4.1 Fast",
+          "context_window": 2000000,
+          "input_price": 1.45,
+          "cached_input_price": 0.36,
+          "output_price": 3.63,
+          "notes": null
+        },
+        {
+          "name": "grok-4",
+          "display_name": "Grok 4",
+          "context_window": 256000,
+          "input_price": 21.75,
+          "cached_input_price": 5.44,
+          "output_price": 108.75,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "website": "https://api-docs.deepseek.com",
+      "pricing_page_url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "models": [
+        {
+          "name": "deepseek-v4-flash",
+          "display_name": "DeepSeek V4 Flash",
+          "context_window": 262144,
+          "input_price": 1.02,
+          "cached_input_price": 0.02,
+          "output_price": 2.03,
+          "notes": null
+        },
+        {
+          "name": "deepseek-v4-pro",
+          "display_name": "DeepSeek V4 Pro",
+          "context_window": 262144,
+          "input_price": 3.15,
+          "cached_input_price": 0.03,
+          "output_price": 6.31,
+          "notes": "75% off until 2026/05/31"
+        }
+      ]
+    },
+    {
+      "id": "qianwen",
+      "name": "Tongyi Qianwen",
+      "website": "https://tongyi.aliyun.com",
+      "pricing_page_url": "https://help.aliyun.com/zh/model-studio/getting-started/models",
+      "models": [
+        {
+          "name": "qwen-max",
+          "display_name": "Qwen Max",
+          "context_window": 32768,
+          "input_price": 20.0,
+          "cached_input_price": null,
+          "output_price": 60.0,
+          "notes": null
+        },
+        {
+          "name": "qwen-plus",
+          "display_name": "Qwen Plus",
+          "context_window": 131072,
+          "input_price": 2.0,
+          "cached_input_price": null,
+          "output_price": 6.0,
+          "notes": null
+        }
+      ]
+    }
+  ]
+}

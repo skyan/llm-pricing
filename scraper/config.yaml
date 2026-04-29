@@ -1,0 +1,83 @@
+# LLM Pricing Scraper Configuration
+# Adding a new provider: add an entry here + create scraper/providers/<id>.py + register in __init__.py
+
+providers:
+  - id: openai
+    name: OpenAI
+    pricing_url: "https://openai.com/api/pricing/"
+    website: "https://platform.openai.com"
+    currency: USD
+    enabled: true
+
+  - id: anthropic
+    name: Anthropic
+    pricing_url: "https://www.anthropic.com/pricing"
+    website: "https://www.anthropic.com"
+    currency: USD
+    enabled: true
+
+  - id: google
+    name: Google
+    pricing_url: "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+    website: "https://ai.google.dev"
+    currency: USD
+    enabled: true
+
+  - id: xai
+    name: xAI
+    pricing_url: "https://x.ai/pricing"
+    website: "https://x.ai"
+    currency: USD
+    enabled: true
+
+  - id: deepseek
+    name: DeepSeek
+    pricing_url: "https://api-docs.deepseek.com/quick_start/pricing"
+    website: "https://api-docs.deepseek.com"
+    currency: USD
+    enabled: true
+
+  - id: qianwen
+    name: "Tongyi Qianwen"
+    pricing_url: "https://help.aliyun.com/zh/model-studio/getting-started/models"
+    website: "https://tongyi.aliyun.com"
+    currency: CNY
+    enabled: true
+
+  - id: doubao
+    name: "Doubao"
+    pricing_url: "https://www.volcengine.com/docs/82379/1099320"
+    website: "https://www.volcengine.com/product/doubao"
+    currency: CNY
+    enabled: true
+
+  - id: ernie
+    name: "ERNIE"
+    pricing_url: "https://cloud.baidu.com/doc/WENXINWORKSHOP/s/hlrk4akp7"
+    website: "https://yiyan.baidu.com"
+    currency: CNY
+    enabled: true
+
+  - id: kimi
+    name: "Kimi"
+    pricing_url: "https://platform.moonshot.cn/docs/pricing"
+    website: "https://kimi.moonshot.cn"
+    currency: CNY
+    enabled: true
+
+  - id: glm
+    name: "GLM"
+    pricing_url: "https://open.bigmodel.cn/pricing"
+    website: "https://open.bigmodel.cn"
+    currency: CNY
+    enabled: true
+
+  - id: minimax
+    name: "MiniMax"
+    pricing_url: "https://platform.minimaxi.com/document/Price"
+    website: "https://www.minimaxi.com"
+    currency: CNY
+    enabled: true
+
+exchange_rate:
+  fallback_usd_to_cny: 7
