@@ -1,0 +1,377 @@
+{
+  "updated": "2026-04-29T14:12:31.219626+00:00",
+  "models": {
+    "google:gemini-3.1-pro-preview": {
+      "provider": "google",
+      "name": "Gemini 3.1 Pro Preview",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 2.74,
+          "c": 1.37,
+          "o": 27.39
+        }
+      ]
+    },
+    "google:gemini-3.1-flash-lite-preview": {
+      "provider": "google",
+      "name": "Gemini 3.1 Flash-Lite Preview",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.71,
+          "c": 0.21,
+          "o": 1.71
+        }
+      ]
+    },
+    "google:gemini-3-pro-preview": {
+      "provider": "google",
+      "name": "Gemini 3 Pro Preview",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 2.74,
+          "c": 1.37,
+          "o": 27.39
+        }
+      ]
+    },
+    "google:gemini-3-flash-preview": {
+      "provider": "google",
+      "name": "Gemini 3 Flash Preview",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 3.42,
+          "c": 0.34,
+          "o": 3.42
+        }
+      ]
+    },
+    "google:gemini-2.5-pro": {
+      "provider": "google",
+      "name": "Gemini 2.5 Pro",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.71,
+          "c": 0.89,
+          "o": 17.12
+        }
+      ]
+    },
+    "google:gemini-2.5-procomputer-use-preview": {
+      "provider": "google",
+      "name": "Gemini 2.5 ProComputer Use-Preview",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 17.12,
+          "c": 8.56,
+          "o": 17.12
+        }
+      ]
+    },
+    "google:gemini-2.5flash": {
+      "provider": "google",
+      "name": "Gemini 2.5Flash",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 2.05,
+          "c": 0.21,
+          "o": 2.05
+        }
+      ]
+    },
+    "google:gemini-2.5-flash-live-api": {
+      "provider": "google",
+      "name": "Gemini 2.5 Flash Live API",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 3.42,
+          "c": null,
+          "o": 3.42
+        }
+      ]
+    },
+    "google:gemini-2.5-flash-lite": {
+      "provider": "google",
+      "name": "Gemini 2.5 Flash Lite",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.68,
+          "c": 0.07,
+          "o": 0.68
+        }
+      ]
+    },
+    "google:gemini-2.5flash-image": {
+      "provider": "google",
+      "name": "Gemini 2.5Flash Image",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 8.56,
+          "c": 1.03,
+          "o": 102.7
+        }
+      ]
+    },
+    "google:gemini-2.0-flash": {
+      "provider": "google",
+      "name": "Gemini 2.0 Flash",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.03,
+          "c": 0.51,
+          "o": 1.03
+        }
+      ]
+    },
+    "google:gemini-2.0-flash-lite": {
+      "provider": "google",
+      "name": "Gemini 2.0 Flash Lite",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.51,
+          "c": 0.26,
+          "o": 0.51
+        }
+      ]
+    },
+    "google:customer-preference": {
+      "provider": "google",
+      "name": "Customer Preference",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 4.31,
+          "c": 1.1,
+          "o": 17.12
+        }
+      ]
+    },
+    "google:gemini-1.5-flash": {
+      "provider": "google",
+      "name": "Gemini 1.5 Flash",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.0,
+          "c": 0.0,
+          "o": 0.0
+        }
+      ]
+    },
+    "google:gemini-1.5-pro": {
+      "provider": "google",
+      "name": "Gemini 1.5 Pro",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.0,
+          "c": 0.0,
+          "o": 0.0
+        }
+      ]
+    },
+    "google:translation-llm-002": {
+      "provider": "google",
+      "name": "Translation LLM 002",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 30.81,
+          "c": null,
+          "o": 30.81
+        }
+      ]
+    },
+    "google:duration": {
+      "provider": "google",
+      "name": "Duration",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 34.23,
+          "c": 20.54,
+          "o": 34.23
+        }
+      ]
+    },
+    "google:tool": {
+      "provider": "google",
+      "name": "Tool",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.51,
+          "c": null,
+          "o": 1.51
+        }
+      ]
+    },
+    "xai:grok-4-1-fast": {
+      "provider": "xai",
+      "name": "Grok 4.1 Fast",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.37,
+          "c": 0.34,
+          "o": 3.42
+        }
+      ]
+    },
+    "xai:grok-4-fast": {
+      "provider": "xai",
+      "name": "Grok 4 Fast",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.37,
+          "c": 0.34,
+          "o": 3.42
+        }
+      ]
+    },
+    "xai:grok-4.20": {
+      "provider": "xai",
+      "name": "Grok 4.20",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 13.69,
+          "c": 1.37,
+          "o": 41.08
+        }
+      ]
+    },
+    "xai:grok-4.20-multi-agent": {
+      "provider": "xai",
+      "name": "Grok 4.20 Multi-Agent",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 13.69,
+          "c": 1.37,
+          "o": 41.08
+        }
+      ]
+    },
+    "xai:grok-code-fast-1": {
+      "provider": "xai",
+      "name": "Grok Code Fast 1",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.37,
+          "c": 0.14,
+          "o": 10.27
+        }
+      ]
+    },
+    "xai:grok-4": {
+      "provider": "xai",
+      "name": "Grok 4",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 20.54,
+          "c": 5.13,
+          "o": 102.7
+        }
+      ]
+    },
+    "xai:grok-3": {
+      "provider": "xai",
+      "name": "Grok 3",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 20.54,
+          "c": null,
+          "o": 102.7
+        }
+      ]
+    },
+    "xai:grok-3-mini": {
+      "provider": "xai",
+      "name": "Grok 3 Mini",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 2.05,
+          "c": null,
+          "o": 3.42
+        }
+      ]
+    },
+    "glm:glm-5": {
+      "provider": "glm",
+      "name": "GLM-5",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.2,
+          "c": null,
+          "o": 2000.0
+        }
+      ]
+    },
+    "glm:glm-4-plus": {
+      "provider": "glm",
+      "name": "GLM-4 Plus",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.05,
+          "c": null,
+          "o": 250414.0
+        }
+      ]
+    },
+    "glm:glm-4-air": {
+      "provider": "glm",
+      "name": "GLM-4 Air",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.05,
+          "c": null,
+          "o": 250414.0
+        }
+      ]
+    },
+    "glm:glm-4-flash": {
+      "provider": "glm",
+      "name": "GLM-4 Flash",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.05,
+          "c": null,
+          "o": 250414.0
+        }
+      ]
+    },
+    "glm:glm-4-long": {
+      "provider": "glm",
+      "name": "GLM-4 Long",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.05,
+          "c": null,
+          "o": 250414.0
+        }
+      ]
+    }
+  }
+}
