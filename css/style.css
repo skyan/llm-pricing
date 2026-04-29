@@ -42,7 +42,8 @@ body {
   display: flex; justify-content: space-between; align-items: center;
   gap: 16px; flex-wrap: wrap;
 }
-.header h1 { font-size: 1.2rem; font-weight: 700; letter-spacing: .02em; }
+.header h1 { font-size: 1.2rem; font-weight: 700; letter-spacing: .02em; display: flex; align-items: center; gap: 8px; }
+.logo-icon { flex-shrink: 0; }
 .subtitle { font-size: .82rem; color: var(--text-secondary); }
 .rate-badge-inline {
   font-size: .78rem; color: var(--text-secondary); margin-left: 8px;
