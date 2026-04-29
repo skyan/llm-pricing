@@ -291,12 +291,30 @@
       var cell = document.querySelector('.sparkline-wrap[data-model="' + CSS.escape(key) + '"]');
       if (!cell) return;
       var series = hModels[key];
-      if (!series || !series.series || series.series.length < 2) {
-        cell.innerHTML = '<span class="trend-no-data">--</span>';
-        return;
+      var hasData = series && series.series && series.series.length >= 1;
+      if (!hasData) {
+        // Use current model as a single data point
+        series = { series: [{ d: (pricingData.last_updated || '').slice(0, 10), i: m.input_price, c: m.cached_input_price, o: m.output_price }] };
       }
       cell.innerHTML = '';
-      cell.appendChild(buildSparkline(series.series));
+      cell.title = '点击展开趋势图';
+      cell.style.cursor = 'pointer';
+      if (series.series.length === 1) {
+        // Single point: show a dot indicator
+        var dot = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        dot.setAttribute('width', '16'); dot.setAttribute('height', '16');
+        dot.setAttribute('viewBox', '0 0 16 16');
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', '8'); c.setAttribute('cy', '8'); c.setAttribute('r', '3.5');
+        c.setAttribute('fill', '#2563eb');
+        dot.appendChild(c);
+        cell.appendChild(dot);
+        var hint = document.createElement('span');
+        hint.className = 'trend-expand-hint'; hint.textContent = '+';
+        cell.appendChild(hint);
+      } else {
+        cell.appendChild(buildSparkline(series.series));
+      }
       cell.addEventListener('click', function () { toggleChart(m, key, series.series); });
     });
   }
@@ -391,12 +409,13 @@
     if (cData.some(function (v) { return v != null; })) {
       allVals = allVals.concat(cData.filter(function (v) { return v != null; }));
     }
+    if (allVals.length === 0) { allVals = [0, 1]; }
     var yMin = Math.min.apply(null, allVals) * 0.9;
     var yMax = Math.max.apply(null, allVals) * 1.1;
     if (yMin === yMax) { yMax = yMin + 1; yMin = yMin - 1; }
 
     function x(i) { return pad.left + (i / Math.max(series.length - 1, 1)) * pw; }
-    function y(v) { return pad.top + ph - ((v - yMin) / (yMax - yMin)) * ph; }
+    function y(v) { return pad.top + ph - ((v - yMin) / (Math.max(yMax - yMin, 0.01))) * ph; }
 
     // Grid lines
     ctx.strokeStyle = '#f0f0f0';
@@ -470,13 +489,14 @@
     var first = series[0];
     var infoEl = document.getElementById('chart-info-' + CSS.escape(key));
     if (infoEl) {
-      infoEl.innerHTML = '<table>' +
-        '<tr><th>最新输入</th><td>' + (last.i != null ? '¥' + last.i.toFixed(2) : '--') + '</td></tr>' +
-        (last.c != null ? '<tr><th>最新缓存</th><td>¥' + last.c.toFixed(2) + '</td></tr>' : '') +
-        '<tr><th>最新输出</th><td>' + (last.o != null ? '¥' + last.o.toFixed(2) : '--') + '</td></tr>' +
-        '<tr><th>首次记录</th><td>' + first.d + '</td></tr>' +
-        '<tr><th>数据点数</th><td>' + series.length + '</td></tr>' +
-        '</table>';
+      var rows = '<tr><th>输入</th><td>' + (last.i != null ? '¥' + last.i.toFixed(2) : '--') + '</td></tr>' +
+        (last.c != null ? '<tr><th>缓存输入</th><td>¥' + last.c.toFixed(2) + '</td></tr>' : '') +
+        '<tr><th>输出</th><td>' + (last.o != null ? '¥' + last.o.toFixed(2) : '--') + '</td></tr>';
+      if (series.length >= 2) {
+        rows += '<tr><th>首次记录</th><td>' + first.d + '</td></tr>';
+      }
+      rows += '<tr><th>数据点</th><td>' + series.length + (series.length < 2 ? '（需更多天积累）' : '') + '</td></tr>';
+      infoEl.innerHTML = '<table>' + rows + '</table>';
     }
   }
 
