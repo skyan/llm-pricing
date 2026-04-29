@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-29T14:27:53.296935+00:00",
+  "updated": "2026-04-29T14:34:12.525686+00:00",
   "models": {
     "google:gemini-3.1-pro-preview": {
       "provider": "google",
@@ -394,6 +394,222 @@
           "i": 2.98,
           "c": 0.02,
           "o": 5.96
+        }
+      ]
+    },
+    "openai:gpt-4o": {
+      "provider": "openai",
+      "name": "GPT-4o",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 124.6,
+          "c": 62.3,
+          "o": 498.42
+        }
+      ]
+    },
+    "openai:gpt-4o-mini": {
+      "provider": "openai",
+      "name": "GPT-4o Mini",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 7.53,
+          "c": 3.77,
+          "o": 30.12
+        }
+      ]
+    },
+    "openai:o4-mini": {
+      "provider": "openai",
+      "name": "o4 Mini",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 54.77,
+          "c": 13.69,
+          "o": 219.08
+        }
+      ]
+    },
+    "anthropic:claude-opus-4-7": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.7",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 749.68,
+          "c": 74.97,
+          "o": 3748.39
+        }
+      ]
+    },
+    "anthropic:claude-sonnet-4-6": {
+      "provider": "anthropic",
+      "name": "Claude Sonnet 4.6",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 149.94,
+          "c": 14.99,
+          "o": 749.68
+        }
+      ]
+    },
+    "anthropic:claude-haiku-4-5": {
+      "provider": "anthropic",
+      "name": "Claude Haiku 4.5",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 49.98,
+          "c": 5.0,
+          "o": 249.89
+        }
+      ]
+    },
+    "qianwen:qwen-max": {
+      "provider": "qianwen",
+      "name": "Qwen Max",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 20.0,
+          "c": null,
+          "o": 60.0
+        }
+      ]
+    },
+    "qianwen:qwen-plus": {
+      "provider": "qianwen",
+      "name": "Qwen Plus",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 2.0,
+          "c": null,
+          "o": 6.0
+        }
+      ]
+    },
+    "qianwen:qwen-turbo": {
+      "provider": "qianwen",
+      "name": "Qwen Turbo",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.6,
+          "c": null,
+          "o": 2.0
+        }
+      ]
+    },
+    "doubao:doubao-1.5-pro": {
+      "provider": "doubao",
+      "name": "Doubao 1.5 Pro",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.8,
+          "c": null,
+          "o": 2.0
+        }
+      ]
+    },
+    "doubao:doubao-1.5-lite": {
+      "provider": "doubao",
+      "name": "Doubao 1.5 Lite",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.3,
+          "c": null,
+          "o": 0.6
+        }
+      ]
+    },
+    "ernie:ernie-4.5": {
+      "provider": "ernie",
+      "name": "ERNIE 4.5",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 90.0,
+          "c": null,
+          "o": 270.0
+        }
+      ]
+    },
+    "ernie:ernie-4.0-turbo": {
+      "provider": "ernie",
+      "name": "ERNIE 4.0 Turbo",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 30.0,
+          "c": null,
+          "o": 90.0
+        }
+      ]
+    },
+    "ernie:ernie-3.5": {
+      "provider": "ernie",
+      "name": "ERNIE 3.5",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 2.0,
+          "c": null,
+          "o": 6.0
+        }
+      ]
+    },
+    "kimi:kimi-k2.6": {
+      "provider": "kimi",
+      "name": "Kimi K2.6",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.5,
+          "c": null,
+          "o": 1.6
+        }
+      ]
+    },
+    "kimi:kimi-k2": {
+      "provider": "kimi",
+      "name": "Kimi K2",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.5,
+          "c": null,
+          "o": 1.6
+        }
+      ]
+    },
+    "minimax:abab7": {
+      "provider": "minimax",
+      "name": "ABAB 7",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 5.0,
+          "c": null,
+          "o": 15.0
+        }
+      ]
+    },
+    "minimax:abab6.5s": {
+      "provider": "minimax",
+      "name": "ABAB 6.5s",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 1.0,
+          "c": null,
+          "o": 1.0
         }
       ]
     }
