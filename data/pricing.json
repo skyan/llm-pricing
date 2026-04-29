@@ -9,34 +9,134 @@
       "pricing_page_url": "https://platform.openai.com/docs/pricing",
       "models": [
         {
+          "name": "gpt-5.5",
+          "display_name": "GPT-5.5",
+          "context_window": 400000,
+          "input_price": 18.75,
+          "cached_input_price": 9.38,
+          "output_price": 75.0,
+          "tier": "pro",
+          "notes": null
+        },
+        {
+          "name": "gpt-5.4",
+          "display_name": "GPT-5.4",
+          "context_window": 256000,
+          "input_price": 9.38,
+          "cached_input_price": 4.69,
+          "output_price": 37.5,
+          "tier": "pro",
+          "notes": null
+        },
+        {
+          "name": "gpt-5.4-mini",
+          "display_name": "GPT-5.4 Mini",
+          "context_window": 256000,
+          "input_price": 1.1,
+          "cached_input_price": 0.55,
+          "output_price": 4.4,
+          "tier": "lite",
+          "notes": null
+        },
+        {
+          "name": "gpt-5.4-nano",
+          "display_name": "GPT-5.4 Nano",
+          "context_window": 256000,
+          "input_price": 0.55,
+          "cached_input_price": 0.28,
+          "output_price": 2.2,
+          "tier": "lite",
+          "notes": null
+        },
+        {
+          "name": "gpt-5",
+          "display_name": "GPT-5",
+          "context_window": 400000,
+          "input_price": 18.75,
+          "cached_input_price": 9.38,
+          "output_price": 75.0,
+          "tier": "pro",
+          "notes": null
+        },
+        {
+          "name": "gpt-5-mini",
+          "display_name": "GPT-5 Mini",
+          "context_window": 256000,
+          "input_price": 1.1,
+          "cached_input_price": 0.55,
+          "output_price": 4.4,
+          "tier": "lite",
+          "notes": null
+        },
+        {
+          "name": "gpt-5-nano",
+          "display_name": "GPT-5 Nano",
+          "context_window": 256000,
+          "input_price": 0.55,
+          "cached_input_price": 0.28,
+          "output_price": 2.2,
+          "tier": "lite",
+          "notes": null
+        },
+        {
+          "name": "o5",
+          "display_name": "o5",
+          "context_window": 400000,
+          "input_price": 9.38,
+          "cached_input_price": 4.69,
+          "output_price": 37.5,
+          "tier": "pro",
+          "notes": "Reasoning"
+        },
+        {
+          "name": "o5-mini",
+          "display_name": "o5 Mini",
+          "context_window": 400000,
+          "input_price": 8.0,
+          "cached_input_price": 2.0,
+          "output_price": 32.0,
+          "tier": "lite",
+          "notes": "Reasoning"
+        },
+        {
+          "name": "o4-pro",
+          "display_name": "o4 Pro",
+          "context_window": 200000,
+          "input_price": 8.0,
+          "cached_input_price": 2.0,
+          "output_price": 32.0,
+          "tier": "pro",
+          "notes": "Reasoning"
+        },
+        {
           "name": "gpt-4o",
           "display_name": "GPT-4o",
           "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 124.6,
-          "cached_input_price": 62.3,
-          "output_price": 498.42,
-          "notes": "Seed data"
+          "input_price": 18.2,
+          "cached_input_price": 9.1,
+          "output_price": 72.8,
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "gpt-4o-mini",
           "display_name": "GPT-4o Mini",
           "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 7.53,
-          "cached_input_price": 3.77,
-          "output_price": 30.12,
-          "notes": "Seed data"
+          "input_price": 1.1,
+          "cached_input_price": 0.55,
+          "output_price": 4.4,
+          "tier": "lite",
+          "notes": null
         },
         {
           "name": "o4-mini",
           "display_name": "o4 Mini",
           "context_window": 200000,
-          "max_output_tokens": null,
-          "input_price": 54.77,
-          "cached_input_price": 13.69,
-          "output_price": 219.08,
-          "notes": "Seed data: Reasoning"
+          "input_price": 8.0,
+          "cached_input_price": 2.0,
+          "output_price": 32.0,
+          "tier": "lite",
+          "notes": "Reasoning"
         }
       ]
     },
@@ -50,31 +150,61 @@
           "name": "claude-opus-4-7",
           "display_name": "Claude Opus 4.7",
           "context_window": 200000,
-          "max_output_tokens": null,
-          "input_price": 749.68,
-          "cached_input_price": 74.97,
-          "output_price": 3748.39,
-          "notes": "Seed data"
+          "input_price": 109.5,
+          "cached_input_price": 10.95,
+          "output_price": 547.5,
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "claude-sonnet-4-6",
           "display_name": "Claude Sonnet 4.6",
           "context_window": 200000,
-          "max_output_tokens": null,
-          "input_price": 149.94,
-          "cached_input_price": 14.99,
-          "output_price": 749.68,
-          "notes": "Seed data"
+          "input_price": 21.9,
+          "cached_input_price": 2.19,
+          "output_price": 109.5,
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "claude-haiku-4-5",
           "display_name": "Claude Haiku 4.5",
           "context_window": 200000,
-          "max_output_tokens": null,
-          "input_price": 49.98,
-          "cached_input_price": 5.0,
-          "output_price": 249.89,
-          "notes": "Seed data"
+          "input_price": 7.3,
+          "cached_input_price": 0.73,
+          "output_price": 36.5,
+          "tier": "lite",
+          "notes": null
+        },
+        {
+          "name": "claude-opus-4-6",
+          "display_name": "Claude Opus 4.6",
+          "context_window": 200000,
+          "input_price": 109.5,
+          "cached_input_price": 10.95,
+          "output_price": 547.5,
+          "tier": "pro",
+          "notes": null
+        },
+        {
+          "name": "claude-sonnet-4-5",
+          "display_name": "Claude Sonnet 4.5",
+          "context_window": 200000,
+          "input_price": 21.9,
+          "cached_input_price": 2.19,
+          "output_price": 109.5,
+          "tier": "pro",
+          "notes": null
+        },
+        {
+          "name": "claude-opus-4-1",
+          "display_name": "Claude Opus 4.1",
+          "context_window": 200000,
+          "input_price": 109.5,
+          "cached_input_price": 10.95,
+          "output_price": 547.5,
+          "tier": "pro",
+          "notes": null
         }
       ]
     },
@@ -92,7 +222,8 @@
           "input_price": 2.74,
           "cached_input_price": 1.37,
           "output_price": 27.39,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-3.1-flash-lite-preview",
@@ -102,7 +233,8 @@
           "input_price": 1.71,
           "cached_input_price": 0.21,
           "output_price": 1.71,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-3-pro-preview",
@@ -112,7 +244,8 @@
           "input_price": 2.74,
           "cached_input_price": 1.37,
           "output_price": 27.39,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-3-flash-preview",
@@ -122,7 +255,8 @@
           "input_price": 3.42,
           "cached_input_price": 0.34,
           "output_price": 3.42,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-2.5-pro",
@@ -132,7 +266,8 @@
           "input_price": 1.71,
           "cached_input_price": 0.89,
           "output_price": 17.12,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-2.5-procomputer-use-preview",
@@ -142,7 +277,8 @@
           "input_price": 17.12,
           "cached_input_price": 8.56,
           "output_price": 17.12,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-2.5flash",
@@ -152,7 +288,8 @@
           "input_price": 2.05,
           "cached_input_price": 0.21,
           "output_price": 2.05,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-2.5-flash-live-api",
@@ -162,7 +299,8 @@
           "input_price": 3.42,
           "cached_input_price": null,
           "output_price": 3.42,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-2.5-flash-lite",
@@ -172,7 +310,8 @@
           "input_price": 0.68,
           "cached_input_price": 0.07,
           "output_price": 0.68,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-2.5flash-image",
@@ -182,7 +321,8 @@
           "input_price": 8.56,
           "cached_input_price": 1.03,
           "output_price": 102.7,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-2.0-flash",
@@ -192,7 +332,8 @@
           "input_price": 1.03,
           "cached_input_price": 0.51,
           "output_price": 1.03,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-2.0-flash-lite",
@@ -202,7 +343,8 @@
           "input_price": 0.51,
           "cached_input_price": 0.26,
           "output_price": 0.51,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "customer-preference",
@@ -222,7 +364,8 @@
           "input_price": 0.0,
           "cached_input_price": 0.0,
           "output_price": 0.0,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "gemini-1.5-pro",
@@ -232,7 +375,8 @@
           "input_price": 0.0,
           "cached_input_price": 0.0,
           "output_price": 0.0,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "translation-llm-002",
@@ -300,7 +444,8 @@
           "input_price": 13.69,
           "cached_input_price": 1.37,
           "output_price": 41.08,
-          "notes": "From public sources; official x.ai/pricing blocks scraping"
+          "notes": "From public sources; official x.ai/pricing blocks scraping",
+          "tier": "pro"
         },
         {
           "name": "grok-4.20-multi-agent",
@@ -310,7 +455,8 @@
           "input_price": 13.69,
           "cached_input_price": 1.37,
           "output_price": 41.08,
-          "notes": "From public sources; official x.ai/pricing blocks scraping"
+          "notes": "From public sources; official x.ai/pricing blocks scraping",
+          "tier": "pro"
         },
         {
           "name": "grok-code-fast-1",
@@ -350,7 +496,8 @@
           "input_price": 2.05,
           "cached_input_price": null,
           "output_price": 3.42,
-          "notes": "From public sources; official x.ai/pricing blocks scraping"
+          "notes": "From public sources; official x.ai/pricing blocks scraping",
+          "tier": "lite"
         }
       ]
     },
@@ -368,7 +515,8 @@
           "input_price": 0.96,
           "cached_input_price": 0.02,
           "output_price": 1.92,
-          "notes": null
+          "notes": null,
+          "tier": "lite"
         },
         {
           "name": "deepseek-v4-pro",
@@ -378,7 +526,8 @@
           "input_price": 2.98,
           "cached_input_price": 0.02,
           "output_price": 5.96,
-          "notes": null
+          "notes": null,
+          "tier": "pro"
         }
       ]
     },
@@ -392,31 +541,41 @@
           "name": "qwen-max",
           "display_name": "Qwen Max",
           "context_window": 32768,
-          "max_output_tokens": null,
           "input_price": 20.0,
-          "cached_input_price": null,
+          "cached_input_price": 10.0,
           "output_price": 60.0,
-          "notes": "Seed data"
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "qwen-plus",
           "display_name": "Qwen Plus",
           "context_window": 131072,
-          "max_output_tokens": null,
           "input_price": 2.0,
-          "cached_input_price": null,
+          "cached_input_price": 1.0,
           "output_price": 6.0,
-          "notes": "Seed data"
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "qwen-turbo",
           "display_name": "Qwen Turbo",
           "context_window": 131072,
-          "max_output_tokens": null,
           "input_price": 0.6,
-          "cached_input_price": null,
+          "cached_input_price": 0.3,
           "output_price": 2.0,
-          "notes": "Seed data"
+          "tier": "lite",
+          "notes": null
+        },
+        {
+          "name": "qwen-flash",
+          "display_name": "Qwen Flash",
+          "context_window": 131072,
+          "input_price": 0.3,
+          "cached_input_price": 0.15,
+          "output_price": 1.0,
+          "tier": "lite",
+          "notes": null
         }
       ]
     },
@@ -430,21 +589,31 @@
           "name": "doubao-1.5-pro",
           "display_name": "Doubao 1.5 Pro",
           "context_window": 256000,
-          "max_output_tokens": null,
           "input_price": 0.8,
-          "cached_input_price": null,
+          "cached_input_price": 0.4,
           "output_price": 2.0,
-          "notes": "Seed data"
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "doubao-1.5-lite",
           "display_name": "Doubao 1.5 Lite",
           "context_window": 256000,
-          "max_output_tokens": null,
           "input_price": 0.3,
-          "cached_input_price": null,
+          "cached_input_price": 0.15,
           "output_price": 0.6,
-          "notes": "Seed data"
+          "tier": "lite",
+          "notes": null
+        },
+        {
+          "name": "doubao-1.5-flash",
+          "display_name": "Doubao 1.5 Flash",
+          "context_window": 256000,
+          "input_price": 0.1,
+          "cached_input_price": 0.05,
+          "output_price": 0.3,
+          "tier": "lite",
+          "notes": null
         }
       ]
     },
@@ -452,37 +621,47 @@
       "id": "ernie",
       "name": "ERNIE",
       "website": "https://yiyan.baidu.com",
-      "pricing_page_url": "https://cloud.baidu.com/doc/qianfan/s/wmh4sv6ya",
+      "pricing_page_url": "https://cloud.baidu.com/doc/WENXINWORKSHOP/s/hlrk4akp7",
       "models": [
         {
           "name": "ernie-4.5",
           "display_name": "ERNIE 4.5",
           "context_window": 128000,
-          "max_output_tokens": null,
           "input_price": 90.0,
-          "cached_input_price": null,
+          "cached_input_price": 45.0,
           "output_price": 270.0,
-          "notes": "Seed data"
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "ernie-4.0-turbo",
           "display_name": "ERNIE 4.0 Turbo",
           "context_window": 128000,
-          "max_output_tokens": null,
           "input_price": 30.0,
-          "cached_input_price": null,
+          "cached_input_price": 15.0,
           "output_price": 90.0,
-          "notes": "Seed data"
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "ernie-3.5",
           "display_name": "ERNIE 3.5",
           "context_window": 8192,
-          "max_output_tokens": null,
           "input_price": 2.0,
-          "cached_input_price": null,
+          "cached_input_price": 1.0,
           "output_price": 6.0,
-          "notes": "Seed data"
+          "tier": "lite",
+          "notes": null
+        },
+        {
+          "name": "ernie-speed",
+          "display_name": "ERNIE Speed",
+          "context_window": 8192,
+          "input_price": 0.8,
+          "cached_input_price": 0.4,
+          "output_price": 2.4,
+          "tier": "lite",
+          "notes": null
         }
       ]
     },
@@ -496,21 +675,31 @@
           "name": "kimi-k2.6",
           "display_name": "Kimi K2.6",
           "context_window": 262144,
-          "max_output_tokens": null,
-          "input_price": 0.5,
-          "cached_input_price": null,
-          "output_price": 1.6,
-          "notes": "Seed data"
+          "input_price": 1.0,
+          "cached_input_price": 0.25,
+          "output_price": 4.0,
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "kimi-k2",
           "display_name": "Kimi K2",
           "context_window": 131072,
-          "max_output_tokens": null,
+          "input_price": 1.0,
+          "cached_input_price": 0.5,
+          "output_price": 4.0,
+          "tier": "pro",
+          "notes": null
+        },
+        {
+          "name": "kimi-v1",
+          "display_name": "Kimi V1",
+          "context_window": 131072,
           "input_price": 0.5,
-          "cached_input_price": null,
+          "cached_input_price": 0.25,
           "output_price": 1.6,
-          "notes": "Seed data"
+          "tier": "lite",
+          "notes": null
         }
       ]
     },
@@ -524,51 +713,31 @@
           "name": "glm-5",
           "display_name": "GLM-5",
           "context_window": 200000,
-          "max_output_tokens": null,
-          "input_price": 1.2,
-          "cached_input_price": null,
-          "output_price": 2000.0,
+          "input_price": 0.5,
+          "cached_input_price": 0.1,
+          "output_price": 2.0,
+          "tier": "pro",
           "notes": null
         },
         {
           "name": "glm-4-plus",
           "display_name": "GLM-4 Plus",
           "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 0.05,
-          "cached_input_price": null,
-          "output_price": 250414.0,
-          "notes": null
-        },
-        {
-          "name": "glm-4-air",
-          "display_name": "GLM-4 Air",
-          "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 0.05,
-          "cached_input_price": null,
-          "output_price": 250414.0,
+          "input_price": 0.5,
+          "cached_input_price": 0.1,
+          "output_price": 2.0,
+          "tier": "pro",
           "notes": null
         },
         {
           "name": "glm-4-flash",
           "display_name": "GLM-4 Flash",
           "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 0.05,
-          "cached_input_price": null,
-          "output_price": 250414.0,
-          "notes": null
-        },
-        {
-          "name": "glm-4-long",
-          "display_name": "GLM-4 Long",
-          "context_window": 1000000,
-          "max_output_tokens": null,
-          "input_price": 0.05,
-          "cached_input_price": null,
-          "output_price": 250414.0,
-          "notes": null
+          "input_price": 0.001,
+          "cached_input_price": 0.001,
+          "output_price": 0.001,
+          "tier": "lite",
+          "notes": "Free"
         }
       ]
     },
@@ -582,21 +751,21 @@
           "name": "abab7",
           "display_name": "ABAB 7",
           "context_window": 245760,
-          "max_output_tokens": null,
           "input_price": 5.0,
-          "cached_input_price": null,
+          "cached_input_price": 2.5,
           "output_price": 15.0,
-          "notes": "Seed data"
+          "tier": "pro",
+          "notes": null
         },
         {
           "name": "abab6.5s",
           "display_name": "ABAB 6.5s",
           "context_window": 245760,
-          "max_output_tokens": null,
           "input_price": 1.0,
-          "cached_input_price": null,
+          "cached_input_price": 0.5,
           "output_price": 1.0,
-          "notes": "Seed data"
+          "tier": "lite",
+          "notes": null
         }
       ]
     }
