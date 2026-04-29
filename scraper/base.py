@@ -18,6 +18,7 @@ class ModelPricing:
     cached_input_price: Optional[float] = None
     output_price: float = 0.0
     notes: Optional[str] = None
+    tier: Optional[str] = None         # "pro", "lite", or None
 
 
 @dataclass
