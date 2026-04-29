@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-29T14:12:31.219626+00:00",
+  "updated": "2026-04-29T14:27:53.296935+00:00",
   "models": {
     "google:gemini-3.1-pro-preview": {
       "provider": "google",
@@ -370,6 +370,30 @@
           "i": 0.05,
           "c": null,
           "o": 250414.0
+        }
+      ]
+    },
+    "deepseek:deepseek-v4-flash": {
+      "provider": "deepseek",
+      "name": "Deepseek V4 Flash",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 0.96,
+          "c": 0.02,
+          "o": 1.92
+        }
+      ]
+    },
+    "deepseek:deepseek-v4-pro": {
+      "provider": "deepseek",
+      "name": "Deepseek V4 Pro",
+      "series": [
+        {
+          "d": "2026-04-29",
+          "i": 2.98,
+          "c": 0.02,
+          "o": 5.96
         }
       ]
     }

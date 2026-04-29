@@ -8,6 +8,7 @@ from pathlib import Path
 
 import yaml
 
+from scraper.base import ModelPricing
 from scraper.currency import get_usd_to_cny_rate
 from scraper.providers import ALL_SCRAPERS
 
@@ -99,6 +100,12 @@ def main():
         fallback=config.get("exchange_rate", {}).get("fallback_usd_to_cny", 7.25)
     )
 
+    prev_data = load_previous_pricing()
+    prev_providers = {}
+    if prev_data:
+        for p in prev_data.get("providers", []):
+            prev_providers[p["id"]] = p
+
     results = []
     for scraper_cls in ALL_SCRAPERS.values():
         scraper = scraper_cls()
@@ -106,15 +113,28 @@ def main():
         result = scraper.run()
         if result.error:
             print(f"[WARN] {scraper.provider_id}: {result.error}", file=sys.stderr)
-        else:
-            if scraper.currency == "USD":
-                for m in result.models:
-                    m.input_price = round(m.input_price * rate, 2)
-                    if m.cached_input_price is not None:
-                        m.cached_input_price = round(m.cached_input_price * rate, 2)
-                    m.output_price = round(m.output_price * rate, 2)
-            results.append(result)
-            print(f"[INFO] {scraper.provider_id}: {len(result.models)} models")
+            # Fallback to previous data for this provider
+            if scraper.provider_id in prev_providers:
+                result.models = [
+                    ModelPricing(**m) for m in prev_providers[scraper.provider_id].get("models", [])
+                ]
+                print(f"[INFO] {scraper.provider_id}: using {len(result.models)} fallback models")
+        elif len(result.models) == 0:
+            print(f"[WARN] {scraper.provider_id}: 0 models scraped", file=sys.stderr)
+            if scraper.provider_id in prev_providers:
+                result.models = [
+                    ModelPricing(**m) for m in prev_providers[scraper.provider_id].get("models", [])
+                ]
+                print(f"[INFO] {scraper.provider_id}: using {len(result.models)} fallback models")
+
+        if scraper.currency == "USD":
+            for m in result.models:
+                m.input_price = round(m.input_price * rate, 2)
+                if m.cached_input_price is not None:
+                    m.cached_input_price = round(m.cached_input_price * rate, 2)
+                m.output_price = round(m.output_price * rate, 2)
+        results.append(result)
+        print(f"[INFO] {scraper.provider_id}: {len(result.models)} models")
 
     if len(results) == 0:
         print("[FATAL] No providers scraped successfully. Aborting write.", file=sys.stderr)

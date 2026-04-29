@@ -206,24 +206,6 @@ ALL_SCRAPERS["newprovider"] = NewProviderScraper
 
 所有价格单位：**人民币元 / 1M tokens**。USD 价格在抓取时按当日汇率自动转换。
 
-## 部署
-
-### Cloudflare Pages
-
-1. Cloudflare Dashboard → Workers & Pages → Pages → 创建项目
-2. 连接 GitHub 仓库 `skyan/llm-pricing`
-3. 构建设置: 无需构建命令，输出目录 `/`
-4. 添加自定义域名: `llm-price.skyan.cc`
-
-Cloudflare Pages 在每次 push 到 main 分支时自动部署。
-
-### GitHub Action 定时任务
-
-- **触发时间**: 每天 UTC 08:00（北京时间 16:00）
-- **手动触发**: GitHub Actions 页面 → Run workflow
-- **超时**: 15 分钟
-- **失败处理**: 单个厂商失败不影响其他厂商，全部失败则保留现有数据
-
 ## License
 
 MIT
