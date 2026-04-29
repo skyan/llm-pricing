@@ -191,11 +191,7 @@ body {
   padding: 14px 20px; display: flex; gap: 16px; flex-wrap: wrap;
   align-items: flex-start;
 }
-.chart-area { flex: 1; min-width: 320px; }
-.chart-area canvas { width: 100%; max-height: 280px; }
-.chart-legend { display: flex; gap: 16px; margin-bottom: 8px; font-size: .76rem; }
-.chart-legend span { display: inline-flex; align-items: center; gap: 4px; }
-.chart-legend .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+.chart-area { flex: 1; min-width: 360px; }
 .chart-info { min-width: 140px; font-size: .78rem; }
 .chart-info table { width: 100%; border-collapse: collapse; }
 .chart-info th, .chart-info td { padding: 3px 8px; text-align: left; font-size: .76rem; }

@@ -360,7 +360,6 @@
   }
 
   function toggleChart(m, key, series) {
-    // Remove any existing chart row
     var existing = document.querySelector('.chart-row');
     if (existing) {
       var wasSame = expandedModel === key;
@@ -372,117 +371,79 @@
     var row = document.getElementById('row-' + CSS.escape(key));
     if (!row) return;
 
+    var chartId = 'chart-' + key.replace(/[^a-zA-Z0-9]/g, '_');
     var chartRow = document.createElement('tr');
     chartRow.className = 'chart-row';
-    chartRow.innerHTML = '<td colspan="9"><div class="chart-panel"><div class="chart-area"><div class="chart-legend" id="chart-legend-' + CSS.escape(key) + '"></div><canvas id="chart-canvas-' + CSS.escape(key) + '" height="280"></canvas></div><div class="chart-info" id="chart-info-' + CSS.escape(key) + '"></div></div></td>';
+    chartRow.innerHTML = '<td colspan="9"><div class="chart-panel"><div class="chart-area"><div id="' + chartId + '" style="width:100%;height:300px"></div></div><div class="chart-info" id="chart-info-' + CSS.escape(key) + '"></div></div></td>';
 
     row.insertAdjacentElement('afterend', chartRow);
 
-    // Build chart
-    requestAnimationFrame(function () { drawChart(key, series); });
+    requestAnimationFrame(function () { drawChart(chartId, key, m, series); });
   }
 
-  function drawChart(key, series) {
-    var canvas = document.getElementById('chart-canvas-' + CSS.escape(key));
-    if (!canvas) return;
-    var rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width * (window.devicePixelRatio || 1);
-    canvas.height = 260 * (window.devicePixelRatio || 1);
-    canvas.style.width = rect.width + 'px';
-    canvas.style.height = '260px';
+  function drawChart(chartId, key, m, series) {
+    var dom = document.getElementById(chartId);
+    if (!dom) return;
 
-    var ctx = canvas.getContext('2d');
-    var dpr = window.devicePixelRatio || 1;
-    ctx.scale(dpr, dpr);
-
-    var W = rect.width, H = 260;
-    var pad = { top: 20, right: 30, bottom: 50, left: 55 };
-    var pw = W - pad.left - pad.right;
-    var ph = H - pad.top - pad.bottom;
-
+    var chart = echarts.init(dom);
     var dates = series.map(function (p) { return p.d; });
     var iData = series.map(function (p) { return p.i; });
     var cData = series.map(function (p) { return p.c; });
     var oData = series.map(function (p) { return p.o; });
 
-    var allVals = iData.concat(oData).filter(function (v) { return v != null; });
-    if (cData.some(function (v) { return v != null; })) {
-      allVals = allVals.concat(cData.filter(function (v) { return v != null; }));
-    }
-    if (allVals.length === 0) { allVals = [0, 1]; }
-    var yMin = Math.min.apply(null, allVals) * 0.9;
-    var yMax = Math.max.apply(null, allVals) * 1.1;
-    if (yMin === yMax) { yMax = yMin + 1; yMin = yMin - 1; }
+    var hasCache = cData.some(function (v) { return v != null; });
 
-    function x(i) { return pad.left + (i / Math.max(series.length - 1, 1)) * pw; }
-    function y(v) { return pad.top + ph - ((v - yMin) / (Math.max(yMax - yMin, 0.01))) * ph; }
-
-    // Grid lines
-    ctx.strokeStyle = '#f0f0f0';
-    ctx.lineWidth = 1;
-    var gridLines = 5;
-    for (var g = 0; g <= gridLines; g++) {
-      var gy = pad.top + (g / gridLines) * ph;
-      ctx.beginPath();
-      ctx.moveTo(pad.left, gy);
-      ctx.lineTo(W - pad.right, gy);
-      ctx.stroke();
-      // Y label
-      var label = (yMax - (g / gridLines) * (yMax - yMin)).toFixed(2);
-      ctx.fillStyle = '#9ca3af';
-      ctx.font = '11px ' + getComputedStyle(document.body).fontFamily;
-      ctx.textAlign = 'right';
-      ctx.fillText(label, pad.left - 6, gy + 4);
+    var seriesArr = [
+      {
+        name: '输出', type: 'line',
+        data: oData, smooth: series.length >= 4,
+        lineStyle: { color: '#dc2626', width: 2 },
+        itemStyle: { color: '#dc2626' },
+        symbol: 'circle', symbolSize: series.length <= 3 ? 8 : 4,
+      },
+      {
+        name: '输入', type: 'line',
+        data: iData, smooth: series.length >= 4,
+        lineStyle: { color: '#2563eb', width: 2 },
+        itemStyle: { color: '#2563eb' },
+        symbol: 'circle', symbolSize: series.length <= 3 ? 8 : 4,
+      },
+    ];
+    if (hasCache) {
+      seriesArr.push({
+        name: '缓存输入', type: 'line',
+        data: cData, smooth: series.length >= 4,
+        lineStyle: { color: '#7c3aed', width: 2, type: 'dashed' },
+        itemStyle: { color: '#7c3aed' },
+        symbol: 'diamond', symbolSize: series.length <= 3 ? 8 : 4,
+      });
     }
 
-    // X labels
-    var xStep = Math.max(1, Math.floor(series.length / 6));
-    for (var xi = 0; xi < series.length; xi += xStep) {
-      var xx = x(xi);
-      var dateLabel = dates[xi].slice(5);
-      ctx.fillStyle = '#9ca3af';
-      ctx.font = '10px ' + getComputedStyle(document.body).fontFamily;
-      ctx.textAlign = 'center';
-      ctx.fillText(dateLabel, xx, H - pad.bottom + 16);
-    }
-
-    // Draw lines
-    var colors = { input: '#2563eb', cached: '#7c3aed', output: '#dc2626' };
-    var names = { input: '输入', cached: '缓存输入', output: '输出' };
-
-    var legendHtml = '';
-    [['output', oData, colors.output], ['input', iData, colors.input], ['cached', cData, colors.cached]].forEach(function (d) {
-      var lbl = d[0], data = d[1], color = d[2];
-      var hasData = data.some(function (v) { return v != null; });
-      if (!hasData) return;
-
-      legendHtml += '<span><span class="legend-dot" style="background:' + color + '"></span>' + names[lbl] + '</span>';
-
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      var first = true;
-      for (var i = 0; i < data.length; i++) {
-        if (data[i] == null) continue;
-        var px = x(i), py = y(data[i]);
-        if (first) { ctx.moveTo(px, py); first = false; }
-        else { ctx.lineTo(px, py); }
-      }
-      ctx.stroke();
-
-      // Dots
-      for (var di = 0; di < data.length; di++) {
-        if (data[di] == null) continue;
-        var dx = x(di), dy = y(data[di]);
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.arc(dx, dy, 2.5, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    chart.setOption({
+      tooltip: {
+        trigger: 'axis',
+        valueFormatter: function (value) { return value != null ? '¥' + value.toFixed(4) : '--'; },
+        backgroundColor: '#fff',
+        borderColor: '#e5e7eb',
+        textStyle: { color: '#1a1a2e', fontSize: 12, fontFamily: document.body.style.fontFamily || 'sans-serif' },
+      },
+      legend: {
+        data: hasCache ? ['输出', '输入', '缓存输入'] : ['输出', '输入'],
+        bottom: 0, textStyle: { fontSize: 12 },
+      },
+      grid: { left: 55, right: 20, top: 20, bottom: 35 },
+      xAxis: {
+        type: 'category', data: dates, boundaryGap: false,
+        axisLabel: { fontSize: 11, formatter: function (v) { return v.slice(5); } },
+        axisTick: { alignWithLabel: true },
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: { fontSize: 11, formatter: function (v) { return '¥' + v; } },
+        splitLine: { lineStyle: { color: '#f3f4f6' } },
+      },
+      series: seriesArr,
     });
-
-    var legendEl = document.getElementById('chart-legend-' + CSS.escape(key));
-    if (legendEl) legendEl.innerHTML = legendHtml;
 
     // Info table
     var last = series[series.length - 1];
@@ -495,9 +456,22 @@
       if (series.length >= 2) {
         rows += '<tr><th>首次记录</th><td>' + first.d + '</td></tr>';
       }
-      rows += '<tr><th>数据点</th><td>' + series.length + (series.length < 2 ? '（需更多天积累）' : '') + '</td></tr>';
+      rows += '<tr><th>数据点</th><td>' + series.length + (series.length < 2 ? '（积累中）' : '') + '</td></tr>';
       infoEl.innerHTML = '<table>' + rows + '</table>';
     }
+
+    // Resize handler
+    var resizeHandler = function () { chart.resize(); };
+    window.addEventListener('resize', resizeHandler);
+    // Clean up when chart is removed
+    var observer = new MutationObserver(function () {
+      if (!document.getElementById(chartId)) {
+        window.removeEventListener('resize', resizeHandler);
+        chart.dispose();
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 
   // Formatting
