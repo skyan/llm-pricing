@@ -586,9 +586,32 @@
       "pricing_page_url": "https://www.volcengine.com/docs/82379/1544106",
       "models": [
         {
+          "name": "doubao-seed-2.0-pro",
+          "display_name": "Doubao Seed 2.0 Pro",
+          "context_window": 256000,
+          "max_output_tokens": 128000,
+          "input_price": 3.2,
+          "cached_input_price": 0.64,
+          "output_price": 16.0,
+          "tier": "pro",
+          "notes": "≤32K tier"
+        },
+        {
+          "name": "doubao-seed-2.0-lite",
+          "display_name": "Doubao Seed 2.0 Lite",
+          "context_window": 256000,
+          "max_output_tokens": 65536,
+          "input_price": 0.6,
+          "cached_input_price": 0.12,
+          "output_price": 2.4,
+          "tier": "lite",
+          "notes": null
+        },
+        {
           "name": "doubao-1.5-pro",
           "display_name": "Doubao 1.5 Pro",
           "context_window": 256000,
+          "max_output_tokens": 65536,
           "input_price": 0.8,
           "cached_input_price": 0.4,
           "output_price": 2.0,
@@ -599,6 +622,7 @@
           "name": "doubao-1.5-lite",
           "display_name": "Doubao 1.5 Lite",
           "context_window": 256000,
+          "max_output_tokens": 65536,
           "input_price": 0.3,
           "cached_input_price": 0.15,
           "output_price": 0.6,
@@ -609,6 +633,7 @@
           "name": "doubao-1.5-flash",
           "display_name": "Doubao 1.5 Flash",
           "context_window": 256000,
+          "max_output_tokens": 65536,
           "input_price": 0.1,
           "cached_input_price": 0.05,
           "output_price": 0.3,
