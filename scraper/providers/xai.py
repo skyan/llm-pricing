@@ -1,9 +1,4 @@
-"""xAI pricing scraper. x.ai blocks scraping, use docs site and known pricing.
-
-Since xAI actively blocks automated access to x.ai/pricing and doesn't publish
-per-model token pricing on docs.x.ai, we use known pricing from public sources.
-The docs site only has tool/storage pricing.
-"""
+"""xAI pricing scraper. JS-rendered docs page, needs Playwright."""
 
 import re
 from bs4 import BeautifulSoup
@@ -17,54 +12,112 @@ class XaiScraper(BaseScraper):
     pricing_url = "https://docs.x.ai/docs/models"
     currency = "USD"
 
-    # Known pricing as of April 2026 (from public sources)
-    KNOWN_PRICES = {
-        "grok-4-1-fast": ("Grok 4.1 Fast", 2000000, 0.20, 0.05, 0.50),
-        "grok-4-fast": ("Grok 4 Fast", 2000000, 0.20, 0.05, 0.50),
-        "grok-4.20": ("Grok 4.20", 2000000, 2.00, 0.20, 6.00),
-        "grok-4.20-multi-agent": ("Grok 4.20 Multi-Agent", 2000000, 2.00, 0.20, 6.00),
-        "grok-code-fast-1": ("Grok Code Fast 1", 256000, 0.20, 0.02, 1.50),
-        "grok-4": ("Grok 4", 256000, 3.00, 0.75, 15.00),
-        "grok-3": ("Grok 3", 131072, 3.00, None, 15.00),
-        "grok-3-mini": ("Grok 3 Mini", 131072, 0.30, None, 0.50),
-    }
+    def fetch_html(self) -> str:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(self.pricing_url, wait_until="domcontentloaded", timeout=60000)
+            page.wait_for_timeout(5000)
+            html = page.content()
+            browser.close()
+            return html
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
         models = []
-        # Try to find any pricing tables on the docs page
         tables = soup.find_all("table")
 
+        # Table 0 is the main model pricing table
         for table in tables:
-            headers = [th.get_text(strip=True).lower() for th in table.find_all("th")]
-            if not any("price" in h or "cost" in h for h in headers):
+            rows = table.find_all("tr")
+            if len(rows) < 2:
                 continue
 
-            rows = table.find_all("tr")[1:]
-            for row in rows:
-                cells = row.find_all("td")
+            header = [c.get_text(strip=True).lower() for c in rows[0].find_all(["td", "th"])]
+            header_text = " ".join(header)
+
+            # Only process token pricing tables (skip image/video pricing)
+            if "input" not in header_text or "output" not in header_text:
+                continue
+            if "grok-imagine" in header_text.lower():
+                continue
+
+            # Find columns
+            model_col = input_col = output_col = ctx_col = None
+            for i, h in enumerate(header):
+                if "model" in h:
+                    model_col = i
+                elif "input" in h:
+                    input_col = i
+                elif "output" in h:
+                    output_col = i
+                elif "context" in h:
+                    ctx_col = i
+
+            for row in rows[1:]:
+                cells = row.find_all(["td", "th"])
                 if len(cells) < 3:
                     continue
-                name = cells[0].get_text(strip=True)
-                if "grok" not in name.lower():
-                    continue
-                mid = name.lower().replace(" ", "-")
-                display = name.strip()
-                ctx = self.extract_context(cells[1].get_text(strip=True)) if len(cells) > 1 else 0
-                inp = self.extract_price(cells[2].get_text(strip=True)) if len(cells) > 2 else 0
-                cached = self.extract_price(cells[3].get_text(strip=True)) if len(cells) > 3 else None
-                out = self.extract_price(cells[4].get_text(strip=True)) if len(cells) > 4 else 0
-                models.append(ModelPricing(
-                    name=mid, display_name=display, context_window=ctx,
-                    input_price=inp or 0, cached_input_price=cached, output_price=out or 0,
-                ))
 
-        # If scraping failed, use known prices
-        if not models:
-            for mid, (display, ctx, inp, cached, out) in self.KNOWN_PRICES.items():
+                name = cells[model_col].get_text(strip=True) if model_col is not None and model_col < len(cells) else ""
+                if not name or not name.lower().startswith("grok"):
+                    continue
+                if "imagine" in name.lower():
+                    continue
+
+                inp = self._extract_usd(cells[input_col].get_text(strip=True)) if input_col is not None and input_col < len(cells) else 0
+                out = self._extract_usd(cells[output_col].get_text(strip=True)) if output_col is not None and output_col < len(cells) else 0
+                ctx = self._parse_context(cells[ctx_col].get_text(strip=True)) if ctx_col is not None and ctx_col < len(cells) else 0
+
+                if inp == 0:
+                    continue
+
+                # Clean model name, deduplicate reasoning/non-reasoning (same price)
+                display = self._clean_name(name)
+                mid = display.lower().replace(" ", "-")
+
+                # Skip duplicates
+                if any(m.name == mid for m in models):
+                    continue
+
                 models.append(ModelPricing(
-                    name=mid, display_name=display, context_window=ctx,
-                    input_price=inp, cached_input_price=cached, output_price=out,
-                    notes="From public sources; official x.ai/pricing blocks scraping",
+                    name=mid,
+                    display_name=display,
+                    context_window=ctx if ctx > 0 else 131072,
+                    input_price=inp,
+                    output_price=out,
                 ))
 
         return models
+
+    @staticmethod
+    def _extract_usd(text: str) -> float:
+        m = re.search(r'\$(\d+\.?\d*)', text.replace(",", ""))
+        return float(m.group(1)) if m else 0.0
+
+    @staticmethod
+    def _parse_context(text: str) -> int:
+        text = text.upper().replace(" ", "").replace(",", "")
+        if "M" in text:
+            return int(float(text.replace("M", "")) * 1_000_000)
+        if "K" in text:
+            return int(float(text.replace("K", "")) * 1_000)
+        m = re.search(r'(\d+)', text)
+        return int(m.group(1)) if m else 0
+
+    @staticmethod
+    def _clean_name(name: str) -> str:
+        name = re.sub(r'-\d{4,}$', '', name)  # Remove date suffix
+        name = name.replace("-", " ").replace("_", " ")
+        parts = name.split()
+        result = []
+        for p in parts:
+            if p.lower() == "grok":
+                result.append("Grok")
+            elif p.lower() in ("fast", "mini", "reasoning", "non"):
+                if p.lower() == "non":
+                    continue
+                result.append(p.capitalize())
+            else:
+                result.append(p.upper() if p.replace(".", "").isdigit() else p.capitalize())
+        return " ".join(result)
