@@ -293,27 +293,25 @@
       var series = hModels[key];
       var hasData = series && series.series && series.series.length >= 1;
       if (!hasData) {
-        // Use current model as a single data point
         series = { series: [{ d: (pricingData.last_updated || '').slice(0, 10), i: m.input_price, c: m.cached_input_price, o: m.output_price }] };
       }
       cell.innerHTML = '';
-      cell.title = '点击展开趋势图';
+      cell.title = '点击展开价格趋势图';
       cell.style.cursor = 'pointer';
+      cell.classList.add('clickable');
+
       if (series.series.length === 1) {
-        // Single point: show a dot indicator
-        var dot = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        dot.setAttribute('width', '16'); dot.setAttribute('height', '16');
-        dot.setAttribute('viewBox', '0 0 16 16');
-        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        c.setAttribute('cx', '8'); c.setAttribute('cy', '8'); c.setAttribute('r', '3.5');
-        c.setAttribute('fill', '#2563eb');
-        dot.appendChild(c);
-        cell.appendChild(dot);
+        // Single point: show expand hint
         var hint = document.createElement('span');
-        hint.className = 'trend-expand-hint'; hint.textContent = '+';
+        hint.className = 'trend-hint'; hint.textContent = '展开';
         cell.appendChild(hint);
       } else {
         cell.appendChild(buildSparkline(series.series));
+        // Expand arrow
+        var arrow = document.createElement('span');
+        arrow.className = 'trend-arrow';
+        arrow.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+        cell.appendChild(arrow);
       }
       cell.addEventListener('click', function () { toggleChart(m, key, series.series); });
     });
@@ -324,7 +322,7 @@
     var min = Math.min.apply(null, data), max = Math.max.apply(null, data);
     if (min === max) { max = min + 0.01; min = min - 0.01; }
 
-    var w = 72, h = 26, pad = 2;
+    var w = 90, h = 32, pad = 3;
     var n = data.length;
     var points = data.map(function (v, i) {
       return (pad + (i / Math.max(n - 1, 1)) * (w - 2 * pad)) + ',' +
@@ -363,6 +361,8 @@
     var existing = document.querySelector('.chart-row');
     if (existing) {
       var wasSame = expandedModel === key;
+      var prevRow = document.querySelector('.row-expanded');
+      if (prevRow) prevRow.classList.remove('row-expanded');
       existing.remove();
       if (wasSame) { expandedModel = null; return; }
     }
@@ -370,6 +370,7 @@
     expandedModel = key;
     var row = document.getElementById('row-' + CSS.escape(key));
     if (!row) return;
+    row.classList.add('row-expanded');
 
     var chartId = 'chart-' + key.replace(/[^a-zA-Z0-9]/g, '_');
     var chartRow = document.createElement('tr');

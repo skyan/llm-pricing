@@ -216,10 +216,20 @@ body {
 .context { font-size: .8rem; font-family: var(--font-mono); }
 
 /* Trend */
-.sparkline-wrap { display: flex; align-items: center; justify-content: center; min-width: 70px; cursor: pointer; }
-.sparkline-wrap svg { display: block; }
+.sparkline-wrap {
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  min-width: 100px; padding: 4px 6px; border-radius: 6px;
+  transition: background .15s;
+}
+.sparkline-wrap.clickable:hover { background: #f0f4ff; }
+.sparkline-wrap svg { display: block; flex-shrink: 0; }
 .trend-no-data { font-size: .72rem; color: #d1d5db; }
-.trend-expand-hint { font-size: .65rem; color: var(--text-secondary); margin-left: 4px; }
+.trend-hint {
+  font-size: .72rem; color: var(--accent); font-weight: 500;
+  white-space: nowrap;
+}
+.trend-arrow { color: #9ca3af; display: flex; transition: transform .2s; }
+.sparkline-wrap.clickable:hover .trend-arrow { color: var(--accent); }
 
 /* Link */
 .link-icon {
