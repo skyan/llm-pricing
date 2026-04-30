@@ -5,6 +5,8 @@ from dataclasses import dataclass, field, asdict
 from typing import Optional
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 
 
@@ -39,12 +41,37 @@ class BaseScraper(ABC):
     website: str
     pricing_url: str
     currency: str = "USD"              # "USD" or "CNY"
+    request_timeout: int = 30
+    request_headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36 llm-pricing-bot/1.0"
+        ),
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+    }
+
+    def _build_session(self) -> requests.Session:
+        retry = Retry(
+            total=3,
+            connect=3,
+            read=3,
+            backoff_factor=1.0,
+            status_forcelist=(429, 500, 502, 503, 504),
+            allowed_methods=("GET",),
+        )
+        adapter = HTTPAdapter(max_retries=retry)
+        session = requests.Session()
+        session.headers.update(self.request_headers)
+        session.mount("https://", adapter)
+        session.mount("http://", adapter)
+        return session
 
     def fetch_html(self) -> str:
-        resp = requests.get(self.pricing_url, timeout=30,
-                            headers={"User-Agent": "llm-pricing-bot/1.0"})
-        resp.raise_for_status()
-        return resp.text
+        with self._build_session() as session:
+            resp = session.get(self.pricing_url, timeout=self.request_timeout)
+            resp.raise_for_status()
+            return resp.text
 
     def parse(self, html: str) -> list:
         soup = BeautifulSoup(html, "html.parser")
@@ -109,13 +136,29 @@ class BaseScraper(ABC):
 class PlaywrightMixin:
     """Override fetch_html() to use Playwright for JS-rendered pages."""
 
+    playwright_timeout_ms: int = 60000
+    playwright_wait_until: str = "domcontentloaded"
+    playwright_wait_selector: Optional[str] = None
+    playwright_wait_selector_timeout_ms: int = 20000
+    playwright_post_wait_ms: int = 3000
+
     def fetch_html(self) -> str:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
-            page.goto(self.pricing_url, wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_timeout(3000)  # extra wait for JS rendering
+            page.goto(
+                self.pricing_url,
+                wait_until=self.playwright_wait_until,
+                timeout=self.playwright_timeout_ms,
+            )
+            if self.playwright_wait_selector:
+                page.wait_for_selector(
+                    self.playwright_wait_selector,
+                    timeout=self.playwright_wait_selector_timeout_ms,
+                )
+            if self.playwright_post_wait_ms > 0:
+                page.wait_for_timeout(self.playwright_post_wait_ms)
             html = page.content()
             browser.close()
             return html

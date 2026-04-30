@@ -6,14 +6,14 @@
 |------|--------|------|--------|
 | OpenAI | `developers.openai.com/api/docs/pricing` | fetch | 10 |
 | Anthropic | `platform.claude.com/docs/en/about-claude/pricing` | fetch | 11 |
-| Google | `cloud.google.com/vertex-ai/generative-ai/pricing` | fetch | 18 |
-| xAI | `docs.x.ai/docs/models` | Playwright | 3 |
+| Google | `cloud.google.com/vertex-ai/generative-ai/pricing` | fetch | 11 |
+| xAI | `docs.x.ai/developers/models` | fetch 优先，必要时 Playwright 回退 | 5 |
 | DeepSeek | `api-docs.deepseek.com/quick_start/pricing` | fetch | 2 |
-| 千问 | `help.aliyun.com/zh/model-studio/getting-started/models` | fetch | 6 |
-| 豆包 | `volcengine.com/docs/82379/1544106` | Playwright | 4 |
+| 千问 | `help.aliyun.com/zh/model-studio/model-pricing` | fetch | 6 |
+| 豆包 | `volcengine.com/docs/82379/1544106` | Playwright（等待表格出现） | 4 |
 | 文心 | `cloud.baidu.com/doc/qianfan/s/wmh4sv6ya` | fetch | 8 |
 | Kimi | `platform.kimi.com/docs/pricing/{slug}` | fetch | 2 |
-| GLM | `bigmodel.cn/pricing` | Playwright | 6 |
+| GLM | `bigmodel.cn/pricing` | Playwright（等待表格出现） | 6 |
 | MiniMax | `platform.minimaxi.com/docs/guides/pricing-paygo` | fetch | 5 |
 
 ## 技术栈
@@ -27,10 +27,10 @@ scraper/
 └── providers/       # 每个厂商一个文件
     ├── openai.py    # fetch: SSR table，区分 short/long context
     ├── anthropic.py # fetch: SSR table，$X / MTok 格式
-    ├── google.py    # fetch: 静态 table，rowspan 处理
-    ├── xai.py       # Playwright: SPA table，去重 reasoning/non-reasoning
+    ├── google.py    # fetch: 按不同 pricing table 结构分别解析
+    ├── xai.py       # fetch 优先 + Playwright 回退，优先读内嵌 metadata
     ├── deepseek.py  # fetch: Docusaurus table，td header
-    ├── qianwen.py   # fetch: 对比表格，模型名去描述后缀
+    ├── qianwen.py   # fetch: 官方计费页，按主型号提取首档价格
     ├── doubao.py    # Playwright: SPA table，零宽字符清洗
     ├── ernie.py     # fetch: rowspan + 千tokens→百万 ×1000
     ├── kimi.py      # fetch: 多子页面，正则提取价格
@@ -53,12 +53,12 @@ scraper/
 ### Google
 - URL: `cloud.google.com/vertex-ai/generative-ai/pricing`
 - 方式: 直接 fetch，静态 HTML
-- 解析: rowspan 处理，多 table 匹配 pricing-table 类
+- 解析: 只取 Gemini 文本模型，按两类 table 分开处理：`2.5/3.x` 的 tiered token 表与 `2.0` 的 simple token 表。跳过 grounding / cache storage / embedding / image-only 表
 
 ### xAI
-- URL: `docs.x.ai/docs/models`
-- 方式: Playwright，Mintlify SPA
-- 解析: Table 0 含模型定价，reasoning/non-reasoning 同价去重。不包含旧模型 (grok-4/3)
+- URL: `docs.x.ai/developers/models`
+- 方式: 先直接 fetch；如果拿到的 HTML 还没渲染出定价内容，再回退 Playwright
+- 解析: 优先读取页面内嵌的 `languageModels` 元数据，只保留带 input/output 的 Grok 文本模型；同一基础型号优先保留 reasoning 版本
 
 ### DeepSeek
 - URL: `api-docs.deepseek.com/quick_start/pricing`
@@ -66,13 +66,13 @@ scraper/
 - 解析: 单 table，header 用 `<td>`，有 PRICING 分段行需特殊处理
 
 ### 千问 (Alibaba)
-- URL: `help.aliyun.com/zh/model-studio/getting-started/models`
+- URL: `help.aliyun.com/zh/model-studio/model-pricing`
 - 方式: 直接 fetch
-- 解析: 前几个 table 为对比表格，模型列为 header，行为属性（上下文/输入/输出）。模型名含"适合复杂任务"等描述需 regex 切除
+- 解析: 改为官方计费页，按 table 顺序提取中国内地的主型号首档价格，并忽略 `-latest` / 日期版本 / `-us` 变体
 
 ### 豆包 (ByteDance)
 - URL: `volcengine.com/docs/82379/1544106`
-- 方式: Playwright，React SPA
+- 方式: Playwright，等待 `table` 出现后再取页面，避免固定 sleep
 - 解析: Table 0，单元格含 `\u200b` 零宽字符需 strip。只取 doubao-seed-2.0 系列，排除 seedance/seedream 等视频/图片模型
 
 ### 文心 (Baidu)
@@ -87,7 +87,7 @@ scraper/
 
 ### GLM (Zhipu)
 - URL: `bigmodel.cn/pricing`
-- 方式: Playwright，React SPA
+- 方式: Playwright，等待 `table` 出现后再取页面，避免固定 sleep
 - 解析: 42 个 table，按"输入长度"列筛选有效 table（列: 模型 | 条件 | 输入 | 输出 | 缓存）。排除视觉/语音/ASR 模型
 
 ### MiniMax
@@ -100,4 +100,5 @@ scraper/
 - 单个厂商抓取异常 → `ScrapeResult.error` 记录错误信息
 - 单个厂商返回 0 模型 → 从上次 `pricing.json` 中取该厂商数据复用
 - 全部厂商失败 → 保留现有数据，不写入空文件
-- Playwright 超时: 60s `domcontentloaded` + 5s buffer
+- fetch 请求: `requests.Session + Retry`，对 429/5xx 自动重试
+- Playwright 超时: 默认 60s `domcontentloaded`，并优先等待目标 selector，而不是盲等固定秒数

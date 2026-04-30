@@ -39,7 +39,7 @@ providers:
 
   - id: qianwen
     name: "Alibaba"
-    pricing_url: "https://help.aliyun.com/zh/model-studio/getting-started/models"
+    pricing_url: "https://help.aliyun.com/zh/model-studio/model-pricing"
     website: "https://tongyi.aliyun.com"
     currency: CNY
     enabled: true

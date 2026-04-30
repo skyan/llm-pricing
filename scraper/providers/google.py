@@ -1,7 +1,11 @@
-"""Google Vertex AI pricing scraper. Static HTML with rowspan pattern."""
+"""Google Vertex AI pricing scraper."""
+
+from __future__ import annotations
 
 import re
+
 from bs4 import BeautifulSoup
+
 from scraper.base import BaseScraper, ModelPricing
 
 
@@ -13,129 +17,197 @@ class GoogleScraper(BaseScraper):
     currency = "USD"
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
-        models = []
-        tables = soup.find_all("table")
+        models: dict[str, ModelPricing] = {}
 
-        for table in tables:
-            # Check if this looks like a pricing table
-            headers = []
-            thead = table.find("thead")
-            if thead:
-                headers = [th.get_text(strip=True).lower() for th in thead.find_all("th")]
-
-            # Detect relevant columns
-            model_col = None
-            input_col = None
-            output_col = None
-            cached_col = None
-
-            for i, h in enumerate(headers):
-                hl = h.lower()
-                if "model" in hl:
-                    model_col = i
-                if "input" in hl and "cached" not in hl:
-                    input_col = i
-                if "output" in hl and "text" in hl:
-                    output_col = i
-                if "cached" in hl:
-                    cached_col = i
-
+        for table in soup.find_all("table"):
             rows = table.find_all("tr")
-            current_model = None
+            if len(rows) < 2:
+                continue
 
-            for row in rows:
-                cells = row.find_all(["td", "th"])
-                if not cells:
-                    continue
+            headers = [self._cell_text(cell) for cell in rows[0].find_all(["th", "td"])]
+            if not self._is_relevant_table(headers):
+                continue
 
-                # Check for rowspan model cell
-                first_cell = cells[0]
-                if first_cell.get("rowspan") or (first_cell.name == "th" and first_cell.get_text(strip=True)):
-                    model_text = first_cell.get_text(strip=True)
-                    if model_text and not any(h in model_text.lower() for h in ["model", "input", "output", "feature"]):
-                        current_model = model_text
+            if self._is_tiered_token_table(headers):
+                self._parse_tiered_token_table(rows[1:], models)
+            elif self._is_simple_token_table(headers):
+                self._parse_simple_token_table(rows[1:], models)
 
-                if not current_model:
-                    continue
+        return list(models.values())
 
-                # Parse row for pricing
-                row_text = " ".join(c.get_text(strip=True) for c in cells)
+    def _parse_tiered_token_table(self, rows, models: dict[str, ModelPricing]) -> None:
+        current_display_name = ""
 
-                # Only process rows that contain "input" or "output" for text
-                if "gemini" in current_model.lower() or "palm" in current_model.lower():
-                    pass  # process
+        for row in rows:
+            texts = self._row_texts(row)
+            if not texts:
+                continue
 
-                # Extract prices from cells
-                prices_in_row = []
-                for cell in cells:
-                    text = cell.get_text(strip=True)
-                    p = self._extract_usd(text)
-                    if p is not None and p > 0:
-                        prices_in_row.append(p)
+            if len(texts) == 1 and self._looks_like_model_name(texts[0]):
+                normalized = self._normalize_model_name(texts[0])
+                current_display_name = normalized if self._should_keep_model(normalized) else ""
+                continue
 
-                if len(prices_in_row) < 2:
-                    continue
+            if not current_display_name:
+                continue
 
-                # Figure out which columns from header mapping
-                model_name = current_model.strip()
-                # Skip non-model rows
-                if len(model_name) > 60 or "$" in model_name:
-                    continue
+            entry = models.setdefault(
+                self._slugify(current_display_name),
+                ModelPricing(
+                    name=self._slugify(current_display_name),
+                    display_name=current_display_name,
+                    context_window=self._infer_context(current_display_name),
+                    input_price=0.0,
+                    cached_input_price=None,
+                    output_price=0.0,
+                ),
+            )
 
-                # The rowspan pattern means we need to accumulate for each model
-                self._add_or_update(models, model_name, prices_in_row)
+            row_label = texts[0]
+            if self._is_primary_input_row(row_label) and entry.input_price == 0:
+                entry.input_price = self._extract_usd(texts[1]) or 0.0
+                cached = self._extract_usd(texts[3]) if len(texts) > 3 else None
+                if cached is not None:
+                    entry.cached_input_price = cached
+            elif self._is_primary_output_row(row_label) and entry.output_price == 0:
+                entry.output_price = self._extract_usd(texts[1]) or 0.0
 
-        # Deduplicate and merge
-        return self._merge_models(models)
+    def _parse_simple_token_table(self, rows, models: dict[str, ModelPricing]) -> None:
+        current_display_name = ""
+
+        for row in rows:
+            texts = self._row_texts(row)
+            if not texts:
+                continue
+
+            if len(texts) == 1 and self._looks_like_model_name(texts[0]):
+                normalized = self._normalize_model_name(texts[0])
+                current_display_name = normalized if self._should_keep_model(normalized) else ""
+                continue
+
+            if not current_display_name:
+                continue
+
+            entry = models.setdefault(
+                self._slugify(current_display_name),
+                ModelPricing(
+                    name=self._slugify(current_display_name),
+                    display_name=current_display_name,
+                    context_window=self._infer_context(current_display_name),
+                    input_price=0.0,
+                    cached_input_price=None,
+                    output_price=0.0,
+                ),
+            )
+
+            row_label = texts[0]
+            if self._is_simple_input_row(row_label) and entry.input_price == 0:
+                entry.input_price = self._extract_usd(texts[1]) or 0.0
+            elif self._is_simple_output_row(row_label) and entry.output_price == 0:
+                entry.output_price = self._extract_usd(texts[1]) or 0.0
 
     @staticmethod
-    def _extract_usd(text: str):
+    def _row_texts(row) -> list[str]:
+        return [
+            re.sub(r"\s+", " ", cell.get_text(" ", strip=True)).strip()
+            for cell in row.find_all(["th", "td"])
+            if cell.get_text(" ", strip=True).strip()
+        ]
+
+    @staticmethod
+    def _cell_text(cell) -> str:
+        return re.sub(r"\s+", " ", cell.get_text(" ", strip=True)).strip()
+
+    @staticmethod
+    def _is_relevant_table(headers: list[str]) -> bool:
+        if not headers:
+            return False
+        if headers[0] not in {"模型", "型号"}:
+            return False
+
+        header_text = " ".join(headers)
+        if "价格" not in header_text:
+            return False
+        if any(keyword in header_text for keyword in ["功能", "存储", "训练", "Embedding", "嵌入"]):
+            return False
+        return True
+
+    @staticmethod
+    def _is_tiered_token_table(headers: list[str]) -> bool:
+        header_text = " ".join(headers)
+        return "缓存 输入" in header_text
+
+    @staticmethod
+    def _is_simple_token_table(headers: list[str]) -> bool:
+        return headers[:4] == ["模型", "类型", "价格", "使用 Batch API 的价格"]
+
+    @staticmethod
+    def _looks_like_model_name(text: str) -> bool:
+        return text.startswith("Gemini")
+
+    @staticmethod
+    def _normalize_model_name(text: str) -> str:
+        name = re.sub(r"\s+", " ", text.replace("\n", " ")).strip()
+        replacements = {
+            "预览版": "Preview",
+            "图片": "Image",
+            "计算机使用": "Computer Use",
+        }
+        for source, target in replacements.items():
+            name = name.replace(source, target)
+        name = name.replace(" - ", " ")
+        name = re.sub(r"\s+", " ", name).strip()
+        return name
+
+    @staticmethod
+    def _should_keep_model(name: str) -> bool:
+        lower = name.lower()
+        if not lower.startswith("gemini"):
+            return False
+        if any(keyword in lower for keyword in ["embedding", "gemma", "1.5", "1.0"]):
+            return False
+        if any(keyword in lower for keyword in ["customer preference", "translation", "tool", "duration"]):
+            return False
+        if "image" in lower:
+            return False
+        return True
+
+    @staticmethod
+    def _is_primary_input_row(label: str) -> bool:
+        return label.startswith("输入（") or label == "100 万个输入文本 token"
+
+    @staticmethod
+    def _is_primary_output_row(label: str) -> bool:
+        return label.startswith("文本输出") or label == "100 万个输出文本 token"
+
+    @staticmethod
+    def _is_simple_input_row(label: str) -> bool:
+        return label in {"100 万个输入 token", "100 万个输入文本 token"}
+
+    @staticmethod
+    def _is_simple_output_row(label: str) -> bool:
+        return label == "100 万个输出文本 token"
+
+    @staticmethod
+    def _extract_usd(text: str) -> float | None:
         text = text.replace(",", "").replace(" ", "")
-        m = re.search(r'\$(\d+\.?\d*)', text)
-        if m:
-            val = float(m.group(1))
-            return val if val > 0 else None
-        return None
-
-    def _add_or_update(self, models: list, name: str, prices: list):
-        ctx = 128000
-        n = name.lower()
-        if "2.5" in n or "2.0" in n:
-            ctx = 1000000
-        elif "1.5" in n:
-            ctx = 128000
-
-        display = name
-        mid = re.sub(r'\s*\(.*?\)', '', name).strip().lower().replace(" ", "-")
-
-        # For Google, smallest price is usually cached input, then input, then output
-        sorted_prices = sorted(set(prices))
-        input_price = sorted_prices[1] if len(sorted_prices) >= 2 else sorted_prices[0]
-        cached_price = sorted_prices[0] if len(sorted_prices) >= 2 else None
-        output_price = sorted_prices[-1]
-
-        models.append(ModelPricing(
-            name=mid,
-            display_name=display,
-            context_window=ctx,
-            input_price=input_price,
-            cached_input_price=cached_price,
-            output_price=output_price,
-        ))
+        match = re.search(r"\$?(\d+\.?\d*)", text)
+        if not match:
+            return None
+        return float(match.group(1))
 
     @staticmethod
-    def _merge_models(models: list) -> list:
-        """Merge duplicate model entries keeping the one with most data."""
-        seen = {}
-        for m in models:
-            if m.name in seen:
-                existing = seen[m.name]
-                if m.input_price and not existing.input_price:
-                    existing.input_price = m.input_price
-                if m.output_price and not existing.output_price:
-                    existing.output_price = m.output_price
-                if m.cached_input_price and not existing.cached_input_price:
-                    existing.cached_input_price = m.cached_input_price
-            else:
-                seen[m.name] = m
-        return list(seen.values())
+    def _infer_context(name: str) -> int:
+        lower = name.lower()
+        if any(keyword in lower for keyword in ["2.5", "2.0", "live api"]):
+            return 1_000_000
+        return 128_000
+
+    @staticmethod
+    def _slugify(name: str) -> str:
+        slug = name.lower()
+        slug = slug.replace(" ", "-")
+        slug = slug.replace("/", "-")
+        slug = re.sub(r"[^a-z0-9.-]+", "-", slug)
+        slug = re.sub(r"-+", "-", slug)
+        return slug.strip("-")

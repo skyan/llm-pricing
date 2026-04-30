@@ -2,26 +2,17 @@
 
 import re
 from bs4 import BeautifulSoup
-from scraper.base import BaseScraper, ModelPricing
+from scraper.base import BaseScraper, ModelPricing, PlaywrightMixin
 
 
-class GLMScraper(BaseScraper):
+class GLMScraper(PlaywrightMixin, BaseScraper):
     provider_id = "glm"
     provider_name = "智谱"
     website = "https://open.bigmodel.cn"
     pricing_url = "https://bigmodel.cn/pricing"
     currency = "CNY"
-
-    def fetch_html(self) -> str:
-        from playwright.sync_api import sync_playwright
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(self.pricing_url, wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_timeout(5000)
-            html = page.content()
-            browser.close()
-            return html
+    playwright_wait_selector = "table"
+    playwright_post_wait_ms = 2000
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
         models = []

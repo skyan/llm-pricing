@@ -1,7 +1,11 @@
-"""Qianwen (Alibaba Tongyi) pricing scraper. Server-rendered comparison tables."""
+"""Qianwen (Alibaba Tongyi) pricing scraper."""
+
+from __future__ import annotations
 
 import re
+
 from bs4 import BeautifulSoup
+
 from scraper.base import BaseScraper, ModelPricing
 
 
@@ -9,117 +13,125 @@ class QianwenScraper(BaseScraper):
     provider_id = "qianwen"
     provider_name = "Alibaba"
     website = "https://tongyi.aliyun.com"
-    pricing_url = "https://help.aliyun.com/zh/model-studio/getting-started/models"
+    pricing_url = "https://help.aliyun.com/zh/model-studio/model-pricing"
     currency = "CNY"
 
+    TARGET_MODELS = {
+        "qwen3.6-max-preview": ("qwen3.6-max-preview", "Qwen3.6-Max-Preview"),
+        "qwen3-max": ("qwen3-max", "Qwen3-Max"),
+        "qwen3.6-plus": ("qwen3.6-plus", "Qwen3.6-Plus"),
+        "qwen3.6-flash": ("qwen3.6-flash", "Qwen3.6-Flash"),
+        "qwen-plus": ("千问-plus", "千问 Plus"),
+        "qwen-flash": ("千问-flash", "千问 Flash"),
+    }
+
     def parse_soup(self, soup: BeautifulSoup) -> list:
-        models = []
-        seen = set()
-        tables = soup.find_all("table")
+        models: dict[str, ModelPricing] = {}
+        current_key: str | None = None
 
-        for table in tables:
-            rows = table.find_all("tr")
-            if len(rows) < 3:
+        for table in soup.find_all("table"):
+            if not self._is_pricing_table(table):
                 continue
 
-            # Check if this is a pricing comparison table
-            header_text = rows[0].get_text(" ", strip=True)
-            if "价格" not in header_text and "Token" not in header_text:
-                # Check first row cells for model-like names
-                hcells = rows[0].find_all(["td", "th"])
-                is_pricing = False
-                for c in hcells[1:]:
-                    t = c.get_text(strip=True)
-                    if any(kw in t for kw in ["Qwen", "千问", "适合", "能力"]):
-                        is_pricing = True
-                        break
-                if not is_pricing:
+            for row in table.find_all("tr")[1:]:
+                texts = self._row_texts(row)
+                if not texts:
                     continue
 
-            # Parse: header has model names, rows have features
-            hcells = rows[0].find_all(["td", "th"])
-            model_names = []
-            for c in hcells[1:]:
-                name = self._clean_model_name(c.get_text(strip=True))
-                if name:
-                    model_names.append(name)
+                model_id = self._extract_model_id(texts[0])
+                if model_id in self.TARGET_MODELS:
+                    current_key = model_id
+                    if current_key not in models:
+                        slug, display_name = self.TARGET_MODELS[current_key]
+                        models[current_key] = ModelPricing(
+                            name=slug,
+                            display_name=display_name,
+                            context_window=0,
+                            input_price=0.0,
+                            cached_input_price=None,
+                            output_price=0.0,
+                        )
 
-            if not model_names:
-                continue
-
-            # Data rows
-            ctx_for_all = 0
-            prices = {}
-
-            for row in rows[1:]:
-                cells = row.find_all(["td", "th"])
-                label = cells[0].get_text(strip=True).lower() if cells else ""
-
-                if "上下文" in label or "context" in label:
-                    if len(cells) >= 2:
-                        ctx_for_all = self._parse_context(cells[1].get_text(strip=True))
-
-                elif "输入" in label and "价格" in label:
-                    self._fill_prices(cells[1:], model_names, prices, "input")
-
-                elif "输出" in label and "价格" in label:
-                    self._fill_prices(cells[1:], model_names, prices, "output")
-
-            # Build models
-            for mname in model_names:
-                if mname in seen:
+                if current_key is None or current_key not in models:
                     continue
-                seen.add(mname)
-                p = prices.get(mname, {})
-                inp = p.get("input", 0)
-                out = p.get("output", 0)
-                if inp == 0 and out == 0:
+
+                range_text = self._find_range_text(texts)
+                if range_text:
+                    models[current_key].context_window = max(
+                        models[current_key].context_window,
+                        self._parse_context(range_text),
+                    )
+
+                prices = [self._parse_cny(text) for text in texts if "元" in text]
+                prices = [price for price in prices if price > 0]
+                if not prices:
                     continue
-                models.append(ModelPricing(
-                    name=mname.lower().replace(" ", "-"),
-                    display_name=mname,
-                    context_window=ctx_for_all,
-                    input_price=inp,
-                    output_price=out,
-                ))
 
-        return models
+                if models[current_key].input_price == 0:
+                    models[current_key].input_price = round(prices[0], 3)
+                if models[current_key].output_price == 0 and len(prices) > 1:
+                    models[current_key].output_price = round(max(prices[1:]), 3)
 
-    def _fill_prices(self, cells, model_names, prices, key):
-        for i, cell in enumerate(cells):
-            if i >= len(model_names):
-                break
-            text = cell.get_text(strip=True)
-            p = self._parse_cny(text)
-            if p > 0:
-                prices.setdefault(model_names[i], {})[key] = round(p, 2)
+        ordered = []
+        for key in self.TARGET_MODELS:
+            model = models.get(key)
+            if model and model.input_price and model.output_price:
+                ordered.append(model)
+        return ordered
 
     @staticmethod
-    def _clean_model_name(text: str) -> str:
-        # Remove descriptions like "适合复杂任务，能力最强"
-        # Pattern: Latin/num ends, then Chinese description begins
-        # e.g. "Qwen3.6-Max-Preview适合复杂任务，能力最强" -> "Qwen3.6-Max-Preview"
-        # e.g. "千问Plus效果、速度、成本均衡" -> "千问Plus"
-        text = re.sub(r'(适合|效果|能力|简单|速度快|极致|成本).*$', '', text)
-        # Fix "千问Plus" -> "千问 Plus"
-        text = re.sub(r'千问(?!\s)', '千问 ', text)
-        return text.strip()
+    def _is_pricing_table(table) -> bool:
+        first_row = table.find("tr")
+        if not first_row:
+            return False
+        header_text = re.sub(r"\s+", " ", first_row.get_text(" ", strip=True))
+        return (
+            "模型名称" in header_text
+            and "输入单价" in header_text
+            and "输出单价" in header_text
+        )
+
+    @staticmethod
+    def _row_texts(row) -> list[str]:
+        return [
+            re.sub(r"\s+", " ", cell.get_text(" ", strip=True)).strip()
+            for cell in row.find_all(["th", "td"])
+            if cell.get_text(" ", strip=True).strip()
+        ]
+
+    @staticmethod
+    def _extract_model_id(text: str) -> str | None:
+        match = re.search(r"(qwen[\w.-]+)", text.lower())
+        if not match:
+            return None
+        model_id = match.group(1)
+        if model_id.endswith("-us") or model_id.endswith("-latest"):
+            return None
+        return model_id
+
+    @staticmethod
+    def _find_range_text(texts: list[str]) -> str:
+        for text in texts:
+            if "Token" in text and "≤" in text:
+                return text
+        return ""
 
     @staticmethod
     def _parse_cny(text: str) -> float:
         text = text.replace(",", "").replace(" ", "").replace("元", "")
-        m = re.search(r'(\d+\.?\d*)', text)
-        if m:
-            return float(m.group(1))
+        match = re.search(r"(\d+\.?\d*)", text)
+        if match:
+            return float(match.group(1))
         return 0.0
 
     @staticmethod
     def _parse_context(text: str) -> int:
         text = text.replace(",", "").replace(" ", "")
-        m = re.search(r'(\d+)万?', text)
-        if m:
-            val = int(m.group(1))
-            if "万" in text:
-                val *= 10000
-            return val
-        return 0
+        match = re.search(r"≤(\d+)([KM])", text, re.IGNORECASE)
+        if not match:
+            return 0
+        value = int(match.group(1))
+        unit = match.group(2).upper()
+        if unit == "M":
+            return value * 1_000_000
+        return value * 1_024

@@ -2,28 +2,29 @@
 
 import re
 from bs4 import BeautifulSoup
-from scraper.base import BaseScraper, ModelPricing
+from scraper.base import BaseScraper, ModelPricing, PlaywrightMixin
 
 
-class XaiScraper(BaseScraper):
+class XaiScraper(PlaywrightMixin, BaseScraper):
     provider_id = "xai"
     provider_name = "xAI"
     website = "https://x.ai"
-    pricing_url = "https://docs.x.ai/docs/models"
+    pricing_url = "https://docs.x.ai/developers/models"
     currency = "USD"
+    playwright_wait_selector = "table"
+    playwright_post_wait_ms = 1500
 
     def fetch_html(self) -> str:
-        from playwright.sync_api import sync_playwright
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(self.pricing_url, wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_timeout(5000)
-            html = page.content()
-            browser.close()
+        html = BaseScraper.fetch_html(self)
+        if self._looks_rendered(html):
             return html
+        return PlaywrightMixin.fetch_html(self)
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
+        embedded_models = self._parse_embedded_models(str(soup))
+        if embedded_models:
+            return embedded_models
+
         models = []
         tables = soup.find_all("table")
 
@@ -91,6 +92,55 @@ class XaiScraper(BaseScraper):
         return models
 
     @staticmethod
+    def _looks_rendered(html: str) -> bool:
+        text = html.lower()
+        return "grok" in text and "$" in text and ("<table" in text or "model pricing" in text)
+
+    def _parse_embedded_models(self, html: str) -> list:
+        pattern = re.compile(
+            r'\\"name\\":\\"(grok-[^\\"]+)\\".*?'
+            r'\\"promptTextTokenPrice\\":\\"\$n(\d+)\\".*?'
+            r'\\"cachedPromptTokenPrice\\":\\"\$n(\d+)\\".*?'
+            r'\\"completionTextTokenPrice\\":\\"\$n(\d+)\\".*?'
+            r'\\"maxPromptLength\\":(\d+)',
+            re.S,
+        )
+
+        best_by_key = {}
+        for match in pattern.finditer(html):
+            raw_name = match.group(1)
+            if not raw_name.startswith("grok-4"):
+                continue
+            if any(skip in raw_name for skip in ("imagine", "code")):
+                continue
+
+            input_price = self._cents_per_100m_to_usd_per_1m(match.group(2))
+            cached_price = self._cents_per_100m_to_usd_per_1m(match.group(3))
+            output_price = self._cents_per_100m_to_usd_per_1m(match.group(4))
+            context_window = int(match.group(5))
+            base_key = raw_name.replace("-non-reasoning", "").replace("-reasoning", "")
+
+            candidate = ModelPricing(
+                name=raw_name,
+                display_name=self._clean_name(raw_name),
+                context_window=context_window,
+                input_price=input_price,
+                cached_input_price=cached_price,
+                output_price=output_price,
+            )
+
+            existing = best_by_key.get(base_key)
+            if existing is None:
+                best_by_key[base_key] = candidate
+                continue
+
+            # Prefer reasoning variants when pricing is identical.
+            if "reasoning" in raw_name and "non-reasoning" not in raw_name:
+                best_by_key[base_key] = candidate
+
+        return list(best_by_key.values())
+
+    @staticmethod
     def _extract_usd(text: str) -> float:
         m = re.search(r'\$(\d+\.?\d*)', text.replace(",", ""))
         return float(m.group(1)) if m else 0.0
@@ -107,7 +157,9 @@ class XaiScraper(BaseScraper):
 
     @staticmethod
     def _clean_name(name: str) -> str:
-        name = re.sub(r'-\d{4,}$', '', name)  # Remove date suffix
+        name = re.sub(r'-(\d{4,})(?=-|$)', '', name)  # Remove date-like suffix anywhere
+        name = name.replace("-non-reasoning", "-reasoning")
+        name = name.replace("grok-4-1", "grok-4.1")
         name = name.replace("-", " ").replace("_", " ")
         parts = name.split()
         result = []
@@ -121,3 +173,7 @@ class XaiScraper(BaseScraper):
             else:
                 result.append(p.upper() if p.replace(".", "").isdigit() else p.capitalize())
         return " ".join(result)
+
+    @staticmethod
+    def _cents_per_100m_to_usd_per_1m(value: str) -> float:
+        return round(int(value) / 10000, 4)

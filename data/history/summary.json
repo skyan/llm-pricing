@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-30T08:54:47.421006+00:00",
+  "updated": "2026-04-30T12:09:45.349950+00:00",
   "models": {
     "openai:gpt-5.5-short": {
       "provider": "openai",
@@ -11,7 +11,10 @@
           "c": 3.42,
           "o": 205.46
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.5-long": {
       "provider": "openai",
@@ -23,7 +26,10 @@
           "c": 6.85,
           "o": 308.19
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.5-pro-short": {
       "provider": "openai",
@@ -35,7 +41,10 @@
           "c": null,
           "o": 1232.76
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.5-pro-long": {
       "provider": "openai",
@@ -47,7 +56,10 @@
           "c": null,
           "o": 1849.13
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.4-short": {
       "provider": "openai",
@@ -59,7 +71,10 @@
           "c": 1.71,
           "o": 102.73
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.4-long": {
       "provider": "openai",
@@ -71,7 +86,10 @@
           "c": 3.42,
           "o": 154.09
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.4-mini-short": {
       "provider": "openai",
@@ -83,7 +101,10 @@
           "c": 0.51,
           "o": 30.82
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.4-nano-short": {
       "provider": "openai",
@@ -95,7 +116,10 @@
           "c": 0.14,
           "o": 8.56
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.4-pro-short": {
       "provider": "openai",
@@ -107,7 +131,10 @@
           "c": null,
           "o": 1232.76
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "openai:gpt-5.4-pro-long": {
       "provider": "openai",
@@ -119,7 +146,10 @@
           "c": null,
           "o": 1849.13
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-opus-4.7": {
       "provider": "anthropic",
@@ -131,7 +161,10 @@
           "c": 42.8,
           "o": 171.22
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-opus-4.6": {
       "provider": "anthropic",
@@ -143,7 +176,10 @@
           "c": 42.8,
           "o": 171.22
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-opus-4.5": {
       "provider": "anthropic",
@@ -155,7 +191,10 @@
           "c": 42.8,
           "o": 171.22
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-opus-4.1": {
       "provider": "anthropic",
@@ -167,7 +206,10 @@
           "c": 128.41,
           "o": 513.65
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-opus-4": {
       "provider": "anthropic",
@@ -179,7 +221,10 @@
           "c": 128.41,
           "o": 513.65
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-sonnet-4.6": {
       "provider": "anthropic",
@@ -191,7 +236,10 @@
           "c": 25.68,
           "o": 102.73
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-sonnet-4.5": {
       "provider": "anthropic",
@@ -203,7 +251,10 @@
           "c": 25.68,
           "o": 102.73
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-sonnet-4": {
       "provider": "anthropic",
@@ -215,7 +266,10 @@
           "c": 25.68,
           "o": 102.73
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-haiku-4.5": {
       "provider": "anthropic",
@@ -227,7 +281,10 @@
           "c": 8.56,
           "o": 34.24
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-haiku-3.5": {
       "provider": "anthropic",
@@ -239,7 +296,10 @@
           "c": 6.85,
           "o": 27.39
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "anthropic:claude-haiku-3": {
       "provider": "anthropic",
@@ -251,7 +311,10 @@
           "c": 2.05,
           "o": 8.56
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:gemini-3.1-pro-preview": {
       "provider": "google",
@@ -263,7 +326,8 @@
           "c": 1.37,
           "o": 27.39
         }
-      ]
+      ],
+      "active": false
     },
     "google:gemini-3.1-flash-lite-preview": {
       "provider": "google",
@@ -273,9 +337,12 @@
           "d": "2026-04-30",
           "i": 1.71,
           "c": 0.21,
-          "o": 1.71
+          "o": 10.27
         }
-      ]
+      ],
+      "active": true,
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30"
     },
     "google:gemini-3-pro-preview": {
       "provider": "google",
@@ -283,11 +350,14 @@
       "series": [
         {
           "d": "2026-04-30",
-          "i": 2.74,
+          "i": 13.7,
           "c": 1.37,
-          "o": 27.39
+          "o": 82.18
         }
-      ]
+      ],
+      "active": true,
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30"
     },
     "google:gemini-3-flash-preview": {
       "provider": "google",
@@ -297,9 +367,12 @@
           "d": "2026-04-30",
           "i": 3.42,
           "c": 0.34,
-          "o": 3.42
+          "o": 20.55
         }
-      ]
+      ],
+      "active": true,
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30"
     },
     "google:gemini-2.5-pro": {
       "provider": "google",
@@ -307,11 +380,14 @@
       "series": [
         {
           "d": "2026-04-30",
-          "i": 1.71,
+          "i": 8.56,
           "c": 0.89,
-          "o": 17.12
+          "o": 68.49
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:gemini-2.5-procomputer-use-preview": {
       "provider": "google",
@@ -323,7 +399,8 @@
           "c": 8.56,
           "o": 17.12
         }
-      ]
+      ],
+      "active": false
     },
     "google:gemini-2.5flash": {
       "provider": "google",
@@ -335,7 +412,10 @@
           "c": 0.21,
           "o": 2.05
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:gemini-2.5-flash-live-api": {
       "provider": "google",
@@ -345,9 +425,12 @@
           "d": "2026-04-30",
           "i": 3.42,
           "c": null,
-          "o": 3.42
+          "o": 13.7
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:gemini-2.5-flash-lite": {
       "provider": "google",
@@ -357,9 +440,12 @@
           "d": "2026-04-30",
           "i": 0.68,
           "c": 0.07,
-          "o": 0.68
+          "o": 2.74
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:gemini-2.5flash-image": {
       "provider": "google",
@@ -371,7 +457,8 @@
           "c": 1.03,
           "o": 102.73
         }
-      ]
+      ],
+      "active": false
     },
     "google:gemini-2.0-flash": {
       "provider": "google",
@@ -380,10 +467,13 @@
         {
           "d": "2026-04-30",
           "i": 1.03,
-          "c": 0.51,
-          "o": 1.03
+          "c": null,
+          "o": 4.11
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:gemini-2.0-flash-lite": {
       "provider": "google",
@@ -392,10 +482,13 @@
         {
           "d": "2026-04-30",
           "i": 0.51,
-          "c": 0.26,
-          "o": 0.51
+          "c": null,
+          "o": 2.05
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:customer-preference": {
       "provider": "google",
@@ -407,7 +500,8 @@
           "c": 1.1,
           "o": 17.12
         }
-      ]
+      ],
+      "active": false
     },
     "google:gemini-1.5-flash": {
       "provider": "google",
@@ -419,7 +513,10 @@
           "c": 0.0,
           "o": 0.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:gemini-1.5-pro": {
       "provider": "google",
@@ -431,7 +528,10 @@
           "c": 0.0,
           "o": 0.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "google:translation-llm-002": {
       "provider": "google",
@@ -443,7 +543,8 @@
           "c": null,
           "o": 30.82
         }
-      ]
+      ],
+      "active": false
     },
     "google:duration": {
       "provider": "google",
@@ -455,7 +556,8 @@
           "c": 20.55,
           "o": 34.24
         }
-      ]
+      ],
+      "active": false
     },
     "google:tool": {
       "provider": "google",
@@ -467,19 +569,23 @@
           "c": null,
           "o": 1.51
         }
-      ]
+      ],
+      "active": false
     },
     "xai:grok-4.20-0309-reasoning": {
       "provider": "xai",
-      "name": "Grok 4.20 0309 Reasoning",
+      "name": "Grok 4.20 Reasoning",
       "series": [
         {
           "d": "2026-04-30",
           "i": 13.7,
-          "c": null,
+          "c": 1.37,
           "o": 41.09
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "xai:grok-4.20-multi-agent": {
       "provider": "xai",
@@ -491,19 +597,23 @@
           "c": null,
           "o": 41.09
         }
-      ]
+      ],
+      "active": false
     },
     "xai:grok-4-1-fast-reasoning": {
       "provider": "xai",
-      "name": "Grok 4 1 Fast Reasoning",
+      "name": "Grok 4.1 Fast Reasoning",
       "series": [
         {
           "d": "2026-04-30",
           "i": 1.37,
-          "c": null,
+          "c": 0.34,
           "o": 3.42
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "deepseek:deepseek-v4-flash": {
       "provider": "deepseek",
@@ -515,7 +625,10 @@
           "c": 0.02,
           "o": 1.92
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "deepseek:deepseek-v4-pro": {
       "provider": "deepseek",
@@ -527,7 +640,10 @@
           "c": 0.02,
           "o": 5.96
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "qianwen:qwen3.6-max-preview": {
       "provider": "qianwen",
@@ -539,7 +655,10 @@
           "c": null,
           "o": 54.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "qianwen:qwen3.6-plus": {
       "provider": "qianwen",
@@ -551,7 +670,10 @@
           "c": null,
           "o": 12.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "qianwen:qwen3.6-flash": {
       "provider": "qianwen",
@@ -563,7 +685,10 @@
           "c": null,
           "o": 7.2
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "qianwen:qwen3-max": {
       "provider": "qianwen",
@@ -575,7 +700,10 @@
           "c": null,
           "o": 10.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "qianwen:千问-plus": {
       "provider": "qianwen",
@@ -583,11 +711,14 @@
       "series": [
         {
           "d": "2026-04-30",
-          "i": 2.94,
+          "i": 0.8,
           "c": null,
-          "o": 8.81
+          "o": 8.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "qianwen:千问-flash": {
       "provider": "qianwen",
@@ -595,11 +726,14 @@
       "series": [
         {
           "d": "2026-04-30",
-          "i": 0.37,
+          "i": 0.15,
           "c": null,
-          "o": 2.94
+          "o": 1.5
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "doubao:doubao-seed-2.0-pro": {
       "provider": "doubao",
@@ -611,7 +745,10 @@
           "c": 0.64,
           "o": 16.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "doubao:doubao-seed-2.0-lite": {
       "provider": "doubao",
@@ -623,7 +760,10 @@
           "c": 0.12,
           "o": 3.6
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "doubao:doubao-seed-2.0-mini": {
       "provider": "doubao",
@@ -635,7 +775,10 @@
           "c": 0.04,
           "o": 2.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "doubao:doubao-seed-2.0-code": {
       "provider": "doubao",
@@ -647,7 +790,10 @@
           "c": 0.64,
           "o": 16.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "ernie:ernie-5.0": {
       "provider": "ernie",
@@ -659,7 +805,10 @@
           "c": null,
           "o": 40.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "ernie:ernie-4.5-turbo": {
       "provider": "ernie",
@@ -671,7 +820,10 @@
           "c": 0.75,
           "o": 9.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "ernie:ernie-4.5-turbo-32k": {
       "provider": "ernie",
@@ -683,7 +835,10 @@
           "c": 0.2,
           "o": 3.2
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "ernie:ernie-4.5-turbo-20260402": {
       "provider": "ernie",
@@ -695,7 +850,10 @@
           "c": 0.2,
           "o": 3.2
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "ernie:ernie-4.5": {
       "provider": "ernie",
@@ -707,7 +865,10 @@
           "c": null,
           "o": 24.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "ernie:ernie-speed-pro": {
       "provider": "ernie",
@@ -719,7 +880,10 @@
           "c": null,
           "o": 0.6
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "ernie:ernie-lite-pro": {
       "provider": "ernie",
@@ -731,7 +895,10 @@
           "c": null,
           "o": 0.4
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "ernie:ernie-character": {
       "provider": "ernie",
@@ -743,7 +910,10 @@
           "c": null,
           "o": 36.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "kimi:kimi-k2.6": {
       "provider": "kimi",
@@ -755,7 +925,10 @@
           "c": 1.1,
           "o": 27.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "kimi:kimi-k2.5": {
       "provider": "kimi",
@@ -767,7 +940,10 @@
           "c": 0.7,
           "o": 21.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "glm:glm-5.1新品": {
       "provider": "glm",
@@ -779,7 +955,10 @@
           "c": 1.3,
           "o": 24.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "glm:glm-5-turbo": {
       "provider": "glm",
@@ -791,7 +970,10 @@
           "c": 1.2,
           "o": 22.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "glm:glm-5": {
       "provider": "glm",
@@ -803,7 +985,10 @@
           "c": 1.0,
           "o": 18.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "glm:glm-4.7": {
       "provider": "glm",
@@ -815,7 +1000,10 @@
           "c": 0.4,
           "o": 8.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "glm:glm-4.5-air": {
       "provider": "glm",
@@ -827,7 +1015,10 @@
           "c": 0.16,
           "o": 2.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "glm:glm-4.7-flashx": {
       "provider": "glm",
@@ -839,7 +1030,10 @@
           "c": 0.1,
           "o": 3.0
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "minimax:minimax-m2.7": {
       "provider": "minimax",
@@ -851,7 +1045,10 @@
           "c": 0.42,
           "o": 8.4
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "minimax:minimax-m2.7-highspeed": {
       "provider": "minimax",
@@ -863,7 +1060,10 @@
           "c": 0.42,
           "o": 16.8
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "minimax:minimax-m2.5": {
       "provider": "minimax",
@@ -875,7 +1075,10 @@
           "c": 0.21,
           "o": 8.4
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "minimax:minimax-m2.5-highspeed": {
       "provider": "minimax",
@@ -887,7 +1090,10 @@
           "c": 0.21,
           "o": 16.8
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     },
     "minimax:m2-her": {
       "provider": "minimax",
@@ -899,7 +1105,190 @@
           "c": null,
           "o": 8.4
         }
-      ]
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:gemini-3-pro-预览版": {
+      "provider": "google",
+      "name": "Gemini 3 Pro 预览版",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.74,
+          "c": 1.37,
+          "o": 27.39
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:gemini-3.1-flash-lite-预览版": {
+      "provider": "google",
+      "name": "Gemini 3.1 Flash-Lite 预览版",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.71,
+          "c": 0.21,
+          "o": 1.71
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:gemini-3-flash-预览版": {
+      "provider": "google",
+      "name": "Gemini 3 Flash 预览版",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 3.42,
+          "c": 0.34,
+          "o": 3.42
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:gemini-2.5-pro计算机使用---预览版": {
+      "provider": "google",
+      "name": "Gemini 2.5 Pro计算机使用 - 预览版",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 17.12,
+          "c": 8.56,
+          "o": 17.12
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:客户偏好": {
+      "provider": "google",
+      "name": "客户偏好",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 4.31,
+          "c": 1.1,
+          "o": 17.12
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:模型": {
+      "provider": "google",
+      "name": "模型",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 30.82,
+          "c": 20.55,
+          "o": 30.82
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "xai:grok-4.20-multi-agent-0309": {
+      "provider": "xai",
+      "name": "Grok 4.20 Multi Agent",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 13.7,
+          "c": 1.37,
+          "o": 41.09
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "xai:grok-4-fast-reasoning": {
+      "provider": "xai",
+      "name": "Grok 4 Fast Reasoning",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.37,
+          "c": 0.34,
+          "o": 3.42
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "xai:grok-4-0709": {
+      "provider": "xai",
+      "name": "Grok 4",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": 5.14,
+          "o": 102.73
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:gemini-2.5-pro-computer-use-preview": {
+      "provider": "google",
+      "name": "Gemini 2.5 Pro Computer Use Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 8.56,
+          "c": null,
+          "o": 68.49
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:gemini-2.5-flash": {
+      "provider": "google",
+      "name": "Gemini 2.5 Flash",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.05,
+          "c": 0.21,
+          "o": 17.12
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
+    },
+    "google:gemini-2.0-flash-live-api": {
+      "provider": "google",
+      "name": "Gemini 2.0 Flash Live API",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 3.42,
+          "c": null,
+          "o": 13.7
+        }
+      ],
+      "first_seen": "2026-04-30",
+      "last_seen": "2026-04-30",
+      "active": true
     }
   }
 }

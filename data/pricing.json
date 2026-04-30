@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-30T11:12:45.446793+00:00",
+  "last_updated": "2026-04-30T12:09:45.346832+00:00",
   "usd_to_cny_rate": 6.8486,
   "providers": [
     {
@@ -256,13 +256,13 @@
       "pricing_page_url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
       "models": [
         {
-          "name": "gemini-3.1-pro-preview",
-          "display_name": "Gemini 3.1 Pro Preview",
+          "name": "gemini-3-pro-preview",
+          "display_name": "Gemini 3 Pro Preview",
           "context_window": 128000,
           "max_output_tokens": null,
-          "input_price": 2.74,
+          "input_price": 13.7,
           "cached_input_price": 1.37,
-          "output_price": 27.39,
+          "output_price": 82.18,
           "notes": null,
           "tier": null
         },
@@ -273,18 +273,7 @@
           "max_output_tokens": null,
           "input_price": 1.71,
           "cached_input_price": 0.21,
-          "output_price": 1.71,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "gemini-3-pro-preview",
-          "display_name": "Gemini 3 Pro Preview",
-          "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 2.74,
-          "cached_input_price": 1.37,
-          "output_price": 27.39,
+          "output_price": 10.27,
           "notes": null,
           "tier": null
         },
@@ -295,7 +284,7 @@
           "max_output_tokens": null,
           "input_price": 3.42,
           "cached_input_price": 0.34,
-          "output_price": 3.42,
+          "output_price": 20.55,
           "notes": null,
           "tier": null
         },
@@ -304,31 +293,31 @@
           "display_name": "Gemini 2.5 Pro",
           "context_window": 1000000,
           "max_output_tokens": null,
-          "input_price": 1.71,
+          "input_price": 8.56,
           "cached_input_price": 0.89,
-          "output_price": 17.12,
+          "output_price": 68.49,
           "notes": null,
           "tier": null
         },
         {
-          "name": "gemini-2.5-procomputer-use-preview",
-          "display_name": "Gemini 2.5 ProComputer Use-Preview",
+          "name": "gemini-2.5-pro-computer-use-preview",
+          "display_name": "Gemini 2.5 Pro Computer Use Preview",
           "context_window": 1000000,
           "max_output_tokens": null,
-          "input_price": 17.12,
-          "cached_input_price": 8.56,
-          "output_price": 17.12,
+          "input_price": 8.56,
+          "cached_input_price": null,
+          "output_price": 68.49,
           "notes": null,
           "tier": null
         },
         {
-          "name": "gemini-2.5flash",
-          "display_name": "Gemini 2.5Flash",
+          "name": "gemini-2.5-flash",
+          "display_name": "Gemini 2.5 Flash",
           "context_window": 1000000,
           "max_output_tokens": null,
           "input_price": 2.05,
           "cached_input_price": 0.21,
-          "output_price": 2.05,
+          "output_price": 17.12,
           "notes": null,
           "tier": null
         },
@@ -339,7 +328,7 @@
           "max_output_tokens": null,
           "input_price": 3.42,
           "cached_input_price": null,
-          "output_price": 3.42,
+          "output_price": 13.7,
           "notes": null,
           "tier": null
         },
@@ -350,18 +339,7 @@
           "max_output_tokens": null,
           "input_price": 0.68,
           "cached_input_price": 0.07,
-          "output_price": 0.68,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "gemini-2.5flash-image",
-          "display_name": "Gemini 2.5Flash Image",
-          "context_window": 1000000,
-          "max_output_tokens": null,
-          "input_price": 8.56,
-          "cached_input_price": 1.03,
-          "output_price": 102.73,
+          "output_price": 2.74,
           "notes": null,
           "tier": null
         },
@@ -371,8 +349,19 @@
           "context_window": 1000000,
           "max_output_tokens": null,
           "input_price": 1.03,
-          "cached_input_price": 0.51,
-          "output_price": 1.03,
+          "cached_input_price": null,
+          "output_price": 4.11,
+          "notes": null,
+          "tier": null
+        },
+        {
+          "name": "gemini-2.0-flash-live-api",
+          "display_name": "Gemini 2.0 Flash Live API",
+          "context_window": 1000000,
+          "max_output_tokens": null,
+          "input_price": 3.42,
+          "cached_input_price": null,
+          "output_price": 13.7,
           "notes": null,
           "tier": null
         },
@@ -382,74 +371,8 @@
           "context_window": 1000000,
           "max_output_tokens": null,
           "input_price": 0.51,
-          "cached_input_price": 0.26,
-          "output_price": 0.51,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "customer-preference",
-          "display_name": "Customer Preference",
-          "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 4.31,
-          "cached_input_price": 1.1,
-          "output_price": 17.12,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "gemini-1.5-flash",
-          "display_name": "Gemini 1.5 Flash",
-          "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 0.0,
-          "cached_input_price": 0.0,
-          "output_price": 0.0,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "gemini-1.5-pro",
-          "display_name": "Gemini 1.5 Pro",
-          "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 0.0,
-          "cached_input_price": 0.0,
-          "output_price": 0.0,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "translation-llm-002",
-          "display_name": "Translation LLM 002",
-          "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 30.82,
           "cached_input_price": null,
-          "output_price": 30.82,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "duration",
-          "display_name": "Duration",
-          "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 34.24,
-          "cached_input_price": 20.55,
-          "output_price": 34.24,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "tool",
-          "display_name": "Tool",
-          "context_window": 128000,
-          "max_output_tokens": null,
-          "input_price": 1.51,
-          "cached_input_price": null,
-          "output_price": 1.51,
+          "output_price": 2.05,
           "notes": null,
           "tier": null
         }
@@ -459,37 +382,59 @@
       "id": "xai",
       "name": "xAI",
       "website": "https://x.ai",
-      "pricing_page_url": "https://docs.x.ai/docs/models",
+      "pricing_page_url": "https://docs.x.ai/developers/models",
       "models": [
         {
           "name": "grok-4.20-0309-reasoning",
-          "display_name": "Grok 4.20 0309 Reasoning",
+          "display_name": "Grok 4.20 Reasoning",
           "context_window": 2000000,
           "max_output_tokens": null,
           "input_price": 13.7,
-          "cached_input_price": null,
-          "output_price": 41.09,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "grok-4.20-multi-agent",
-          "display_name": "Grok 4.20 Multi Agent",
-          "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 13.7,
-          "cached_input_price": null,
+          "cached_input_price": 1.37,
           "output_price": 41.09,
           "notes": null,
           "tier": null
         },
         {
           "name": "grok-4-1-fast-reasoning",
-          "display_name": "Grok 4 1 Fast Reasoning",
+          "display_name": "Grok 4.1 Fast Reasoning",
           "context_window": 2000000,
           "max_output_tokens": null,
           "input_price": 1.37,
-          "cached_input_price": null,
+          "cached_input_price": 0.34,
+          "output_price": 3.42,
+          "notes": null,
+          "tier": null
+        },
+        {
+          "name": "grok-4-0709",
+          "display_name": "Grok 4",
+          "context_window": 256000,
+          "max_output_tokens": null,
+          "input_price": 20.55,
+          "cached_input_price": 5.14,
+          "output_price": 102.73,
+          "notes": null,
+          "tier": null
+        },
+        {
+          "name": "grok-4.20-multi-agent-0309",
+          "display_name": "Grok 4.20 Multi Agent",
+          "context_window": 2000000,
+          "max_output_tokens": null,
+          "input_price": 13.7,
+          "cached_input_price": 1.37,
+          "output_price": 41.09,
+          "notes": null,
+          "tier": null
+        },
+        {
+          "name": "grok-4-fast-reasoning",
+          "display_name": "Grok 4 Fast Reasoning",
+          "context_window": 2000000,
+          "max_output_tokens": null,
+          "input_price": 1.37,
+          "cached_input_price": 0.34,
           "output_price": 3.42,
           "notes": null,
           "tier": null
@@ -530,7 +475,7 @@
       "id": "qianwen",
       "name": "Alibaba",
       "website": "https://tongyi.aliyun.com",
-      "pricing_page_url": "https://help.aliyun.com/zh/model-studio/getting-started/models",
+      "pricing_page_url": "https://help.aliyun.com/zh/model-studio/model-pricing",
       "models": [
         {
           "name": "qwen3.6-max-preview",
@@ -540,28 +485,6 @@
           "input_price": 9.0,
           "cached_input_price": null,
           "output_price": 54.0,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "qwen3.6-plus",
-          "display_name": "Qwen3.6-Plus",
-          "context_window": 262144,
-          "max_output_tokens": null,
-          "input_price": 2.0,
-          "cached_input_price": null,
-          "output_price": 12.0,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "qwen3.6-flash",
-          "display_name": "Qwen3.6-Flash",
-          "context_window": 262144,
-          "max_output_tokens": null,
-          "input_price": 1.2,
-          "cached_input_price": null,
-          "output_price": 7.2,
           "notes": null,
           "tier": null
         },
@@ -577,13 +500,35 @@
           "tier": null
         },
         {
+          "name": "qwen3.6-plus",
+          "display_name": "Qwen3.6-Plus",
+          "context_window": 1000000,
+          "max_output_tokens": null,
+          "input_price": 2.0,
+          "cached_input_price": null,
+          "output_price": 12.0,
+          "notes": null,
+          "tier": null
+        },
+        {
+          "name": "qwen3.6-flash",
+          "display_name": "Qwen3.6-Flash",
+          "context_window": 1000000,
+          "max_output_tokens": null,
+          "input_price": 1.2,
+          "cached_input_price": null,
+          "output_price": 7.2,
+          "notes": null,
+          "tier": null
+        },
+        {
           "name": "千问-plus",
           "display_name": "千问 Plus",
           "context_window": 1000000,
           "max_output_tokens": null,
-          "input_price": 2.94,
+          "input_price": 0.8,
           "cached_input_price": null,
-          "output_price": 8.81,
+          "output_price": 8.0,
           "notes": null,
           "tier": null
         },
@@ -592,9 +537,9 @@
           "display_name": "千问 Flash",
           "context_window": 1000000,
           "max_output_tokens": null,
-          "input_price": 0.37,
+          "input_price": 0.15,
           "cached_input_price": null,
-          "output_price": 2.94,
+          "output_price": 1.5,
           "notes": null,
           "tier": null
         }
