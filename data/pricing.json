@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-30T12:09:45.346832+00:00",
+  "last_updated": "2026-04-30T12:14:37.628810+00:00",
   "usd_to_cny_rate": 6.8486,
   "providers": [
     {
@@ -385,6 +385,28 @@
       "pricing_page_url": "https://docs.x.ai/developers/models",
       "models": [
         {
+          "name": "grok-4.20-multi-agent-0309",
+          "display_name": "Grok 4.20 Multi Agent",
+          "context_window": 2000000,
+          "max_output_tokens": null,
+          "input_price": 13.7,
+          "cached_input_price": 1.37,
+          "output_price": 41.09,
+          "notes": null,
+          "tier": null
+        },
+        {
+          "name": "grok-4-0709",
+          "display_name": "Grok 4",
+          "context_window": 256000,
+          "max_output_tokens": null,
+          "input_price": 20.55,
+          "cached_input_price": 5.14,
+          "output_price": 102.73,
+          "notes": null,
+          "tier": null
+        },
+        {
           "name": "grok-4.20-0309-reasoning",
           "display_name": "Grok 4.20 Reasoning",
           "context_window": 2000000,
@@ -403,28 +425,6 @@
           "input_price": 1.37,
           "cached_input_price": 0.34,
           "output_price": 3.42,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "grok-4-0709",
-          "display_name": "Grok 4",
-          "context_window": 256000,
-          "max_output_tokens": null,
-          "input_price": 20.55,
-          "cached_input_price": 5.14,
-          "output_price": 102.73,
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "grok-4.20-multi-agent-0309",
-          "display_name": "Grok 4.20 Multi Agent",
-          "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 13.7,
-          "cached_input_price": 1.37,
-          "output_price": 41.09,
           "notes": null,
           "tier": null
         },
