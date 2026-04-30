@@ -16,8 +16,8 @@
 | 通义千问 | 国内 | help.aliyun.com |
 | 豆包 | 国内 | volcengine.com |
 | 文心一言 | 国内 | cloud.baidu.com |
-| Kimi | 国内 | platform.kimi.com |
-| GLM | 国内 | open.bigmodel.cn |
+| Moonshot | 国内 | platform.kimi.com |
+| 智谱 | 国内 | open.bigmodel.cn |
 | MiniMax | 国内 | platform.minimaxi.com |
 
 ## 架构设计

@@ -528,7 +528,7 @@
     },
     {
       "id": "qianwen",
-      "name": "Tongyi Qianwen",
+      "name": "Alibaba",
       "website": "https://tongyi.aliyun.com",
       "pricing_page_url": "https://help.aliyun.com/zh/model-studio/getting-started/models",
       "models": [
@@ -602,7 +602,7 @@
     },
     {
       "id": "doubao",
-      "name": "Doubao",
+      "name": "ByteDance",
       "website": "https://www.volcengine.com/product/doubao",
       "pricing_page_url": "https://www.volcengine.com/docs/82379/1544106",
       "models": [
@@ -750,7 +750,7 @@
     },
     {
       "id": "kimi",
-      "name": "Kimi",
+      "name": "Moonshot",
       "website": "https://platform.kimi.com",
       "pricing_page_url": "https://platform.kimi.com/docs/pricing",
       "models": [
@@ -780,7 +780,7 @@
     },
     {
       "id": "glm",
-      "name": "GLM",
+      "name": "智谱",
       "website": "https://open.bigmodel.cn",
       "pricing_page_url": "https://bigmodel.cn/pricing",
       "models": [

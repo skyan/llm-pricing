@@ -38,14 +38,14 @@ providers:
     enabled: true
 
   - id: qianwen
-    name: "Tongyi Qianwen"
+    name: "Alibaba"
     pricing_url: "https://help.aliyun.com/zh/model-studio/getting-started/models"
     website: "https://tongyi.aliyun.com"
     currency: CNY
     enabled: true
 
   - id: doubao
-    name: "Doubao"
+    name: "ByteDance"
     pricing_url: "https://www.volcengine.com/docs/82379/1099320"
     website: "https://www.volcengine.com/product/doubao"
     currency: CNY
@@ -59,14 +59,14 @@ providers:
     enabled: true
 
   - id: kimi
-    name: "Kimi"
+    name: "Moonshot"
     pricing_url: "https://platform.moonshot.cn/docs/pricing"
     website: "https://kimi.moonshot.cn"
     currency: CNY
     enabled: true
 
   - id: glm
-    name: "GLM"
+    name: "智谱"
     pricing_url: "https://open.bigmodel.cn/pricing"
     website: "https://open.bigmodel.cn"
     currency: CNY

@@ -7,7 +7,7 @@ from scraper.base import BaseScraper, ModelPricing
 
 class QianwenScraper(BaseScraper):
     provider_id = "qianwen"
-    provider_name = "Tongyi Qianwen"
+    provider_name = "Alibaba"
     website = "https://tongyi.aliyun.com"
     pricing_url = "https://help.aliyun.com/zh/model-studio/getting-started/models"
     currency = "CNY"

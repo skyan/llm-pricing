@@ -8,7 +8,7 @@ from scraper.base import BaseScraper, ModelPricing
 
 class KimiScraper(BaseScraper):
     provider_id = "kimi"
-    provider_name = "Kimi"
+    provider_name = "Moonshot"
     website = "https://platform.kimi.com"
     pricing_url = "https://platform.kimi.com/docs/pricing"
     currency = "CNY"

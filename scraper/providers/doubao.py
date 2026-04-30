@@ -7,7 +7,7 @@ from scraper.base import BaseScraper, ModelPricing
 
 class DoubaoScraper(BaseScraper):
     provider_id = "doubao"
-    provider_name = "Doubao"
+    provider_name = "ByteDance"
     website = "https://www.volcengine.com/product/doubao"
     pricing_url = "https://www.volcengine.com/docs/82379/1544106"
     currency = "CNY"

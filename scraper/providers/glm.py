@@ -7,7 +7,7 @@ from scraper.base import BaseScraper, ModelPricing
 
 class GLMScraper(BaseScraper):
     provider_id = "glm"
-    provider_name = "GLM"
+    provider_name = "智谱"
     website = "https://open.bigmodel.cn"
     pricing_url = "https://bigmodel.cn/pricing"
     currency = "CNY"
