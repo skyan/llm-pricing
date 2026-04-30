@@ -429,13 +429,34 @@
   function drawChart(chartId, key, m, series) {
     var dom = document.getElementById(chartId);
     if (!dom) return;
+    if (window.echarts) {
+      renderECharts(dom, window.echarts, series);
+    } else {
+      dom.innerHTML = buildTrendChartMarkup(series);
+    }
 
+    // Info table
+    var last = series[series.length - 1];
+    var first = series[0];
+    var infoEl = document.getElementById(domSafeId('chart-info', key));
+    if (infoEl) {
+      var rows = '<tr><th>输入</th><td>' + (last.i != null ? '¥' + last.i.toFixed(2) : '--') + '</td></tr>' +
+        (last.c != null ? '<tr><th>缓存输入</th><td>¥' + last.c.toFixed(2) + '</td></tr>' : '') +
+        '<tr><th>输出</th><td>' + (last.o != null ? '¥' + last.o.toFixed(2) : '--') + '</td></tr>';
+      if (series.length >= 2) {
+        rows += '<tr><th>首次记录</th><td>' + first.d + '</td></tr>';
+      }
+      rows += '<tr><th>数据点</th><td>' + series.length + (series.length < 2 ? '（积累中）' : '') + '</td></tr>';
+      infoEl.innerHTML = '<table>' + rows + '</table>';
+    }
+  }
+
+  function renderECharts(dom, echarts, series) {
     var chart = echarts.init(dom);
     var dates = series.map(function (p) { return p.d; });
     var iData = series.map(function (p) { return p.i; });
     var cData = series.map(function (p) { return p.c; });
     var oData = series.map(function (p) { return p.o; });
-
     var hasCache = cData.some(function (v) { return v != null; });
 
     var seriesArr = [
@@ -465,6 +486,7 @@
     }
 
     chart.setOption({
+      animation: false,
       tooltip: {
         trigger: 'axis',
         valueFormatter: function (value) { return value != null ? '¥' + value.toFixed(4) : '--'; },
@@ -490,33 +512,89 @@
       series: seriesArr,
     });
 
-    // Info table
-    var last = series[series.length - 1];
-    var first = series[0];
-    var infoEl = document.getElementById(domSafeId('chart-info', key));
-    if (infoEl) {
-      var rows = '<tr><th>输入</th><td>' + (last.i != null ? '¥' + last.i.toFixed(2) : '--') + '</td></tr>' +
-        (last.c != null ? '<tr><th>缓存输入</th><td>¥' + last.c.toFixed(2) + '</td></tr>' : '') +
-        '<tr><th>输出</th><td>' + (last.o != null ? '¥' + last.o.toFixed(2) : '--') + '</td></tr>';
-      if (series.length >= 2) {
-        rows += '<tr><th>首次记录</th><td>' + first.d + '</td></tr>';
-      }
-      rows += '<tr><th>数据点</th><td>' + series.length + (series.length < 2 ? '（积累中）' : '') + '</td></tr>';
-      infoEl.innerHTML = '<table>' + rows + '</table>';
-    }
-
-    // Resize handler
     var resizeHandler = function () { chart.resize(); };
     window.addEventListener('resize', resizeHandler);
-    // Clean up when chart is removed
     var observer = new MutationObserver(function () {
-      if (!document.getElementById(chartId)) {
+      if (!document.getElementById(dom.id)) {
         window.removeEventListener('resize', resizeHandler);
         chart.dispose();
         observer.disconnect();
       }
     });
     observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  function buildTrendChartMarkup(series) {
+    var specs = [
+      { key: 'o', label: '输出', color: '#dc2626', dashed: false },
+      { key: 'i', label: '输入', color: '#2563eb', dashed: false },
+      { key: 'c', label: '缓存输入', color: '#7c3aed', dashed: true },
+    ].filter(function (spec) {
+      return series.some(function (point) { return point[spec.key] != null; });
+    });
+
+    var width = 760, height = 300;
+    var pad = { top: 18, right: 14, bottom: 40, left: 58 };
+    var chartW = width - pad.left - pad.right;
+    var chartH = height - pad.top - pad.bottom;
+    var values = [];
+    series.forEach(function (point) {
+      specs.forEach(function (spec) {
+        if (point[spec.key] != null) values.push(point[spec.key]);
+      });
+    });
+    var max = values.length ? Math.max.apply(null, values) : 1;
+    max = max <= 0 ? 1 : max * 1.08;
+    var ticks = 5;
+
+    function xAt(idx) {
+      return pad.left + (idx / Math.max(series.length - 1, 1)) * chartW;
+    }
+    function yAt(value) {
+      return pad.top + chartH - (value / max) * chartH;
+    }
+    function fmtAxis(value) {
+      if (value >= 100) return '¥' + Math.round(value);
+      if (value >= 10) return '¥' + value.toFixed(0);
+      return '¥' + value.toFixed(1).replace(/\\.0$/, '');
+    }
+
+    var parts = [];
+    for (var i = 0; i <= ticks; i++) {
+      var v = max * (i / ticks);
+      var y = yAt(v);
+      parts.push('<line x1="' + pad.left + '" y1="' + y + '" x2="' + (width - pad.right) + '" y2="' + y + '" stroke="#f3f4f6" stroke-width="1"/>');
+      parts.push('<text x="' + (pad.left - 8) + '" y="' + (y + 4) + '" text-anchor="end" font-size="11" fill="#6b7280">' + fmtAxis(v) + '</text>');
+    }
+
+    parts.push('<line x1="' + pad.left + '" y1="' + (pad.top + chartH) + '" x2="' + (width - pad.right) + '" y2="' + (pad.top + chartH) + '" stroke="#94a3b8" stroke-width="1.2"/>');
+
+    series.forEach(function (point, idx) {
+      parts.push('<text x="' + xAt(idx) + '" y="' + (height - 8) + '" text-anchor="middle" font-size="11" fill="#6b7280">' + escHtml(point.d.slice(5)) + '</text>');
+    });
+
+    specs.forEach(function (spec) {
+      var path = [];
+      series.forEach(function (point, idx) {
+        var value = point[spec.key];
+        if (value == null) return;
+        path.push((path.length ? 'L' : 'M') + xAt(idx) + ' ' + yAt(value));
+      });
+      if (path.length) {
+        parts.push('<path d="' + path.join(' ') + '" fill="none" stroke="' + spec.color + '" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"' + (spec.dashed ? ' stroke-dasharray="6 4"' : '') + '/>');
+      }
+      series.forEach(function (point, idx) {
+        var value = point[spec.key];
+        if (value == null) return;
+        parts.push('<circle cx="' + xAt(idx) + '" cy="' + yAt(value) + '" r="4" fill="' + spec.color + '"/>');
+      });
+    });
+
+    var legend = specs.map(function (spec) {
+      return '<span class="chart-legend-item" style="color:' + spec.color + '"><span class="chart-legend-line' + (spec.dashed ? ' dashed' : '') + '"></span><span>' + spec.label + '</span></span>';
+    }).join('');
+
+    return '<div class="simple-chart"><svg viewBox="0 0 ' + width + ' ' + height + '" aria-label="价格趋势图">' + parts.join('') + '</svg><div class="chart-legend">' + legend + '</div></div>';
   }
 
   // Formatting
