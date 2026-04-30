@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">LLM API Pricing Tracker logo mark</title>
+  <desc id="logo-desc">A minimal symbol focused on a downward pricing trend in a Renaissance-inspired palette.</desc>
+  <defs>
+    <linearGradient id="trend-accent" x1="46" y1="44" x2="118" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7088B7"/>
+      <stop offset="0.52" stop-color="#6B8472"/>
+      <stop offset="1" stop-color="#9A7756"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="22" y="22" width="116" height="116" rx="32" fill="#F4EBDD" stroke="#D8C8B1" stroke-width="4"/>
+  <path d="M44 110V58" stroke="#CDB99D" stroke-width="4" stroke-linecap="round"/>
+  <path d="M44 110H118" stroke="#CDB99D" stroke-width="4" stroke-linecap="round"/>
+  <g fill="#C8A66A">
+    <rect x="56" y="62" width="10" height="48" rx="3"/>
+    <rect x="74" y="74" width="10" height="36" rx="3"/>
+    <rect x="92" y="90" width="10" height="20" rx="3"/>
+  </g>
+  <path d="M52 58L68 66L82 64L96 82L108 88L118 106" stroke="url(#trend-accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M108 108H118V98" stroke="url(#trend-accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#4F3B33">
+    <circle cx="52" cy="58" r="4.5"/>
+    <circle cx="68" cy="66" r="4.5"/>
+    <circle cx="82" cy="64" r="4.5"/>
+    <circle cx="96" cy="82" r="4.5"/>
+    <circle cx="108" cy="88" r="4.5"/>
+  </g>
+</svg>

@@ -80,7 +80,9 @@ def update_history_summary(new_data: dict):
                     "series": [],
                 }
             series = summary["models"][key]["series"]
-            if not series or (
+            if series and series[-1].get("d") == today:
+                series[-1] = entry
+            elif not series or (
                 series[-1].get("i") != entry["i"]
                 or series[-1].get("o") != entry["o"]
                 or series[-1].get("c") != entry["c"]

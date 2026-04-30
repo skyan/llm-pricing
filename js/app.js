@@ -3,7 +3,7 @@
   'use strict';
 
   var pricingData = null, historyData = null, allModels = [];
-  var sortCol = 'updated', sortDir = 'desc';
+  var sortCol = 'provider', sortDir = 'asc';
   var searchQuery = '', activeTier = 'all';
   var activeProviders = new Set();
   var expandedModel = null;
@@ -194,6 +194,7 @@
         models.push(Object.assign({}, m, {
           _providerId: prov.id,
           _providerName: prov.name,
+          _providerOrder: pi,
           _providerWebsite: prov.website,
           _pricingUrl: prov.pricing_page_url,
           _color: COLORS[pi % COLORS.length],
@@ -231,6 +232,15 @@
     });
 
     filtered.sort(function (a, b) {
+      if (sortCol === 'provider') {
+        var providerCmp = a._providerName.localeCompare(b._providerName, 'en', { sensitivity: 'base' });
+        if (providerCmp !== 0) return sortDir === 'asc' ? providerCmp : -providerCmp;
+        var aName = (a.display_name || a.name).toLowerCase();
+        var bName = (b.display_name || b.name).toLowerCase();
+        if (aName < bName) return sortDir === 'asc' ? 1 : -1;
+        if (aName > bName) return sortDir === 'asc' ? -1 : 1;
+        return 0;
+      }
       var va = getSortValue(a, sortCol), vb = getSortValue(b, sortCol);
       if (va < vb) return sortDir === 'asc' ? -1 : 1;
       if (va > vb) return sortDir === 'asc' ? 1 : -1;
@@ -249,7 +259,7 @@
 
   function getSortValue(m, col) {
     switch (col) {
-      case 'provider': return m._providerName;
+      case 'provider': return m._providerName.toLowerCase();
       case 'name': return (m.display_name || m.name).toLowerCase();
       case 'context': return m.context_window || 0;
       case 'input': return m.input_price || 0;
@@ -270,7 +280,7 @@
     var linkUrl = m._pricingUrl || m._providerWebsite || '#';
     var modelKey = escHtml(m._providerId + ':' + m.name);
 
-    return '<tr id="row-' + modelKey + '">' +
+    return '<tr id="' + domSafeId('row', m._providerId + ':' + m.name) + '">' +
       '<td><span class="badge"><span class="badge-dot" style="background:' + m._color + '"></span>' + escHtml(m._providerName) + '</span></td>' +
       '<td><span class="model-name">' + escHtml(m.display_name || m.name) + '</span>' + tierBadge + notes + '</td>' +
       '<td class="num"><span class="context">' + ctxHtml + '</span></td>' +
@@ -290,31 +300,64 @@
       var key = m._providerId + ':' + m.name;
       var cell = document.querySelector('.sparkline-wrap[data-model="' + CSS.escape(key) + '"]');
       if (!cell) return;
-      var series = hModels[key];
-      var hasData = series && series.series && series.series.length >= 1;
-      if (!hasData) {
-        series = { series: [{ d: (pricingData.last_updated || '').slice(0, 10), i: m.input_price, c: m.cached_input_price, o: m.output_price }] };
-      }
+      var mergedSeries = getMergedSeries(m, hModels[key]);
       cell.innerHTML = '';
       cell.title = '点击展开价格趋势图';
       cell.style.cursor = 'pointer';
       cell.classList.add('clickable');
 
-      if (series.series.length === 1) {
+      if (mergedSeries.length === 1) {
         // Single point: show expand hint
         var hint = document.createElement('span');
         hint.className = 'trend-hint'; hint.textContent = '展开';
         cell.appendChild(hint);
       } else {
-        cell.appendChild(buildSparkline(series.series));
+        cell.appendChild(buildSparkline(mergedSeries));
         // Expand arrow
         var arrow = document.createElement('span');
         arrow.className = 'trend-arrow';
         arrow.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
         cell.appendChild(arrow);
       }
-      cell.addEventListener('click', function () { toggleChart(m, key, series.series); });
+      cell.addEventListener('click', function () { toggleChart(m, key, mergedSeries); });
     });
+  }
+
+  function domSafeId(prefix, key) {
+    return prefix + '-' + String(key).replace(/[^a-zA-Z0-9_-]/g, '_');
+  }
+
+  function getMergedSeries(m, historyEntry) {
+    var currentDate = (pricingData.last_updated || '').slice(0, 10);
+    var currentPoint = {
+      d: currentDate,
+      i: m.input_price,
+      c: m.cached_input_price,
+      o: m.output_price,
+    };
+    var series = normalizeSeries(historyEntry && historyEntry.series ? historyEntry.series : []);
+    if (!currentDate) return series.length ? series : [currentPoint];
+    if (!series.length) return [currentPoint];
+
+    var last = series[series.length - 1];
+    if (last && last.d === currentDate) {
+      series[series.length - 1] = currentPoint;
+      return series;
+    }
+    series.push(currentPoint);
+    return series;
+  }
+
+  function normalizeSeries(series) {
+    if (!series || !series.length) return [];
+    var byDate = new Map();
+    series.forEach(function (point) {
+      if (!point || !point.d) return;
+      byDate.set(point.d, point);
+    });
+    return Array.from(byDate.entries())
+      .sort(function (a, b) { return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0; })
+      .map(function (entry) { return entry[1]; });
   }
 
   function buildSparkline(series) {
@@ -368,14 +411,15 @@
     }
 
     expandedModel = key;
-    var row = document.getElementById('row-' + CSS.escape(key));
+    var row = document.getElementById(domSafeId('row', key));
     if (!row) return;
     row.classList.add('row-expanded');
 
-    var chartId = 'chart-' + key.replace(/[^a-zA-Z0-9]/g, '_');
+    var chartId = domSafeId('chart', key);
+    var infoId = domSafeId('chart-info', key);
     var chartRow = document.createElement('tr');
     chartRow.className = 'chart-row';
-    chartRow.innerHTML = '<td colspan="9"><div class="chart-panel"><div class="chart-area"><div id="' + chartId + '" style="width:100%;height:300px"></div></div><div class="chart-info" id="chart-info-' + CSS.escape(key) + '"></div></div></td>';
+    chartRow.innerHTML = '<td colspan="9"><div class="chart-panel"><div class="chart-area"><div id="' + chartId + '" style="width:100%;height:300px"></div></div><div class="chart-info" id="' + infoId + '"></div></div></td>';
 
     row.insertAdjacentElement('afterend', chartRow);
 
@@ -449,7 +493,7 @@
     // Info table
     var last = series[series.length - 1];
     var first = series[0];
-    var infoEl = document.getElementById('chart-info-' + CSS.escape(key));
+    var infoEl = document.getElementById(domSafeId('chart-info', key));
     if (infoEl) {
       var rows = '<tr><th>输入</th><td>' + (last.i != null ? '¥' + last.i.toFixed(2) : '--') + '</td></tr>' +
         (last.c != null ? '<tr><th>缓存输入</th><td>¥' + last.c.toFixed(2) + '</td></tr>' : '') +

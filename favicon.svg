@@ -1,37 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-labelledby="favicon-title">
+  <title id="favicon-title">LLM API Pricing Tracker favicon</title>
   <defs>
-    <linearGradient id="g" x1="60" y1="80" x2="400" y2="400" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#14C8E8"/>
-      <stop offset="0.55" stop-color="#0861B6"/>
-      <stop offset="1" stop-color="#042B63"/>
+    <linearGradient id="fav-accent" x1="38" y1="38" x2="88" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7088B7"/>
+      <stop offset="0.52" stop-color="#6B8472"/>
+      <stop offset="1" stop-color="#9A7756"/>
     </linearGradient>
   </defs>
-  <rect width="512" height="512" rx="96" fill="url(#g)"/>
-  <!-- brain outline (simplified) -->
-  <path d="M140 120 C100 80 36 108 30 166 C-4 160 22 230 40 250 C20 280 60 340 100 340 C100 390 150 410 188 380 C220 420 280 400 280 350 L280 120 Z"
-    fill="none" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M280 120 L280 350" stroke="white" stroke-width="12" stroke-linecap="round"/>
-  <!-- neural lines -->
-  <g stroke="white" stroke-width="7" stroke-linecap="round" opacity="0.7">
-    <path d="M120 190 L170 220 L220 190"/>
-    <path d="M170 220 L178 280"/>
-    <path d="M220 260 L205 310"/>
-    <path d="M130 300 L140 340"/>
+
+  <rect x="12" y="12" width="104" height="104" rx="26" fill="#F4EBDD" stroke="#D8C8B1" stroke-width="3.5"/>
+  <path d="M28 92V42" stroke="#CDB99D" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M28 92H92" stroke="#CDB99D" stroke-width="3.5" stroke-linecap="round"/>
+  <g fill="#C8A66A">
+    <rect x="38" y="52" width="8" height="40" rx="2.5"/>
+    <rect x="51" y="64" width="8" height="28" rx="2.5"/>
+    <rect x="64" y="76" width="8" height="16" rx="2.5"/>
   </g>
-  <!-- neural dots -->
-  <g fill="white">
-    <circle cx="120" cy="190" r="10"/><circle cx="170" cy="220" r="10"/>
-    <circle cx="220" cy="190" r="10"/><circle cx="178" cy="280" r="10"/>
-    <circle cx="220" cy="260" r="10"/><circle cx="130" cy="300" r="10"/>
-    <circle cx="205" cy="310" r="10"/><circle cx="140" cy="340" r="10"/>
+  <path d="M36 50L47 57L57 55L67 68L76 74L84 87" stroke="url(#fav-accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M75 88H84V79" stroke="url(#fav-accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#4F3B33">
+    <circle cx="36" cy="50" r="3.5"/>
+    <circle cx="47" cy="57" r="3.5"/>
+    <circle cx="57" cy="55" r="3.5"/>
+    <circle cx="67" cy="68" r="3.5"/>
+    <circle cx="76" cy="74" r="3.5"/>
   </g>
-  <!-- $ sign -->
-  <text x="330" y="310" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="140" fill="white">$</text>
-  <!-- trend bars -->
-  <rect x="290" y="230" width="16" height="80" rx="5" fill="white" opacity="0.4"/>
-  <rect x="315" y="190" width="16" height="120" rx="5" fill="white" opacity="0.4"/>
-  <rect x="340" y="210" width="16" height="100" rx="5" fill="white" opacity="0.4"/>
-  <!-- trend line -->
-  <path d="M280 300 L310 270 L340 210 L370 230 L410 180"
-    stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
 </svg>

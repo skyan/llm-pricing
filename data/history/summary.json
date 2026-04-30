@@ -1,2040 +1,6 @@
 {
-  "updated": "2026-04-30T07:07:36.589327+00:00",
+  "updated": "2026-04-30T07:07:36.586144+00:00",
   "models": {
-    "google:gemini-3.1-pro-preview": {
-      "provider": "google",
-      "name": "Gemini 3.1 Pro Preview",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 2.74,
-          "c": 1.37,
-          "o": 27.39
-        }
-      ]
-    },
-    "google:gemini-3.1-flash-lite-preview": {
-      "provider": "google",
-      "name": "Gemini 3.1 Flash-Lite Preview",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.71,
-          "c": 0.21,
-          "o": 1.71
-        }
-      ]
-    },
-    "google:gemini-3-pro-preview": {
-      "provider": "google",
-      "name": "Gemini 3 Pro Preview",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 2.74,
-          "c": 1.37,
-          "o": 27.39
-        }
-      ]
-    },
-    "google:gemini-3-flash-preview": {
-      "provider": "google",
-      "name": "Gemini 3 Flash Preview",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 3.42,
-          "c": 0.34,
-          "o": 3.42
-        }
-      ]
-    },
-    "google:gemini-2.5-pro": {
-      "provider": "google",
-      "name": "Gemini 2.5 Pro",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.71,
-          "c": 0.89,
-          "o": 17.12
-        }
-      ]
-    },
-    "google:gemini-2.5-procomputer-use-preview": {
-      "provider": "google",
-      "name": "Gemini 2.5 ProComputer Use-Preview",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 17.12,
-          "c": 8.56,
-          "o": 17.12
-        }
-      ]
-    },
-    "google:gemini-2.5flash": {
-      "provider": "google",
-      "name": "Gemini 2.5Flash",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 2.05,
-          "c": 0.21,
-          "o": 2.05
-        }
-      ]
-    },
-    "google:gemini-2.5-flash-live-api": {
-      "provider": "google",
-      "name": "Gemini 2.5 Flash Live API",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 3.42,
-          "c": null,
-          "o": 3.42
-        }
-      ]
-    },
-    "google:gemini-2.5-flash-lite": {
-      "provider": "google",
-      "name": "Gemini 2.5 Flash Lite",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.68,
-          "c": 0.07,
-          "o": 0.68
-        }
-      ]
-    },
-    "google:gemini-2.5flash-image": {
-      "provider": "google",
-      "name": "Gemini 2.5Flash Image",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 8.56,
-          "c": 1.03,
-          "o": 102.7
-        },
-        {
-          "d": "2026-04-30",
-          "i": 8.56,
-          "c": 1.03,
-          "o": 102.73
-        }
-      ]
-    },
-    "google:gemini-2.0-flash": {
-      "provider": "google",
-      "name": "Gemini 2.0 Flash",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.03,
-          "c": 0.51,
-          "o": 1.03
-        }
-      ]
-    },
-    "google:gemini-2.0-flash-lite": {
-      "provider": "google",
-      "name": "Gemini 2.0 Flash Lite",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.51,
-          "c": 0.26,
-          "o": 0.51
-        }
-      ]
-    },
-    "google:customer-preference": {
-      "provider": "google",
-      "name": "Customer Preference",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 4.31,
-          "c": 1.1,
-          "o": 17.12
-        }
-      ]
-    },
-    "google:gemini-1.5-flash": {
-      "provider": "google",
-      "name": "Gemini 1.5 Flash",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.0,
-          "c": 0.0,
-          "o": 0.0
-        }
-      ]
-    },
-    "google:gemini-1.5-pro": {
-      "provider": "google",
-      "name": "Gemini 1.5 Pro",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.0,
-          "c": 0.0,
-          "o": 0.0
-        }
-      ]
-    },
-    "google:translation-llm-002": {
-      "provider": "google",
-      "name": "Translation LLM 002",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 30.81,
-          "c": null,
-          "o": 30.81
-        },
-        {
-          "d": "2026-04-30",
-          "i": 30.82,
-          "c": null,
-          "o": 30.82
-        }
-      ]
-    },
-    "google:duration": {
-      "provider": "google",
-      "name": "Duration",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 34.23,
-          "c": 20.54,
-          "o": 34.23
-        },
-        {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 20.55,
-          "o": 34.24
-        }
-      ]
-    },
-    "google:tool": {
-      "provider": "google",
-      "name": "Tool",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.51,
-          "c": null,
-          "o": 1.51
-        }
-      ]
-    },
-    "xai:grok-4-1-fast": {
-      "provider": "xai",
-      "name": "Grok 4.1 Fast",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.37,
-          "c": 0.34,
-          "o": 3.42
-        }
-      ]
-    },
-    "xai:grok-4-fast": {
-      "provider": "xai",
-      "name": "Grok 4 Fast",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.37,
-          "c": 0.34,
-          "o": 3.42
-        }
-      ]
-    },
-    "xai:grok-4.20": {
-      "provider": "xai",
-      "name": "Grok 4.20",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 13.69,
-          "c": 1.37,
-          "o": 41.08
-        },
-        {
-          "d": "2026-04-30",
-          "i": 13.7,
-          "c": 1.37,
-          "o": 41.09
-        }
-      ]
-    },
-    "xai:grok-4.20-multi-agent": {
-      "provider": "xai",
-      "name": "Grok 4.20 Multi-Agent",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 13.69,
-          "c": 1.37,
-          "o": 41.08
-        },
-        {
-          "d": "2026-04-30",
-          "i": 13.7,
-          "c": 1.37,
-          "o": 41.09
-        },
-        {
-          "d": "2026-04-30",
-          "i": 13.7,
-          "c": null,
-          "o": 41.09
-        }
-      ]
-    },
-    "xai:grok-code-fast-1": {
-      "provider": "xai",
-      "name": "Grok Code Fast 1",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.37,
-          "c": 0.14,
-          "o": 10.27
-        }
-      ]
-    },
-    "xai:grok-4": {
-      "provider": "xai",
-      "name": "Grok 4",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 20.54,
-          "c": 5.13,
-          "o": 102.7
-        },
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 5.14,
-          "o": 102.73
-        }
-      ]
-    },
-    "xai:grok-3": {
-      "provider": "xai",
-      "name": "Grok 3",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 20.54,
-          "c": null,
-          "o": 102.7
-        },
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": null,
-          "o": 102.73
-        }
-      ]
-    },
-    "xai:grok-3-mini": {
-      "provider": "xai",
-      "name": "Grok 3 Mini",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 2.05,
-          "c": null,
-          "o": 3.42
-        }
-      ]
-    },
-    "glm:glm-5": {
-      "provider": "glm",
-      "name": "GLM-5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.2,
-          "c": null,
-          "o": 2000.0
-        },
-        {
-          "d": "2026-04-30",
-          "i": 4.0,
-          "c": 1.0,
-          "o": 18.0
-        }
-      ]
-    },
-    "glm:glm-4-plus": {
-      "provider": "glm",
-      "name": "GLM-4 Plus",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.05,
-          "c": null,
-          "o": 250414.0
-        }
-      ]
-    },
-    "glm:glm-4-air": {
-      "provider": "glm",
-      "name": "GLM-4 Air",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.05,
-          "c": null,
-          "o": 250414.0
-        }
-      ]
-    },
-    "glm:glm-4-flash": {
-      "provider": "glm",
-      "name": "GLM-4 Flash",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.05,
-          "c": null,
-          "o": 250414.0
-        }
-      ]
-    },
-    "glm:glm-4-long": {
-      "provider": "glm",
-      "name": "GLM-4 Long",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.05,
-          "c": null,
-          "o": 250414.0
-        }
-      ]
-    },
-    "deepseek:deepseek-v4-flash": {
-      "provider": "deepseek",
-      "name": "Deepseek V4 Flash",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.96,
-          "c": 0.02,
-          "o": 1.92
-        }
-      ]
-    },
-    "deepseek:deepseek-v4-pro": {
-      "provider": "deepseek",
-      "name": "Deepseek V4 Pro",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 2.98,
-          "c": 0.02,
-          "o": 5.96
-        }
-      ]
-    },
-    "openai:gpt-4o": {
-      "provider": "openai",
-      "name": "GPT-4o",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 124.6,
-          "c": 62.3,
-          "o": 498.42
-        },
-        {
-          "d": "2026-04-30",
-          "i": 853.34,
-          "c": 426.67,
-          "o": 3413.5
-        },
-        {
-          "d": "2026-04-30",
-          "i": 29.11,
-          "c": 14.55,
-          "o": 116.43
-        }
-      ]
-    },
-    "openai:gpt-4o-mini": {
-      "provider": "openai",
-      "name": "GPT-4o Mini",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 7.53,
-          "c": 3.77,
-          "o": 30.12
-        },
-        {
-          "d": "2026-04-30",
-          "i": 51.57,
-          "c": 25.82,
-          "o": 206.28
-        },
-        {
-          "d": "2026-04-30",
-          "i": 1.71,
-          "c": 0.86,
-          "o": 6.85
-        }
-      ]
-    },
-    "openai:o4-mini": {
-      "provider": "openai",
-      "name": "o4 Mini",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 54.77,
-          "c": 13.69,
-          "o": 219.08
-        },
-        {
-          "d": "2026-04-30",
-          "i": 375.1,
-          "c": 93.76,
-          "o": 1500.4
-        }
-      ]
-    },
-    "anthropic:claude-opus-4-7": {
-      "provider": "anthropic",
-      "name": "Claude Opus 4.7",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 749.68,
-          "c": 74.97,
-          "o": 3748.39
-        },
-        {
-          "d": "2026-04-30",
-          "i": 5134.29,
-          "c": 513.44,
-          "o": 25671.37
-        }
-      ]
-    },
-    "anthropic:claude-sonnet-4-6": {
-      "provider": "anthropic",
-      "name": "Claude Sonnet 4.6",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 149.94,
-          "c": 14.99,
-          "o": 749.68
-        },
-        {
-          "d": "2026-04-30",
-          "i": 1026.88,
-          "c": 102.66,
-          "o": 5134.29
-        }
-      ]
-    },
-    "anthropic:claude-haiku-4-5": {
-      "provider": "anthropic",
-      "name": "Claude Haiku 4.5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 49.98,
-          "c": 5.0,
-          "o": 249.89
-        },
-        {
-          "d": "2026-04-30",
-          "i": 342.29,
-          "c": 34.24,
-          "o": 1711.41
-        }
-      ]
-    },
-    "qianwen:qwen-max": {
-      "provider": "qianwen",
-      "name": "Qwen Max",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 20.0,
-          "c": null,
-          "o": 60.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 20.0,
-          "c": 10.0,
-          "o": 60.0
-        }
-      ]
-    },
-    "qianwen:qwen-plus": {
-      "provider": "qianwen",
-      "name": "Qwen Plus",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 2.0,
-          "c": null,
-          "o": 6.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 2.0,
-          "c": 1.0,
-          "o": 6.0
-        }
-      ]
-    },
-    "qianwen:qwen-turbo": {
-      "provider": "qianwen",
-      "name": "Qwen Turbo",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.6,
-          "c": null,
-          "o": 2.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 0.6,
-          "c": 0.3,
-          "o": 2.0
-        }
-      ]
-    },
-    "doubao:doubao-1.5-pro": {
-      "provider": "doubao",
-      "name": "Doubao 1.5 Pro",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.8,
-          "c": null,
-          "o": 2.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 0.8,
-          "c": 0.4,
-          "o": 2.0
-        }
-      ]
-    },
-    "doubao:doubao-1.5-lite": {
-      "provider": "doubao",
-      "name": "Doubao 1.5 Lite",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.3,
-          "c": null,
-          "o": 0.6
-        },
-        {
-          "d": "2026-04-29",
-          "i": 0.3,
-          "c": 0.15,
-          "o": 0.6
-        }
-      ]
-    },
-    "ernie:ernie-4.5": {
-      "provider": "ernie",
-      "name": "ERNIE 4.5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 90.0,
-          "c": null,
-          "o": 270.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 90.0,
-          "c": 45.0,
-          "o": 270.0
-        },
-        {
-          "d": "2026-04-30",
-          "i": 12.0,
-          "c": null,
-          "o": 24.0
-        }
-      ]
-    },
-    "ernie:ernie-4.0-turbo": {
-      "provider": "ernie",
-      "name": "ERNIE 4.0 Turbo",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 30.0,
-          "c": null,
-          "o": 90.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 30.0,
-          "c": 15.0,
-          "o": 90.0
-        }
-      ]
-    },
-    "ernie:ernie-3.5": {
-      "provider": "ernie",
-      "name": "ERNIE 3.5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 2.0,
-          "c": null,
-          "o": 6.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 2.0,
-          "c": 1.0,
-          "o": 6.0
-        }
-      ]
-    },
-    "kimi:kimi-k2.6": {
-      "provider": "kimi",
-      "name": "Kimi K2.6",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.5,
-          "c": null,
-          "o": 1.6
-        },
-        {
-          "d": "2026-04-29",
-          "i": 6.5,
-          "c": 1.1,
-          "o": 27.0
-        }
-      ]
-    },
-    "kimi:kimi-k2": {
-      "provider": "kimi",
-      "name": "Kimi K2",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.5,
-          "c": null,
-          "o": 1.6
-        }
-      ]
-    },
-    "minimax:abab7": {
-      "provider": "minimax",
-      "name": "ABAB 7",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 5.0,
-          "c": null,
-          "o": 15.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 5.0,
-          "c": 2.5,
-          "o": 15.0
-        }
-      ]
-    },
-    "minimax:abab6.5s": {
-      "provider": "minimax",
-      "name": "ABAB 6.5s",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 1.0,
-          "c": null,
-          "o": 1.0
-        },
-        {
-          "d": "2026-04-29",
-          "i": 1.0,
-          "c": 0.5,
-          "o": 1.0
-        }
-      ]
-    },
-    "openai:gpt-5.5": {
-      "provider": "openai",
-      "name": "GPT-5.5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 128.37,
-          "c": 64.22,
-          "o": 513.48
-        },
-        {
-          "d": "2026-04-30",
-          "i": 879.16,
-          "c": 439.82,
-          "o": 3516.64
-        }
-      ]
-    },
-    "openai:gpt-5.4": {
-      "provider": "openai",
-      "name": "GPT-5.4",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 64.22,
-          "c": 32.11,
-          "o": 256.74
-        },
-        {
-          "d": "2026-04-30",
-          "i": 439.82,
-          "c": 219.91,
-          "o": 1758.32
-        },
-        {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 3.42,
-          "o": 205.46
-        }
-      ]
-    },
-    "openai:gpt-5.4-mini": {
-      "provider": "openai",
-      "name": "GPT-5.4 Mini",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 7.53,
-          "c": 3.77,
-          "o": 30.12
-        },
-        {
-          "d": "2026-04-30",
-          "i": 51.57,
-          "c": 25.82,
-          "o": 206.28
-        }
-      ]
-    },
-    "openai:gpt-5.4-nano": {
-      "provider": "openai",
-      "name": "GPT-5.4 Nano",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 3.77,
-          "c": 1.92,
-          "o": 15.06
-        },
-        {
-          "d": "2026-04-30",
-          "i": 25.82,
-          "c": 13.15,
-          "o": 103.14
-        }
-      ]
-    },
-    "openai:gpt-5": {
-      "provider": "openai",
-      "name": "GPT-5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 128.37,
-          "c": 64.22,
-          "o": 513.48
-        },
-        {
-          "d": "2026-04-30",
-          "i": 879.16,
-          "c": 439.82,
-          "o": 3516.64
-        },
-        {
-          "d": "2026-04-30",
-          "i": 17.12,
-          "c": 1.71,
-          "o": 136.97
-        }
-      ]
-    },
-    "openai:gpt-5-mini": {
-      "provider": "openai",
-      "name": "GPT-5 Mini",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 7.53,
-          "c": 3.77,
-          "o": 30.12
-        },
-        {
-          "d": "2026-04-30",
-          "i": 51.57,
-          "c": 25.82,
-          "o": 206.28
-        },
-        {
-          "d": "2026-04-30",
-          "i": 3.08,
-          "c": 0.31,
-          "o": 24.66
-        }
-      ]
-    },
-    "openai:gpt-5-nano": {
-      "provider": "openai",
-      "name": "GPT-5 Nano",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 3.77,
-          "c": 1.92,
-          "o": 15.06
-        },
-        {
-          "d": "2026-04-30",
-          "i": 25.82,
-          "c": 13.15,
-          "o": 103.14
-        },
-        {
-          "d": "2026-04-30",
-          "i": 0.34,
-          "c": 0.03,
-          "o": 2.74
-        }
-      ]
-    },
-    "openai:o5": {
-      "provider": "openai",
-      "name": "o5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 64.22,
-          "c": 32.11,
-          "o": 256.74
-        },
-        {
-          "d": "2026-04-30",
-          "i": 439.82,
-          "c": 219.91,
-          "o": 1758.32
-        }
-      ]
-    },
-    "openai:o5-mini": {
-      "provider": "openai",
-      "name": "o5 Mini",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 54.77,
-          "c": 13.69,
-          "o": 219.08
-        },
-        {
-          "d": "2026-04-30",
-          "i": 375.1,
-          "c": 93.76,
-          "o": 1500.4
-        }
-      ]
-    },
-    "openai:o4-pro": {
-      "provider": "openai",
-      "name": "o4 Pro",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 54.77,
-          "c": 13.69,
-          "o": 219.08
-        },
-        {
-          "d": "2026-04-30",
-          "i": 375.1,
-          "c": 93.76,
-          "o": 1500.4
-        }
-      ]
-    },
-    "anthropic:claude-opus-4-6": {
-      "provider": "anthropic",
-      "name": "Claude Opus 4.6",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 749.68,
-          "c": 74.97,
-          "o": 3748.39
-        },
-        {
-          "d": "2026-04-30",
-          "i": 5134.29,
-          "c": 513.44,
-          "o": 25671.37
-        }
-      ]
-    },
-    "anthropic:claude-sonnet-4-5": {
-      "provider": "anthropic",
-      "name": "Claude Sonnet 4.5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 149.94,
-          "c": 14.99,
-          "o": 749.68
-        },
-        {
-          "d": "2026-04-30",
-          "i": 1026.88,
-          "c": 102.66,
-          "o": 5134.29
-        }
-      ]
-    },
-    "anthropic:claude-opus-4-1": {
-      "provider": "anthropic",
-      "name": "Claude Opus 4.1",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 749.68,
-          "c": 74.97,
-          "o": 3748.39
-        },
-        {
-          "d": "2026-04-30",
-          "i": 5134.29,
-          "c": 513.44,
-          "o": 25671.37
-        }
-      ]
-    },
-    "qianwen:qwen-flash": {
-      "provider": "qianwen",
-      "name": "Qwen Flash",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.3,
-          "c": 0.15,
-          "o": 1.0
-        }
-      ]
-    },
-    "doubao:doubao-seed-2.0-pro": {
-      "provider": "doubao",
-      "name": "Doubao Seed 2.0 Pro",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 3.2,
-          "c": 0.64,
-          "o": 16.0
-        }
-      ]
-    },
-    "doubao:doubao-seed-2.0-lite": {
-      "provider": "doubao",
-      "name": "Doubao Seed 2.0 Lite",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.6,
-          "c": 0.12,
-          "o": 2.4
-        },
-        {
-          "d": "2026-04-30",
-          "i": 0.6,
-          "c": 0.12,
-          "o": 3.6
-        }
-      ]
-    },
-    "doubao:doubao-1.5-flash": {
-      "provider": "doubao",
-      "name": "Doubao 1.5 Flash",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.1,
-          "c": 0.05,
-          "o": 0.3
-        }
-      ]
-    },
-    "ernie:ernie-speed": {
-      "provider": "ernie",
-      "name": "ERNIE Speed",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 0.8,
-          "c": 0.4,
-          "o": 2.4
-        }
-      ]
-    },
-    "kimi:kimi-k2.5": {
-      "provider": "kimi",
-      "name": "Kimi K2.5",
-      "series": [
-        {
-          "d": "2026-04-29",
-          "i": 4.0,
-          "c": 0.7,
-          "o": 21.0
-        }
-      ]
-    },
-    "openai:gpt-5.4-pro": {
-      "provider": "openai",
-      "name": "GPT 5.4 Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 205.46,
-          "c": null,
-          "o": 1232.76
-        }
-      ]
-    },
-    "openai:gpt-5.2": {
-      "provider": "openai",
-      "name": "GPT 5.2",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 23.97,
-          "c": 2.4,
-          "o": 191.76
-        }
-      ]
-    },
-    "openai:gpt-5.1": {
-      "provider": "openai",
-      "name": "GPT 5.1",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 17.12,
-          "c": 1.71,
-          "o": 136.97
-        }
-      ]
-    },
-    "openai:gpt-5.2-pro": {
-      "provider": "openai",
-      "name": "GPT 5.2 Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 143.82,
-          "c": null,
-          "o": 1150.57
-        }
-      ]
-    },
-    "openai:gpt-5-pro": {
-      "provider": "openai",
-      "name": "GPT 5 Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 102.73,
-          "c": null,
-          "o": 821.84
-        }
-      ]
-    },
-    "openai:gpt-4.1": {
-      "provider": "openai",
-      "name": "GPT 4.1",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 23.97,
-          "c": 5.99,
-          "o": 95.88
-        }
-      ]
-    },
-    "openai:gpt-4.1-mini": {
-      "provider": "openai",
-      "name": "GPT 4.1 Mini",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 4.79,
-          "c": 1.2,
-          "o": 19.18
-        }
-      ]
-    },
-    "openai:gpt-4.1-nano": {
-      "provider": "openai",
-      "name": "GPT 4.1 Nano",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.37,
-          "c": 0.34,
-          "o": 5.48
-        }
-      ]
-    },
-    "openai:gpt-4o-2024-05-13": {
-      "provider": "openai",
-      "name": "GPT 4O 2024 05 13",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 59.93,
-          "c": null,
-          "o": 179.78
-        }
-      ]
-    },
-    "openai:o1-pro": {
-      "provider": "openai",
-      "name": "O1 Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1027.3,
-          "c": null,
-          "o": 4109.18
-        }
-      ]
-    },
-    "openai:o3-pro": {
-      "provider": "openai",
-      "name": "O3 Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 136.97,
-          "c": null,
-          "o": 547.89
-        }
-      ]
-    },
-    "openai:o3-deep-research": {
-      "provider": "openai",
-      "name": "O3 Deep Research",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 68.49,
-          "c": 17.12,
-          "o": 273.95
-        }
-      ]
-    },
-    "openai:gpt-5.3-chat-latest": {
-      "provider": "openai",
-      "name": "GPT 5.3 Chat Latest",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 11.99,
-          "c": 1.2,
-          "o": 95.88
-        }
-      ]
-    },
-    "openai:gpt-5.2-chat-latest": {
-      "provider": "openai",
-      "name": "GPT 5.2 Chat Latest",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 11.99,
-          "c": 1.2,
-          "o": 95.88
-        }
-      ]
-    },
-    "openai:gpt-5.1-chat-latest": {
-      "provider": "openai",
-      "name": "GPT 5.1 Chat Latest",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 8.56,
-          "c": 0.86,
-          "o": 68.49
-        }
-      ]
-    },
-    "openai:gpt-5-chat-latest": {
-      "provider": "openai",
-      "name": "GPT 5 Chat Latest",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 8.56,
-          "c": 0.86,
-          "o": 68.49
-        }
-      ]
-    },
-    "openai:gpt-5.3-codex": {
-      "provider": "openai",
-      "name": "GPT 5.3 Codex",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 23.97,
-          "c": 2.4,
-          "o": 191.76
-        }
-      ]
-    },
-    "openai:gpt-5.2-codex": {
-      "provider": "openai",
-      "name": "GPT 5.2 Codex",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 23.97,
-          "c": 2.4,
-          "o": 191.76
-        }
-      ]
-    },
-    "openai:gpt-5.1-codex-max": {
-      "provider": "openai",
-      "name": "GPT 5.1 Codex Max",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 17.12,
-          "c": 1.71,
-          "o": 136.97
-        }
-      ]
-    },
-    "openai:gpt-5.1-codex": {
-      "provider": "openai",
-      "name": "GPT 5.1 Codex",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 17.12,
-          "c": 1.71,
-          "o": 136.97
-        }
-      ]
-    },
-    "openai:gpt-5-codex": {
-      "provider": "openai",
-      "name": "GPT 5 Codex",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 17.12,
-          "c": 1.71,
-          "o": 136.97
-        }
-      ]
-    },
-    "openai:gpt-4o-realtime-preview": {
-      "provider": "openai",
-      "name": "GPT 4O Realtime Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 273.95,
-          "c": 17.12,
-          "o": 547.89
-        }
-      ]
-    },
-    "openai:gpt-4o-mini-realtime-preview": {
-      "provider": "openai",
-      "name": "GPT 4O Mini Realtime Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 68.49,
-          "c": 2.05,
-          "o": 136.97
-        }
-      ]
-    },
-    "openai:gpt-4o-audio-preview": {
-      "provider": "openai",
-      "name": "GPT 4O Audio Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 273.95,
-          "c": null,
-          "o": 547.89
-        }
-      ]
-    },
-    "openai:gpt-4o-mini-audio-preview": {
-      "provider": "openai",
-      "name": "GPT 4O Mini Audio Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 68.49,
-          "c": null,
-          "o": 136.97
-        }
-      ]
-    },
-    "openai:gpt-5.1-codex-mini": {
-      "provider": "openai",
-      "name": "GPT 5.1 Codex Mini",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.71,
-          "c": 0.17,
-          "o": 13.7
-        }
-      ]
-    },
-    "openai:gpt-5-search-api": {
-      "provider": "openai",
-      "name": "GPT 5 Search Api",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 8.56,
-          "c": 0.86,
-          "o": 68.49
-        }
-      ]
-    },
-    "openai:gpt-4o-mini-search-preview": {
-      "provider": "openai",
-      "name": "GPT 4O Mini Search Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.03,
-          "c": null,
-          "o": 4.11
-        }
-      ]
-    },
-    "openai:gpt-4o-search-preview": {
-      "provider": "openai",
-      "name": "GPT 4O Search Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 17.12,
-          "c": null,
-          "o": 68.49
-        }
-      ]
-    },
-    "openai:gpt-4.1-2025-04-14": {
-      "provider": "openai",
-      "name": "GPT 4.1 2025 04 14",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 5.14,
-          "o": 82.18
-        }
-      ]
-    },
-    "openai:gpt-4.1-mini-2025-04-14": {
-      "provider": "openai",
-      "name": "GPT 4.1 Mini 2025 04 14",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 5.48,
-          "c": 1.37,
-          "o": 21.92
-        }
-      ]
-    },
-    "openai:gpt-4.1-nano-2025-04-14": {
-      "provider": "openai",
-      "name": "GPT 4.1 Nano 2025 04 14",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.37,
-          "c": 0.34,
-          "o": 5.48
-        }
-      ]
-    },
-    "openai:gpt-4o-2024-08-06": {
-      "provider": "openai",
-      "name": "GPT 4O 2024 08 06",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 25.68,
-          "c": 12.84,
-          "o": 102.73
-        }
-      ]
-    },
-    "openai:gpt-4o-mini-2024-07-18": {
-      "provider": "openai",
-      "name": "GPT 4O Mini 2024 07 18",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.05,
-          "c": 1.03,
-          "o": 8.22
-        }
-      ]
-    },
-    "openai:gpt-3.5-turbo": {
-      "provider": "openai",
-      "name": "GPT 3.5 Turbo",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 3.42,
-          "c": null,
-          "o": 10.27
-        }
-      ]
-    },
-    "openai:davinci-002": {
-      "provider": "openai",
-      "name": "Davinci 002",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 13.7,
-          "c": null,
-          "o": 13.7
-        }
-      ]
-    },
-    "openai:babbage-002": {
-      "provider": "openai",
-      "name": "Babbage 002",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.74,
-          "c": null,
-          "o": 2.74
-        }
-      ]
-    },
-    "openai:gpt-4o-transcribe": {
-      "provider": "openai",
-      "name": "GPT 4O Transcribe",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 41.09,
-          "c": null,
-          "o": 68.49
-        }
-      ]
-    },
-    "openai:gpt-4o-transcribe-diarize": {
-      "provider": "openai",
-      "name": "GPT 4O Transcribe Diarize",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 41.09,
-          "c": null,
-          "o": 68.49
-        }
-      ]
-    },
-    "openai:gpt-4o-mini-transcribe": {
-      "provider": "openai",
-      "name": "GPT 4O Mini Transcribe",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": null,
-          "o": 34.24
-        }
-      ]
-    },
-    "openai:gpt-4-turbo-2024-04-09": {
-      "provider": "openai",
-      "name": "GPT 4 Turbo 2024 04 09",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 68.49,
-          "c": null,
-          "o": 205.46
-        }
-      ]
-    },
-    "openai:gpt-4-0125-preview": {
-      "provider": "openai",
-      "name": "GPT 4 0125 Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 68.49,
-          "c": null,
-          "o": 205.46
-        }
-      ]
-    },
-    "openai:gpt-4-1106-preview": {
-      "provider": "openai",
-      "name": "GPT 4 1106 Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 68.49,
-          "c": null,
-          "o": 205.46
-        }
-      ]
-    },
-    "openai:gpt-4-1106-vision-preview": {
-      "provider": "openai",
-      "name": "GPT 4 1106 Vision Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 68.49,
-          "c": null,
-          "o": 205.46
-        }
-      ]
-    },
-    "openai:gpt-4-0613": {
-      "provider": "openai",
-      "name": "GPT 4 0613",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 205.46,
-          "c": null,
-          "o": 410.92
-        }
-      ]
-    },
-    "openai:gpt-4-0314": {
-      "provider": "openai",
-      "name": "GPT 4 0314",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 205.46,
-          "c": null,
-          "o": 410.92
-        }
-      ]
-    },
-    "openai:gpt-4-32k": {
-      "provider": "openai",
-      "name": "GPT 4 32K",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 410.92,
-          "c": null,
-          "o": 821.84
-        }
-      ]
-    },
-    "openai:gpt-3.5-turbo-0125": {
-      "provider": "openai",
-      "name": "GPT 3.5 Turbo 0125",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 3.42,
-          "c": null,
-          "o": 10.27
-        }
-      ]
-    },
-    "openai:gpt-3.5-turbo-1106": {
-      "provider": "openai",
-      "name": "GPT 3.5 Turbo 1106",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 6.85,
-          "c": null,
-          "o": 13.7
-        }
-      ]
-    },
-    "openai:gpt-3.5-turbo-0613": {
-      "provider": "openai",
-      "name": "GPT 3.5 Turbo 0613",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 10.27,
-          "c": null,
-          "o": 13.7
-        }
-      ]
-    },
-    "openai:gpt-3.5-0301": {
-      "provider": "openai",
-      "name": "GPT 3.5 0301",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 10.27,
-          "c": null,
-          "o": 13.7
-        }
-      ]
-    },
-    "openai:gpt-3.5-turbo-16k-0613": {
-      "provider": "openai",
-      "name": "GPT 3.5 Turbo 16K 0613",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": null,
-          "o": 27.39
-        }
-      ]
-    },
-    "openai:chatgpt-4o-latest": {
-      "provider": "openai",
-      "name": "Chatgpt 4O Latest",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": null,
-          "o": 102.73
-        }
-      ]
-    },
-    "openai:gpt-3.5-turbo-instruct": {
-      "provider": "openai",
-      "name": "GPT 3.5 Turbo Instruct",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 10.27,
-          "c": null,
-          "o": 13.7
-        }
-      ]
-    },
-    "anthropic:claude-opus-4.7": {
-      "provider": "anthropic",
-      "name": "Claude Opus 4.7",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 42.8,
-          "o": 171.22
-        }
-      ]
-    },
-    "anthropic:claude-sonnet-4.6": {
-      "provider": "anthropic",
-      "name": "Claude Sonnet 4.6",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 25.68,
-          "o": 102.73
-        }
-      ]
-    },
-    "anthropic:claude-haiku-4.5": {
-      "provider": "anthropic",
-      "name": "Claude Haiku 4.5",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 6.85,
-          "c": 8.56,
-          "o": 34.24
-        }
-      ]
-    },
-    "anthropic:claude-opus-4.6": {
-      "provider": "anthropic",
-      "name": "Claude Opus 4.6",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 42.8,
-          "o": 171.22
-        }
-      ]
-    },
-    "anthropic:claude-sonnet-4.5": {
-      "provider": "anthropic",
-      "name": "Claude Sonnet 4.5",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 25.68,
-          "o": 102.73
-        }
-      ]
-    },
-    "anthropic:claude-opus-4.5": {
-      "provider": "anthropic",
-      "name": "Claude Opus 4.5",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 42.8,
-          "o": 171.22
-        }
-      ]
-    },
-    "anthropic:claude-opus-4.1": {
-      "provider": "anthropic",
-      "name": "Claude Opus 4.1",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 102.73,
-          "c": 128.41,
-          "o": 513.65
-        }
-      ]
-    },
-    "anthropic:claude-sonnet-4": {
-      "provider": "anthropic",
-      "name": "Claude Sonnet 4",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 25.68,
-          "o": 102.73
-        }
-      ]
-    },
-    "anthropic:claude-opus-4": {
-      "provider": "anthropic",
-      "name": "Claude Opus 4",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 102.73,
-          "c": 128.41,
-          "o": 513.65
-        }
-      ]
-    },
-    "qianwen:qwen3.6-max-preview": {
-      "provider": "qianwen",
-      "name": "Qwen3.6-Max-Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 9.0,
-          "c": null,
-          "o": 54.0
-        }
-      ]
-    },
-    "qianwen:qwen3.6-plus": {
-      "provider": "qianwen",
-      "name": "Qwen3.6-Plus",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.0,
-          "c": null,
-          "o": 12.0
-        }
-      ]
-    },
-    "qianwen:qwen3.6-flash": {
-      "provider": "qianwen",
-      "name": "Qwen3.6-Flash",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.2,
-          "c": null,
-          "o": 7.2
-        }
-      ]
-    },
-    "qianwen:qwen3-max": {
-      "provider": "qianwen",
-      "name": "Qwen3-Max",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.5,
-          "c": null,
-          "o": 10.0
-        }
-      ]
-    },
-    "qianwen:千问-plus": {
-      "provider": "qianwen",
-      "name": "千问 Plus",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.94,
-          "c": null,
-          "o": 8.81
-        }
-      ]
-    },
-    "qianwen:千问-flash": {
-      "provider": "qianwen",
-      "name": "千问 Flash",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.37,
-          "c": null,
-          "o": 2.94
-        }
-      ]
-    },
-    "ernie:ernie-5.0": {
-      "provider": "ernie",
-      "name": "ERNIE 5.0",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 10.0,
-          "c": null,
-          "o": 40.0
-        }
-      ]
-    },
-    "ernie:ernie-4.5-turbo": {
-      "provider": "ernie",
-      "name": "ERNIE 4.5 Turbo",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 3.0,
-          "c": 0.75,
-          "o": 9.0
-        }
-      ]
-    },
-    "ernie:ernie-4.5-turbo-32k": {
-      "provider": "ernie",
-      "name": "ERNIE-4.5-Turbo-32K",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.8,
-          "c": 0.2,
-          "o": 3.2
-        }
-      ]
-    },
-    "ernie:ernie-4.5-turbo-20260402": {
-      "provider": "ernie",
-      "name": "ERNIE-4.5-Turbo-20260402",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.8,
-          "c": 0.2,
-          "o": 3.2
-        }
-      ]
-    },
-    "ernie:ernie-speed-pro": {
-      "provider": "ernie",
-      "name": "ERNIE Speed Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.3,
-          "c": null,
-          "o": 0.6
-        }
-      ]
-    },
-    "ernie:ernie-lite-pro": {
-      "provider": "ernie",
-      "name": "ERNIE Lite Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.2,
-          "c": null,
-          "o": 0.4
-        }
-      ]
-    },
-    "ernie:ernie-character": {
-      "provider": "ernie",
-      "name": "ERNIE Character",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 9.0,
-          "c": null,
-          "o": 36.0
-        }
-      ]
-    },
     "openai:gpt-5.5-short": {
       "provider": "openai",
       "name": "GPT 5.5 (≤256K)",
@@ -2155,6 +121,114 @@
         }
       ]
     },
+    "anthropic:claude-opus-4.7": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.7",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 34.24,
+          "c": 42.8,
+          "o": 171.22
+        }
+      ]
+    },
+    "anthropic:claude-opus-4.6": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.6",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 34.24,
+          "c": 42.8,
+          "o": 171.22
+        }
+      ]
+    },
+    "anthropic:claude-opus-4.5": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 34.24,
+          "c": 42.8,
+          "o": 171.22
+        }
+      ]
+    },
+    "anthropic:claude-opus-4.1": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.1",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 102.73,
+          "c": 128.41,
+          "o": 513.65
+        }
+      ]
+    },
+    "anthropic:claude-opus-4": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 102.73,
+          "c": 128.41,
+          "o": 513.65
+        }
+      ]
+    },
+    "anthropic:claude-sonnet-4.6": {
+      "provider": "anthropic",
+      "name": "Claude Sonnet 4.6",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": 25.68,
+          "o": 102.73
+        }
+      ]
+    },
+    "anthropic:claude-sonnet-4.5": {
+      "provider": "anthropic",
+      "name": "Claude Sonnet 4.5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": 25.68,
+          "o": 102.73
+        }
+      ]
+    },
+    "anthropic:claude-sonnet-4": {
+      "provider": "anthropic",
+      "name": "Claude Sonnet 4",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": 25.68,
+          "o": 102.73
+        }
+      ]
+    },
+    "anthropic:claude-haiku-4.5": {
+      "provider": "anthropic",
+      "name": "Claude Haiku 4.5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 6.85,
+          "c": 8.56,
+          "o": 34.24
+        }
+      ]
+    },
     "anthropic:claude-haiku-3.5": {
       "provider": "anthropic",
       "name": "Claude Haiku 3.5",
@@ -2179,9 +253,237 @@
         }
       ]
     },
+    "google:gemini-3.1-pro-preview": {
+      "provider": "google",
+      "name": "Gemini 3.1 Pro Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.74,
+          "c": 1.37,
+          "o": 27.39
+        }
+      ]
+    },
+    "google:gemini-3.1-flash-lite-preview": {
+      "provider": "google",
+      "name": "Gemini 3.1 Flash-Lite Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.71,
+          "c": 0.21,
+          "o": 1.71
+        }
+      ]
+    },
+    "google:gemini-3-pro-preview": {
+      "provider": "google",
+      "name": "Gemini 3 Pro Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.74,
+          "c": 1.37,
+          "o": 27.39
+        }
+      ]
+    },
+    "google:gemini-3-flash-preview": {
+      "provider": "google",
+      "name": "Gemini 3 Flash Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 3.42,
+          "c": 0.34,
+          "o": 3.42
+        }
+      ]
+    },
+    "google:gemini-2.5-pro": {
+      "provider": "google",
+      "name": "Gemini 2.5 Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.71,
+          "c": 0.89,
+          "o": 17.12
+        }
+      ]
+    },
+    "google:gemini-2.5-procomputer-use-preview": {
+      "provider": "google",
+      "name": "Gemini 2.5 ProComputer Use-Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 17.12,
+          "c": 8.56,
+          "o": 17.12
+        }
+      ]
+    },
+    "google:gemini-2.5flash": {
+      "provider": "google",
+      "name": "Gemini 2.5Flash",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.05,
+          "c": 0.21,
+          "o": 2.05
+        }
+      ]
+    },
+    "google:gemini-2.5-flash-live-api": {
+      "provider": "google",
+      "name": "Gemini 2.5 Flash Live API",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 3.42,
+          "c": null,
+          "o": 3.42
+        }
+      ]
+    },
+    "google:gemini-2.5-flash-lite": {
+      "provider": "google",
+      "name": "Gemini 2.5 Flash Lite",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.68,
+          "c": 0.07,
+          "o": 0.68
+        }
+      ]
+    },
+    "google:gemini-2.5flash-image": {
+      "provider": "google",
+      "name": "Gemini 2.5Flash Image",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 8.56,
+          "c": 1.03,
+          "o": 102.73
+        }
+      ]
+    },
+    "google:gemini-2.0-flash": {
+      "provider": "google",
+      "name": "Gemini 2.0 Flash",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.03,
+          "c": 0.51,
+          "o": 1.03
+        }
+      ]
+    },
+    "google:gemini-2.0-flash-lite": {
+      "provider": "google",
+      "name": "Gemini 2.0 Flash Lite",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.51,
+          "c": 0.26,
+          "o": 0.51
+        }
+      ]
+    },
+    "google:customer-preference": {
+      "provider": "google",
+      "name": "Customer Preference",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 4.31,
+          "c": 1.1,
+          "o": 17.12
+        }
+      ]
+    },
+    "google:gemini-1.5-flash": {
+      "provider": "google",
+      "name": "Gemini 1.5 Flash",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.0,
+          "c": 0.0,
+          "o": 0.0
+        }
+      ]
+    },
+    "google:gemini-1.5-pro": {
+      "provider": "google",
+      "name": "Gemini 1.5 Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.0,
+          "c": 0.0,
+          "o": 0.0
+        }
+      ]
+    },
+    "google:translation-llm-002": {
+      "provider": "google",
+      "name": "Translation LLM 002",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 30.82,
+          "c": null,
+          "o": 30.82
+        }
+      ]
+    },
+    "google:duration": {
+      "provider": "google",
+      "name": "Duration",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 34.24,
+          "c": 20.55,
+          "o": 34.24
+        }
+      ]
+    },
+    "google:tool": {
+      "provider": "google",
+      "name": "Tool",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.51,
+          "c": null,
+          "o": 1.51
+        }
+      ]
+    },
     "xai:grok-4.20-0309-reasoning": {
       "provider": "xai",
       "name": "Grok 4.20 0309 Reasoning",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 13.7,
+          "c": null,
+          "o": 41.09
+        }
+      ]
+    },
+    "xai:grok-4.20-multi-agent": {
+      "provider": "xai",
+      "name": "Grok 4.20 Multi Agent",
       "series": [
         {
           "d": "2026-04-30",
@@ -2200,6 +502,126 @@
           "i": 1.37,
           "c": null,
           "o": 3.42
+        }
+      ]
+    },
+    "deepseek:deepseek-v4-flash": {
+      "provider": "deepseek",
+      "name": "Deepseek V4 Flash",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.96,
+          "c": 0.02,
+          "o": 1.92
+        }
+      ]
+    },
+    "deepseek:deepseek-v4-pro": {
+      "provider": "deepseek",
+      "name": "Deepseek V4 Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.98,
+          "c": 0.02,
+          "o": 5.96
+        }
+      ]
+    },
+    "qianwen:qwen3.6-max-preview": {
+      "provider": "qianwen",
+      "name": "Qwen3.6-Max-Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 9.0,
+          "c": null,
+          "o": 54.0
+        }
+      ]
+    },
+    "qianwen:qwen3.6-plus": {
+      "provider": "qianwen",
+      "name": "Qwen3.6-Plus",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.0,
+          "c": null,
+          "o": 12.0
+        }
+      ]
+    },
+    "qianwen:qwen3.6-flash": {
+      "provider": "qianwen",
+      "name": "Qwen3.6-Flash",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.2,
+          "c": null,
+          "o": 7.2
+        }
+      ]
+    },
+    "qianwen:qwen3-max": {
+      "provider": "qianwen",
+      "name": "Qwen3-Max",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.5,
+          "c": null,
+          "o": 10.0
+        }
+      ]
+    },
+    "qianwen:千问-plus": {
+      "provider": "qianwen",
+      "name": "千问 Plus",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.94,
+          "c": null,
+          "o": 8.81
+        }
+      ]
+    },
+    "qianwen:千问-flash": {
+      "provider": "qianwen",
+      "name": "千问 Flash",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.37,
+          "c": null,
+          "o": 2.94
+        }
+      ]
+    },
+    "doubao:doubao-seed-2.0-pro": {
+      "provider": "doubao",
+      "name": "doubao-seed-2.0-pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 3.2,
+          "c": 0.64,
+          "o": 16.0
+        }
+      ]
+    },
+    "doubao:doubao-seed-2.0-lite": {
+      "provider": "doubao",
+      "name": "doubao-seed-2.0-lite",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.6,
+          "c": 0.12,
+          "o": 3.6
         }
       ]
     },
@@ -2227,6 +649,126 @@
         }
       ]
     },
+    "ernie:ernie-5.0": {
+      "provider": "ernie",
+      "name": "ERNIE 5.0",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 10.0,
+          "c": null,
+          "o": 40.0
+        }
+      ]
+    },
+    "ernie:ernie-4.5-turbo": {
+      "provider": "ernie",
+      "name": "ERNIE 4.5 Turbo",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 3.0,
+          "c": 0.75,
+          "o": 9.0
+        }
+      ]
+    },
+    "ernie:ernie-4.5-turbo-32k": {
+      "provider": "ernie",
+      "name": "ERNIE-4.5-Turbo-32K",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.8,
+          "c": 0.2,
+          "o": 3.2
+        }
+      ]
+    },
+    "ernie:ernie-4.5-turbo-20260402": {
+      "provider": "ernie",
+      "name": "ERNIE-4.5-Turbo-20260402",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.8,
+          "c": 0.2,
+          "o": 3.2
+        }
+      ]
+    },
+    "ernie:ernie-4.5": {
+      "provider": "ernie",
+      "name": "ERNIE 4.5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 12.0,
+          "c": null,
+          "o": 24.0
+        }
+      ]
+    },
+    "ernie:ernie-speed-pro": {
+      "provider": "ernie",
+      "name": "ERNIE Speed Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.3,
+          "c": null,
+          "o": 0.6
+        }
+      ]
+    },
+    "ernie:ernie-lite-pro": {
+      "provider": "ernie",
+      "name": "ERNIE Lite Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 0.2,
+          "c": null,
+          "o": 0.4
+        }
+      ]
+    },
+    "ernie:ernie-character": {
+      "provider": "ernie",
+      "name": "ERNIE Character",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 9.0,
+          "c": null,
+          "o": 36.0
+        }
+      ]
+    },
+    "kimi:kimi-k2.6": {
+      "provider": "kimi",
+      "name": "Kimi K2.6",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 6.5,
+          "c": 1.1,
+          "o": 27.0
+        }
+      ]
+    },
+    "kimi:kimi-k2.5": {
+      "provider": "kimi",
+      "name": "Kimi K2.5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 4.0,
+          "c": 0.7,
+          "o": 21.0
+        }
+      ]
+    },
     "glm:glm-5.1新品": {
       "provider": "glm",
       "name": "GLM-5.1新品",
@@ -2248,6 +790,18 @@
           "i": 5.0,
           "c": 1.2,
           "o": 22.0
+        }
+      ]
+    },
+    "glm:glm-5": {
+      "provider": "glm",
+      "name": "GLM-5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 4.0,
+          "c": 1.0,
+          "o": 18.0
         }
       ]
     },
