@@ -55,8 +55,11 @@ class OpenAIScraper(BaseScraper):
             name = re.sub(r'\s*\([<>]\s*\d+[Kk].*?\)', '', name).strip()
             if name in seen:
                 continue
-            if name in seen:
+
+            # Only keep GPT-5.x and o4/o5 series models
+            if not self._is_current_gen(name):
                 continue
+
             seen.add(name)
 
             inp = float(info.get("input", 0))
@@ -85,6 +88,21 @@ class OpenAIScraper(BaseScraper):
             ))
 
         return models
+
+    @staticmethod
+    def _is_current_gen(name: str) -> bool:
+        """Only keep main GPT-5.x and o5/o4-pro series models."""
+        n = name.lower()
+        # Skip special variants
+        if any(x in n for x in ("chat-latest", "codex", "search-api", "realtime", "audio", "transcribe")):
+            return False
+        if n.startswith("gpt-5"):
+            return True
+        if n.startswith("o5"):
+            return True
+        if n.startswith("o4-pro"):
+            return True
+        return False
 
     @staticmethod
     def _format_name(name: str) -> str:
