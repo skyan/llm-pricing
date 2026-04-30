@@ -1,11 +1,11 @@
-"""MiniMax pricing scraper. TBD on exact page structure."""
+"""MiniMax pricing scraper. JS-rendered page, requires Playwright."""
 
 import re
 from bs4 import BeautifulSoup
-from scraper.base import BaseScraper, ModelPricing
+from scraper.base import BaseScraper, ModelPricing, PlaywrightMixin
 
 
-class MinimaxScraper(BaseScraper):
+class MinimaxScraper(PlaywrightMixin, BaseScraper):
     provider_id = "minimax"
     provider_name = "MiniMax"
     website = "https://www.minimaxi.com"
@@ -21,42 +21,45 @@ class MinimaxScraper(BaseScraper):
             if not rows:
                 continue
 
-            headers = [th.get_text(strip=True) for th in rows[0].find_all("th")]
-            if len(headers) < 2:
-                headers = [td.get_text(strip=True) for td in rows[0].find_all("td")]
+            # Look for header with model/pricing columns
+            header_cells = rows[0].find_all(["td", "th"])
+            header_text = " ".join(c.get_text(strip=True) for c in header_cells)
 
-            name_col = input_col = output_col = ctx_col = None
-            for i, h in enumerate(headers):
-                hl = h.lower()
-                if "模型" in hl or "model" in hl or "型号" in hl:
+            if not any(kw in header_text for kw in ["模型", "价格", "输入", "输出", "计费", "Model", "Price"]):
+                continue
+
+            # Find columns
+            name_col = input_col = output_col = None
+            for i, h in enumerate(header_cells):
+                ht = h.get_text(strip=True).lower()
+                if "模型" in ht or "model" in ht or "型号" in ht:
                     name_col = i
-                elif "输入" in hl and "缓存" not in hl:
+                elif "输入" in ht:
                     input_col = i
-                elif "输出" in hl:
+                elif "输出" in ht:
                     output_col = i
-                elif "上下文" in hl or "context" in hl:
-                    ctx_col = i
 
             for row in rows[1:]:
-                cells = row.find_all("td")
-                if len(cells) < 2:
+                cells = row.find_all(["td", "th"])
+                if len(cells) < 3:
                     continue
 
                 name = cells[name_col].get_text(strip=True) if name_col is not None and name_col < len(cells) else ""
-                if not name or len(name) > 40:
+                if not name or len(name) > 50:
                     continue
 
                 input_price = self._parse_cny(cells[input_col].get_text(strip=True)) if input_col is not None and input_col < len(cells) else 0
                 output_price = self._parse_cny(cells[output_col].get_text(strip=True)) if output_col is not None and output_col < len(cells) else 0
-                ctx = self.extract_context(cells[ctx_col].get_text(strip=True)) if ctx_col is not None and ctx_col < len(cells) else 0
 
                 if input_price == 0 and output_price == 0:
                     continue
 
-                mid = name.lower().replace(" ", "-")
                 models.append(ModelPricing(
-                    name=mid, display_name=name, context_window=ctx,
-                    input_price=round(input_price, 2), output_price=round(output_price, 2),
+                    name=name.lower().replace(" ", "-"),
+                    display_name=name,
+                    context_window=0,
+                    input_price=round(input_price, 2),
+                    output_price=round(output_price, 2),
                 ))
 
         return models
@@ -67,7 +70,7 @@ class MinimaxScraper(BaseScraper):
         m = re.search(r'[¥￥]?(\d+\.?\d*)', text)
         if m:
             val = float(m.group(1))
-            if val < 0.1 and val > 0:
+            if 0 < val < 0.1:  # likely per 1K tokens
                 val *= 1000
             return val
         return 0.0
