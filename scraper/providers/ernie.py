@@ -1,7 +1,4 @@
-"""ERNIE (Baidu Qianfan) pricing scraper. Server-rendered HTML with multiple tables.
-
-Prices are in 元/千tokens (CNY per 1K tokens). Must multiply by 1000 for 1M.
-"""
+"""ERNIE (Baidu Qianfan) pricing scraper. Rowspan-heavy HTML table."""
 
 import re
 from bs4 import BeautifulSoup
@@ -16,62 +13,95 @@ class ErnieScraper(BaseScraper):
     currency = "CNY"
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
-        models = []
         tables = soup.find_all("table")
+        if not tables:
+            return []
 
-        for table in tables:
-            rows = table.find_all("tr")
-            if not rows:
+        table = tables[0]
+        rows = table.find_all("tr")
+
+        current_family = ""
+        in_token_section = False
+        models = {}
+
+        for row in rows[1:]:
+            cells = row.find_all(["td", "th"])
+            if not cells:
                 continue
 
-            # Check if this is a model pricing table
-            header_text = " ".join(th.get_text(strip=True) for th in rows[0].find_all("th"))
-            if "模型" not in header_text and "model" not in header_text.lower():
+            texts = [c.get_text(strip=True) for c in cells]
+
+            # Check for new model family
+            first_cell = texts[0] if texts else ""
+            if first_cell and first_cell.upper().startswith("ERNIE"):
+                in_token_section = False
+                if first_cell.startswith("ERNIE-"):
+                    current_family = first_cell
+                else:
+                    parts = first_cell.split()
+                    current_family = " ".join(parts[:3]) if len(parts) >= 3 else first_cell
+
+            if not current_family:
                 continue
 
-            headers = [th.get_text(strip=True) for th in rows[0].find_all("th")]
-            name_col = input_col = output_col = None
-            for i, h in enumerate(headers):
-                hl = h.lower()
-                if "模型" in hl or "名称" in hl or "model" in hl:
-                    name_col = i
-                elif "输入" in hl or "input" in hl:
-                    input_col = i
-                elif "输出" in hl or "output" in hl:
-                    output_col = i
+            # Track whether we're in a token-pricing section (unit is "元/千tokens" with rowspan)
+            if any("千tokens" in t or "千Token" in t for t in texts):
+                in_token_section = True
+            if any("元/次" in t or "元/个" in t or "元/万" in t or "元/张" in t for t in texts):
+                in_token_section = False
+                continue
+            if not in_token_section:
+                continue
 
-            for row in rows[1:]:
-                cells = row.find_all("td")
-                if len(cells) < 2:
-                    continue
+            # Find the price column (first numeric like "0.xxx" or "x.xxx", not "-")
+            price = None
+            price_idx = -1
+            for i, t in enumerate(texts):
+                p = self._parse_price(t)
+                if p is not None:
+                    price = p
+                    price_idx = i
+                    break
 
-                name = cells[name_col].get_text(strip=True) if name_col is not None and name_col < len(cells) else ""
-                if not name or len(name) > 50:
-                    continue
+            if price is None or price_idx <= 0:
+                continue
 
-                input_price = self._parse_cny_per_k(cells[input_col].get_text(strip=True)) if input_col is not None and input_col < len(cells) else 0
-                output_price = self._parse_cny_per_k(cells[output_col].get_text(strip=True)) if output_col is not None and output_col < len(cells) else 0
+            # The label is in the cell just before the price
+            label = texts[price_idx - 1] if price_idx > 0 else ""
 
-                if input_price == 0 and output_price == 0:
-                    continue
+            # Convert from 元/千tokens to 元/1M tokens
+            price = round(price * 1000, 2)
 
-                mid = re.sub(r'\(.*?\)', '', name).strip().lower().replace(" ", "-")
-                models.append(ModelPricing(
-                    name=mid, display_name=name, context_window=0,
-                    input_price=round(input_price, 2), output_price=round(output_price, 2),
-                ))
+            # Categorize by label (check output before input since output labels may contain "输入")
+            m = models.setdefault(current_family, {"in": 0, "cache": None, "out": 0})
+            if "命中缓存" in label or "缓存" in label:
+                m["cache"] = max(m.get("cache") or 0, price)
+            elif "输出" in label:
+                m["out"] = max(m["out"], price)
+            elif "输入" in label:
+                m["in"] = max(m["in"], price)
 
-        return models
+        result = []
+        for family, p in models.items():
+            if p["in"] == 0 and p["out"] == 0:
+                continue
+            result.append(ModelPricing(
+                name=family.lower().replace(" ", "-"),
+                display_name=family,
+                context_window=128000,
+                input_price=p["in"],
+                cached_input_price=p.get("cache"),
+                output_price=p["out"],
+            ))
+
+        return result
 
     @staticmethod
-    def _parse_cny_per_k(text: str) -> float:
-        """Parse CNY per 1000 tokens and convert to per 1M tokens."""
-        text = text.replace(",", "").replace(" ", "").replace("元", "").replace("/千tokens", "")
-        m = re.search(r'(\d+\.?\d*)', text)
+    def _parse_price(text: str):
+        text = text.replace(",", "").replace(" ", "").strip()
+        if not text or text in ("-", "", "免费"):
+            return None
+        m = re.search(r'^(\d+\.?\d*)$', text)
         if m:
-            val = float(m.group(1))
-            # ERNIE prices are per 1K tokens, convert to per 1M
-            if val > 0 and val < 100:
-                return val * 1000
-            return val
-        return 0.0
+            return float(m.group(1))
+        return None
