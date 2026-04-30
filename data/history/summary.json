@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-30T06:10:18.237436+00:00",
+  "updated": "2026-04-30T06:26:50.526734+00:00",
   "models": {
     "google:gemini-3.1-pro-preview": {
       "provider": "google",
@@ -457,9 +457,9 @@
         },
         {
           "d": "2026-04-30",
-          "i": 5844.22,
-          "c": 2922.11,
-          "o": 23377.83
+          "i": 29.11,
+          "c": 14.55,
+          "o": 116.43
         }
       ]
     },
@@ -481,9 +481,9 @@
         },
         {
           "d": "2026-04-30",
-          "i": 353.18,
-          "c": 176.83,
-          "o": 1412.74
+          "i": 1.71,
+          "c": 0.86,
+          "o": 6.85
         }
       ]
     },
@@ -502,12 +502,6 @@
           "i": 375.1,
           "c": 93.76,
           "o": 1500.4
-        },
-        {
-          "d": "2026-04-30",
-          "i": 2568.92,
-          "c": 642.13,
-          "o": 10275.7
         }
       ]
     },
@@ -526,12 +520,6 @@
           "i": 5134.29,
           "c": 513.44,
           "o": 25671.37
-        },
-        {
-          "d": "2026-04-30",
-          "i": 35162.9,
-          "c": 3516.37,
-          "o": 175813.95
         }
       ]
     },
@@ -550,12 +538,6 @@
           "i": 1026.88,
           "c": 102.66,
           "o": 5134.29
-        },
-        {
-          "d": "2026-04-30",
-          "i": 7032.73,
-          "c": 703.08,
-          "o": 35162.9
         }
       ]
     },
@@ -574,12 +556,6 @@
           "i": 342.29,
           "c": 34.24,
           "o": 1711.41
-        },
-        {
-          "d": "2026-04-30",
-          "i": 2344.22,
-          "c": 234.5,
-          "o": 11720.83
         }
       ]
     },
@@ -814,12 +790,6 @@
           "i": 879.16,
           "c": 439.82,
           "o": 3516.64
-        },
-        {
-          "d": "2026-04-30",
-          "i": 6021.05,
-          "c": 3012.17,
-          "o": 24084.2
         }
       ]
     },
@@ -841,9 +811,9 @@
         },
         {
           "d": "2026-04-30",
-          "i": 3012.17,
-          "c": 1506.08,
-          "o": 12042.1
+          "i": 34.24,
+          "c": 3.42,
+          "o": 205.46
         }
       ]
     },
@@ -862,12 +832,6 @@
           "i": 51.57,
           "c": 25.82,
           "o": 206.28
-        },
-        {
-          "d": "2026-04-30",
-          "i": 353.18,
-          "c": 176.83,
-          "o": 1412.74
         }
       ]
     },
@@ -886,12 +850,6 @@
           "i": 25.82,
           "c": 13.15,
           "o": 103.14
-        },
-        {
-          "d": "2026-04-30",
-          "i": 176.83,
-          "c": 90.06,
-          "o": 706.37
         }
       ]
     },
@@ -913,9 +871,9 @@
         },
         {
           "d": "2026-04-30",
-          "i": 6021.05,
-          "c": 3012.17,
-          "o": 24084.2
+          "i": 17.12,
+          "c": 1.71,
+          "o": 136.97
         }
       ]
     },
@@ -937,9 +895,9 @@
         },
         {
           "d": "2026-04-30",
-          "i": 353.18,
-          "c": 176.83,
-          "o": 1412.74
+          "i": 3.08,
+          "c": 0.31,
+          "o": 24.66
         }
       ]
     },
@@ -961,9 +919,9 @@
         },
         {
           "d": "2026-04-30",
-          "i": 176.83,
-          "c": 90.06,
-          "o": 706.37
+          "i": 0.34,
+          "c": 0.03,
+          "o": 2.74
         }
       ]
     },
@@ -982,12 +940,6 @@
           "i": 439.82,
           "c": 219.91,
           "o": 1758.32
-        },
-        {
-          "d": "2026-04-30",
-          "i": 3012.17,
-          "c": 1506.08,
-          "o": 12042.1
         }
       ]
     },
@@ -1006,12 +958,6 @@
           "i": 375.1,
           "c": 93.76,
           "o": 1500.4
-        },
-        {
-          "d": "2026-04-30",
-          "i": 2568.92,
-          "c": 642.13,
-          "o": 10275.7
         }
       ]
     },
@@ -1030,12 +976,6 @@
           "i": 375.1,
           "c": 93.76,
           "o": 1500.4
-        },
-        {
-          "d": "2026-04-30",
-          "i": 2568.92,
-          "c": 642.13,
-          "o": 10275.7
         }
       ]
     },
@@ -1054,12 +994,6 @@
           "i": 5134.29,
           "c": 513.44,
           "o": 25671.37
-        },
-        {
-          "d": "2026-04-30",
-          "i": 35162.9,
-          "c": 3516.37,
-          "o": 175813.95
         }
       ]
     },
@@ -1078,12 +1012,6 @@
           "i": 1026.88,
           "c": 102.66,
           "o": 5134.29
-        },
-        {
-          "d": "2026-04-30",
-          "i": 7032.73,
-          "c": 703.08,
-          "o": 35162.9
         }
       ]
     },
@@ -1102,12 +1030,6 @@
           "i": 5134.29,
           "c": 513.44,
           "o": 25671.37
-        },
-        {
-          "d": "2026-04-30",
-          "i": 35162.9,
-          "c": 3516.37,
-          "o": 175813.95
         }
       ]
     },
@@ -1180,6 +1102,762 @@
           "i": 4.0,
           "c": 0.7,
           "o": 21.0
+        }
+      ]
+    },
+    "openai:gpt-5.4-pro": {
+      "provider": "openai",
+      "name": "GPT 5.4 Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 205.46,
+          "c": null,
+          "o": 1232.76
+        }
+      ]
+    },
+    "openai:gpt-5.2": {
+      "provider": "openai",
+      "name": "GPT 5.2",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 23.97,
+          "c": 2.4,
+          "o": 191.76
+        }
+      ]
+    },
+    "openai:gpt-5.1": {
+      "provider": "openai",
+      "name": "GPT 5.1",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 17.12,
+          "c": 1.71,
+          "o": 136.97
+        }
+      ]
+    },
+    "openai:gpt-5.2-pro": {
+      "provider": "openai",
+      "name": "GPT 5.2 Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 143.82,
+          "c": null,
+          "o": 1150.57
+        }
+      ]
+    },
+    "openai:gpt-5-pro": {
+      "provider": "openai",
+      "name": "GPT 5 Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 102.73,
+          "c": null,
+          "o": 821.84
+        }
+      ]
+    },
+    "openai:gpt-4.1": {
+      "provider": "openai",
+      "name": "GPT 4.1",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 23.97,
+          "c": 5.99,
+          "o": 95.88
+        }
+      ]
+    },
+    "openai:gpt-4.1-mini": {
+      "provider": "openai",
+      "name": "GPT 4.1 Mini",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 4.79,
+          "c": 1.2,
+          "o": 19.18
+        }
+      ]
+    },
+    "openai:gpt-4.1-nano": {
+      "provider": "openai",
+      "name": "GPT 4.1 Nano",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.37,
+          "c": 0.34,
+          "o": 5.48
+        }
+      ]
+    },
+    "openai:gpt-4o-2024-05-13": {
+      "provider": "openai",
+      "name": "GPT 4O 2024 05 13",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 59.93,
+          "c": null,
+          "o": 179.78
+        }
+      ]
+    },
+    "openai:o1-pro": {
+      "provider": "openai",
+      "name": "O1 Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1027.3,
+          "c": null,
+          "o": 4109.18
+        }
+      ]
+    },
+    "openai:o3-pro": {
+      "provider": "openai",
+      "name": "O3 Pro",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 136.97,
+          "c": null,
+          "o": 547.89
+        }
+      ]
+    },
+    "openai:o3-deep-research": {
+      "provider": "openai",
+      "name": "O3 Deep Research",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 68.49,
+          "c": 17.12,
+          "o": 273.95
+        }
+      ]
+    },
+    "openai:gpt-5.3-chat-latest": {
+      "provider": "openai",
+      "name": "GPT 5.3 Chat Latest",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 11.99,
+          "c": 1.2,
+          "o": 95.88
+        }
+      ]
+    },
+    "openai:gpt-5.2-chat-latest": {
+      "provider": "openai",
+      "name": "GPT 5.2 Chat Latest",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 11.99,
+          "c": 1.2,
+          "o": 95.88
+        }
+      ]
+    },
+    "openai:gpt-5.1-chat-latest": {
+      "provider": "openai",
+      "name": "GPT 5.1 Chat Latest",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 8.56,
+          "c": 0.86,
+          "o": 68.49
+        }
+      ]
+    },
+    "openai:gpt-5-chat-latest": {
+      "provider": "openai",
+      "name": "GPT 5 Chat Latest",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 8.56,
+          "c": 0.86,
+          "o": 68.49
+        }
+      ]
+    },
+    "openai:gpt-5.3-codex": {
+      "provider": "openai",
+      "name": "GPT 5.3 Codex",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 23.97,
+          "c": 2.4,
+          "o": 191.76
+        }
+      ]
+    },
+    "openai:gpt-5.2-codex": {
+      "provider": "openai",
+      "name": "GPT 5.2 Codex",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 23.97,
+          "c": 2.4,
+          "o": 191.76
+        }
+      ]
+    },
+    "openai:gpt-5.1-codex-max": {
+      "provider": "openai",
+      "name": "GPT 5.1 Codex Max",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 17.12,
+          "c": 1.71,
+          "o": 136.97
+        }
+      ]
+    },
+    "openai:gpt-5.1-codex": {
+      "provider": "openai",
+      "name": "GPT 5.1 Codex",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 17.12,
+          "c": 1.71,
+          "o": 136.97
+        }
+      ]
+    },
+    "openai:gpt-5-codex": {
+      "provider": "openai",
+      "name": "GPT 5 Codex",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 17.12,
+          "c": 1.71,
+          "o": 136.97
+        }
+      ]
+    },
+    "openai:gpt-4o-realtime-preview": {
+      "provider": "openai",
+      "name": "GPT 4O Realtime Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 273.95,
+          "c": 17.12,
+          "o": 547.89
+        }
+      ]
+    },
+    "openai:gpt-4o-mini-realtime-preview": {
+      "provider": "openai",
+      "name": "GPT 4O Mini Realtime Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 68.49,
+          "c": 2.05,
+          "o": 136.97
+        }
+      ]
+    },
+    "openai:gpt-4o-audio-preview": {
+      "provider": "openai",
+      "name": "GPT 4O Audio Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 273.95,
+          "c": null,
+          "o": 547.89
+        }
+      ]
+    },
+    "openai:gpt-4o-mini-audio-preview": {
+      "provider": "openai",
+      "name": "GPT 4O Mini Audio Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 68.49,
+          "c": null,
+          "o": 136.97
+        }
+      ]
+    },
+    "openai:gpt-5.1-codex-mini": {
+      "provider": "openai",
+      "name": "GPT 5.1 Codex Mini",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.71,
+          "c": 0.17,
+          "o": 13.7
+        }
+      ]
+    },
+    "openai:gpt-5-search-api": {
+      "provider": "openai",
+      "name": "GPT 5 Search Api",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 8.56,
+          "c": 0.86,
+          "o": 68.49
+        }
+      ]
+    },
+    "openai:gpt-4o-mini-search-preview": {
+      "provider": "openai",
+      "name": "GPT 4O Mini Search Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.03,
+          "c": null,
+          "o": 4.11
+        }
+      ]
+    },
+    "openai:gpt-4o-search-preview": {
+      "provider": "openai",
+      "name": "GPT 4O Search Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 17.12,
+          "c": null,
+          "o": 68.49
+        }
+      ]
+    },
+    "openai:gpt-4.1-2025-04-14": {
+      "provider": "openai",
+      "name": "GPT 4.1 2025 04 14",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": 5.14,
+          "o": 82.18
+        }
+      ]
+    },
+    "openai:gpt-4.1-mini-2025-04-14": {
+      "provider": "openai",
+      "name": "GPT 4.1 Mini 2025 04 14",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 5.48,
+          "c": 1.37,
+          "o": 21.92
+        }
+      ]
+    },
+    "openai:gpt-4.1-nano-2025-04-14": {
+      "provider": "openai",
+      "name": "GPT 4.1 Nano 2025 04 14",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 1.37,
+          "c": 0.34,
+          "o": 5.48
+        }
+      ]
+    },
+    "openai:gpt-4o-2024-08-06": {
+      "provider": "openai",
+      "name": "GPT 4O 2024 08 06",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 25.68,
+          "c": 12.84,
+          "o": 102.73
+        }
+      ]
+    },
+    "openai:gpt-4o-mini-2024-07-18": {
+      "provider": "openai",
+      "name": "GPT 4O Mini 2024 07 18",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.05,
+          "c": 1.03,
+          "o": 8.22
+        }
+      ]
+    },
+    "openai:gpt-3.5-turbo": {
+      "provider": "openai",
+      "name": "GPT 3.5 Turbo",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 3.42,
+          "c": null,
+          "o": 10.27
+        }
+      ]
+    },
+    "openai:davinci-002": {
+      "provider": "openai",
+      "name": "Davinci 002",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 13.7,
+          "c": null,
+          "o": 13.7
+        }
+      ]
+    },
+    "openai:babbage-002": {
+      "provider": "openai",
+      "name": "Babbage 002",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 2.74,
+          "c": null,
+          "o": 2.74
+        }
+      ]
+    },
+    "openai:gpt-4o-transcribe": {
+      "provider": "openai",
+      "name": "GPT 4O Transcribe",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 41.09,
+          "c": null,
+          "o": 68.49
+        }
+      ]
+    },
+    "openai:gpt-4o-transcribe-diarize": {
+      "provider": "openai",
+      "name": "GPT 4O Transcribe Diarize",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 41.09,
+          "c": null,
+          "o": 68.49
+        }
+      ]
+    },
+    "openai:gpt-4o-mini-transcribe": {
+      "provider": "openai",
+      "name": "GPT 4O Mini Transcribe",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": null,
+          "o": 34.24
+        }
+      ]
+    },
+    "openai:gpt-4-turbo-2024-04-09": {
+      "provider": "openai",
+      "name": "GPT 4 Turbo 2024 04 09",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 68.49,
+          "c": null,
+          "o": 205.46
+        }
+      ]
+    },
+    "openai:gpt-4-0125-preview": {
+      "provider": "openai",
+      "name": "GPT 4 0125 Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 68.49,
+          "c": null,
+          "o": 205.46
+        }
+      ]
+    },
+    "openai:gpt-4-1106-preview": {
+      "provider": "openai",
+      "name": "GPT 4 1106 Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 68.49,
+          "c": null,
+          "o": 205.46
+        }
+      ]
+    },
+    "openai:gpt-4-1106-vision-preview": {
+      "provider": "openai",
+      "name": "GPT 4 1106 Vision Preview",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 68.49,
+          "c": null,
+          "o": 205.46
+        }
+      ]
+    },
+    "openai:gpt-4-0613": {
+      "provider": "openai",
+      "name": "GPT 4 0613",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 205.46,
+          "c": null,
+          "o": 410.92
+        }
+      ]
+    },
+    "openai:gpt-4-0314": {
+      "provider": "openai",
+      "name": "GPT 4 0314",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 205.46,
+          "c": null,
+          "o": 410.92
+        }
+      ]
+    },
+    "openai:gpt-4-32k": {
+      "provider": "openai",
+      "name": "GPT 4 32K",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 410.92,
+          "c": null,
+          "o": 821.84
+        }
+      ]
+    },
+    "openai:gpt-3.5-turbo-0125": {
+      "provider": "openai",
+      "name": "GPT 3.5 Turbo 0125",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 3.42,
+          "c": null,
+          "o": 10.27
+        }
+      ]
+    },
+    "openai:gpt-3.5-turbo-1106": {
+      "provider": "openai",
+      "name": "GPT 3.5 Turbo 1106",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 6.85,
+          "c": null,
+          "o": 13.7
+        }
+      ]
+    },
+    "openai:gpt-3.5-turbo-0613": {
+      "provider": "openai",
+      "name": "GPT 3.5 Turbo 0613",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 10.27,
+          "c": null,
+          "o": 13.7
+        }
+      ]
+    },
+    "openai:gpt-3.5-0301": {
+      "provider": "openai",
+      "name": "GPT 3.5 0301",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 10.27,
+          "c": null,
+          "o": 13.7
+        }
+      ]
+    },
+    "openai:gpt-3.5-turbo-16k-0613": {
+      "provider": "openai",
+      "name": "GPT 3.5 Turbo 16K 0613",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": null,
+          "o": 27.39
+        }
+      ]
+    },
+    "openai:chatgpt-4o-latest": {
+      "provider": "openai",
+      "name": "Chatgpt 4O Latest",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 34.24,
+          "c": null,
+          "o": 102.73
+        }
+      ]
+    },
+    "openai:gpt-3.5-turbo-instruct": {
+      "provider": "openai",
+      "name": "GPT 3.5 Turbo Instruct",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 10.27,
+          "c": null,
+          "o": 13.7
+        }
+      ]
+    },
+    "anthropic:claude-opus-4.7": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.7",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 34.24,
+          "c": 42.8,
+          "o": 171.22
+        }
+      ]
+    },
+    "anthropic:claude-sonnet-4.6": {
+      "provider": "anthropic",
+      "name": "Claude Sonnet 4.6",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": 25.68,
+          "o": 102.73
+        }
+      ]
+    },
+    "anthropic:claude-haiku-4.5": {
+      "provider": "anthropic",
+      "name": "Claude Haiku 4.5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 6.85,
+          "c": 8.56,
+          "o": 34.24
+        }
+      ]
+    },
+    "anthropic:claude-opus-4.6": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.6",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 34.24,
+          "c": 42.8,
+          "o": 171.22
+        }
+      ]
+    },
+    "anthropic:claude-sonnet-4.5": {
+      "provider": "anthropic",
+      "name": "Claude Sonnet 4.5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": 25.68,
+          "o": 102.73
+        }
+      ]
+    },
+    "anthropic:claude-opus-4.5": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.5",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 34.24,
+          "c": 42.8,
+          "o": 171.22
+        }
+      ]
+    },
+    "anthropic:claude-opus-4.1": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4.1",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 102.73,
+          "c": 128.41,
+          "o": 513.65
+        }
+      ]
+    },
+    "anthropic:claude-sonnet-4": {
+      "provider": "anthropic",
+      "name": "Claude Sonnet 4",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 20.55,
+          "c": 25.68,
+          "o": 102.73
+        }
+      ]
+    },
+    "anthropic:claude-opus-4": {
+      "provider": "anthropic",
+      "name": "Claude Opus 4",
+      "series": [
+        {
+          "d": "2026-04-30",
+          "i": 102.73,
+          "c": 128.41,
+          "o": 513.65
         }
       ]
     },

@@ -1,116 +1,105 @@
-"""OpenAI pricing scraper. JS-rendered SPA, requires Playwright."""
+"""OpenAI pricing scraper. Uses public pricing API since openai.com blocks scraping."""
 
+import json
+import urllib.request
 import re
 from bs4 import BeautifulSoup
-from scraper.base import BaseScraper, ModelPricing, PlaywrightMixin
+from scraper.base import BaseScraper, ModelPricing
 
 
-class OpenAIScraper(PlaywrightMixin, BaseScraper):
+class OpenAIScraper(BaseScraper):
     provider_id = "openai"
     provider_name = "OpenAI"
     website = "https://platform.openai.com"
     pricing_url = "https://platform.openai.com/docs/pricing"
     currency = "USD"
 
+    # Public pricing API (community-maintained)
+    API_URL = "https://bes-dev.github.io/openai-pricing-api/api.json"
+
+    def fetch_html(self) -> str:
+        return ""  # Not used
+
     def parse_soup(self, soup: BeautifulSoup) -> list:
+        return self._fetch_and_parse()
+
+    def _fetch_and_parse(self) -> list:
         models = []
-        # Find all pricing tables - they have bordered rows with model data
-        tables = soup.find_all("table")
-        for table in tables:
-            headers = []
-            thead = table.find("thead")
-            if thead:
-                headers = [th.get_text(strip=True).lower() for th in thead.find_all("th")]
-            else:
-                first_row = table.find("tr")
-                if first_row:
-                    headers = [th.get_text(strip=True).lower() for th in first_row.find_all("th")]
+        try:
+            req = urllib.request.Request(self.API_URL)
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = json.loads(resp.read())
+        except Exception:
+            return models
 
-            # Map column indices
-            model_idx = self._find_col(headers, ["model", "name"])
-            input_idx = self._find_col(headers, ["input"])
-            output_idx = self._find_col(headers, ["output"])
-            cached_idx = self._find_col(headers, ["cached", "cache", "prompt caching"])
+        # Data format: {models: {model_key: {model, pricing_type, category, ...}}, timestamp: ...}
+        models_data = data.get("models", {}) if isinstance(data, dict) else {}
 
-            tbody = table.find("tbody") or table
-            for row in tbody.find_all("tr"):
-                cells = row.find_all("td")
-                if not cells or len(cells) < 2:
-                    cells = row.find_all("th")
-                if len(cells) < 2:
-                    continue
+        context_map = {
+            "gpt-5": 400000, "gpt-5.4": 256000, "gpt-5.5": 400000,
+            "gpt-4o": 128000, "gpt-4.1": 1048576,
+            "o5": 400000, "o4-pro": 200000, "o4-mini": 200000,
+            "o3": 200000, "o1": 200000,
+        }
 
-                name = self._clean_name(cells[model_idx].get_text(strip=True)) if model_idx is not None else ""
-                if not name or name.lower() in ("model", "name", ""):
-                    continue
-                if "gpt" not in name.lower() and "o1" not in name.lower() and "o3" not in name.lower() and "o4" not in name.lower():
-                    continue
+        seen = set()
+        for key, info in models_data.items():
+            if not isinstance(info, dict):
+                continue
+            cat = info.get("category", "")
+            if cat not in ("language_model", "reasoning"):
+                continue
 
-                input_price = 0.0
-                output_price = 0.0
-                cached_price = None
+            name = info.get("model", key)
+            # Clean context-length suffixes from name
+            name = re.sub(r'\s*\([<>]\s*\d+[Kk].*?\)', '', name).strip()
+            if name in seen:
+                continue
+            if name in seen:
+                continue
+            seen.add(name)
 
-                if input_idx is not None and input_idx < len(cells):
-                    input_price = self._extract_usd(cells[input_idx].get_text(strip=True))
-                if output_idx is not None and output_idx < len(cells):
-                    output_price = self._extract_usd(cells[output_idx].get_text(strip=True))
-                if cached_idx is not None and cached_idx < len(cells):
-                    cached_price = self._extract_usd(cells[cached_idx].get_text(strip=True))
-                    cached_price = cached_price if cached_price > 0 else None
+            inp = float(info.get("input", 0))
+            out = float(info.get("output", 0))
+            cached = info.get("cached_input")
+            if cached is not None:
+                cached = float(cached)
 
-                if input_price == 0 and output_price == 0:
-                    continue
+            if inp == 0 and out == 0:
+                continue
 
-                models.append(ModelPricing(
-                    name=name.lower().replace(" ", "-"),
-                    display_name=self._normalize_display(name),
-                    context_window=self._guess_context(name),
-                    input_price=input_price,
-                    cached_input_price=cached_price,
-                    output_price=output_price,
-                ))
+            display = self._format_name(name)
+            ctx = 128000
+            for prefix, c in context_map.items():
+                if name.startswith(prefix):
+                    ctx = c
+                    break
+
+            models.append(ModelPricing(
+                name=name,
+                display_name=display,
+                context_window=ctx,
+                input_price=inp,
+                cached_input_price=cached,
+                output_price=out,
+            ))
 
         return models
 
     @staticmethod
-    def _find_col(headers: list, keywords: list) -> int | None:
-        for kw in keywords:
-            for i, h in enumerate(headers):
-                if kw in h:
-                    return i
-        return None
-
-    @staticmethod
-    def _clean_name(text: str) -> str:
-        text = re.sub(r'\$[\d.]+.*$', '', text).strip()
-        text = re.sub(r'/.*$', '', text).strip()
-        return text
-
-    @staticmethod
-    def _extract_usd(text: str) -> float:
-        text = text.replace(",", "").replace(" ", "")
-        m = re.search(r'\$?(\d+\.?\d*)', text)
-        if m:
-            return float(m.group(1))
-        return 0.0
-
-    @staticmethod
-    def _normalize_display(name: str) -> str:
-        name = name.strip()
-        if name and not name[0].isupper():
-            name = name[0].upper() + name[1:] if len(name) > 1 else name.upper()
-        return name
-
-    @staticmethod
-    def _guess_context(name: str) -> int:
-        n = name.lower()
-        if "128k" in n or "128" in n:
-            return 128000
-        if "200k" in n:
-            return 200000
-        if "1m" in n:
-            return 1000000
-        # Defaults for known models
-        if "o1" in n or "o3" in n:
-            return 200000
-        return 128000
+    def _format_name(name: str) -> str:
+        # e.g. "gpt-5.4-pro" -> "GPT-5.4 Pro"
+        name = name.replace("_", " ")
+        parts = name.split("-")
+        result = []
+        for p in parts:
+            pu = p.upper()
+            if pu in ("GPT", "O1", "O3", "O4", "O5"):
+                result.append(pu if pu.startswith("O") else pu)
+            elif pu in ("PRO", "MINI", "NANO", "TURBO"):
+                result.append(p.capitalize())
+            elif p and p[0].isdigit():
+                result.append(pu)
+            else:
+                result.append(p.capitalize())
+        return " ".join(result)
