@@ -1,7 +1,5 @@
-"""OpenAI pricing scraper. Uses public pricing API since openai.com blocks scraping."""
+"""OpenAI pricing scraper. Uses developers.openai.com which is SSR and Playwright-friendly."""
 
-import json
-import urllib.request
 import re
 from bs4 import BeautifulSoup
 from scraper.base import BaseScraper, ModelPricing
@@ -11,102 +9,92 @@ class OpenAIScraper(BaseScraper):
     provider_id = "openai"
     provider_name = "OpenAI"
     website = "https://platform.openai.com"
-    pricing_url = "https://platform.openai.com/docs/pricing"
+    pricing_url = "https://developers.openai.com/api/docs/pricing"
     currency = "USD"
 
-    # Public pricing API (community-maintained)
-    API_URL = "https://bes-dev.github.io/openai-pricing-api/api.json"
-
-    def fetch_html(self) -> str:
-        return ""  # Not used
-
     def parse_soup(self, soup: BeautifulSoup) -> list:
-        return self._fetch_and_parse()
-
-    def _fetch_and_parse(self) -> list:
         models = []
-        try:
-            req = urllib.request.Request(self.API_URL)
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                data = json.loads(resp.read())
-        except Exception:
+        tables = soup.find_all("table")
+        if not tables:
             return models
 
-        # Data format: {models: {model_key: {model, pricing_type, category, ...}}, timestamp: ...}
-        models_data = data.get("models", {}) if isinstance(data, dict) else {}
+        # Table 0 is the standard pay-as-you-go pricing
+        table = tables[0]
+        rows = table.find_all("tr")
+        if len(rows) < 3:
+            return models
 
-        context_map = {
-            "gpt-5": 400000, "gpt-5.4": 256000, "gpt-5.5": 400000,
-            "gpt-4o": 128000, "gpt-4.1": 1048576,
-            "o5": 400000, "o4-pro": 200000, "o4-mini": 200000,
-            "o3": 200000, "o1": 200000,
-        }
+        # Find header to detect columns
+        headers = [c.get_text(strip=True).lower() for c in rows[1].find_all(["td", "th"])]
+        # Expected: [Model, Input, Cached input, Output, Input(long), Cached(long), Output(long)]
+        model_col = 0
+        input_col = 1
+        cached_col = 2
+        output_col = 3
 
-        seen = set()
-        for key, info in models_data.items():
-            if not isinstance(info, dict):
-                continue
-            cat = info.get("category", "")
-            if cat not in ("language_model", "reasoning"):
-                continue
-
-            name = info.get("model", key)
-            # Clean context-length suffixes from name
-            name = re.sub(r'\s*\([<>]\s*\d+[Kk].*?\)', '', name).strip()
-            if name in seen:
+        for row in rows[2:]:  # Skip header rows
+            cells = row.find_all(["td", "th"])
+            if len(cells) < 4:
                 continue
 
-            # Only keep GPT-5.x and o4/o5 series models
-            if not self._is_current_gen(name):
+            name = cells[model_col].get_text(strip=True) if model_col < len(cells) else ""
+            if not name:
                 continue
 
-            seen.add(name)
-
-            inp = float(info.get("input", 0))
-            out = float(info.get("output", 0))
-            cached = info.get("cached_input")
-            if cached is not None:
-                cached = float(cached)
-
-            if inp == 0 and out == 0:
+            # Only GPT-5.x series
+            if not re.match(r'gpt-5', name, re.IGNORECASE):
                 continue
 
             display = self._format_name(name)
-            ctx = 128000
-            for prefix, c in context_map.items():
-                if name.startswith(prefix):
-                    ctx = c
-                    break
 
-            models.append(ModelPricing(
-                name=name,
-                display_name=display,
-                context_window=ctx,
-                input_price=inp,
-                cached_input_price=cached,
-                output_price=out,
-            ))
+            # Short context pricing (columns 1-3)
+            short_inp = self._parse_usd(cells[input_col].get_text(strip=True)) if input_col < len(cells) else 0
+            short_cache = self._parse_usd(cells[cached_col].get_text(strip=True)) if cached_col < len(cells) else None
+            short_out = self._parse_usd(cells[output_col].get_text(strip=True)) if output_col < len(cells) else 0
+
+            # Long context pricing (columns 4-6)
+            long_inp = self._parse_usd(cells[input_col + 3].get_text(strip=True)) if input_col + 3 < len(cells) else None
+            long_cache = self._parse_usd(cells[cached_col + 3].get_text(strip=True)) if cached_col + 3 < len(cells) else None
+            long_out = self._parse_usd(cells[output_col + 3].get_text(strip=True)) if output_col + 3 < len(cells) else None
+
+            # Short context entry
+            if short_inp or short_out:
+                short_key = name.lower() + "-short"
+                models.append(ModelPricing(
+                    name=short_key,
+                    display_name=display + " (≤256K)",
+                    context_window=256000,
+                    input_price=short_inp or 0,
+                    cached_input_price=short_cache,
+                    output_price=short_out or 0,
+                ))
+
+            # Long context entry
+            if long_inp is not None or long_out is not None:
+                long_key = name.lower() + "-long"
+                models.append(ModelPricing(
+                    name=long_key,
+                    display_name=display + " (>256K)",
+                    context_window=400000,
+                    input_price=long_inp or 0,
+                    cached_input_price=long_cache,
+                    output_price=long_out or 0,
+                ))
 
         return models
 
     @staticmethod
-    def _is_current_gen(name: str) -> bool:
-        """Only keep main GPT-5.x and o5/o4-pro series models."""
-        n = name.lower()
-        # Skip special variants
-        if any(x in n for x in ("chat-latest", "codex", "search-api", "realtime", "audio", "transcribe")):
-            return False
-        if n.startswith("gpt-5"):
-            return True
-        if n.startswith("o5"):
-            return True
-        if n.startswith("o4-pro"):
-            return True
-        return False
+    def _parse_usd(text: str):
+        text = text.replace(",", "").replace(" ", "").strip()
+        if not text or text in ("-", ""):
+            return None
+        m = re.search(r'\$?(\d+\.?\d*)', text)
+        if m:
+            return float(m.group(1))
+        return None
 
     @staticmethod
     def _format_name(name: str) -> str:
-        # e.g. "gpt-5.4-pro" -> "GPT-5.4 Pro"
         name = name.replace("_", " ")
         parts = name.split("-")
         result = []
