@@ -1,76 +1,60 @@
-"""MiniMax pricing scraper. JS-rendered page, requires Playwright."""
+"""MiniMax pricing scraper. Direct fetch from platform.minimaxi.com docs."""
 
 import re
 from bs4 import BeautifulSoup
-from scraper.base import BaseScraper, ModelPricing, PlaywrightMixin
+from scraper.base import BaseScraper, ModelPricing
 
 
-class MinimaxScraper(PlaywrightMixin, BaseScraper):
+class MinimaxScraper(BaseScraper):
     provider_id = "minimax"
     provider_name = "MiniMax"
     website = "https://www.minimaxi.com"
-    pricing_url = "https://platform.minimaxi.com/document/Price"
+    pricing_url = "https://platform.minimaxi.com/docs/guides/pricing-paygo"
     currency = "CNY"
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
         models = []
         tables = soup.find_all("table")
+        if not tables:
+            return models
 
-        for table in tables:
-            rows = table.find_all("tr")
-            if not rows:
+        table = tables[0]
+        rows = table.find_all("tr")
+        if len(rows) < 2:
+            return models
+
+        for row in rows[1:]:
+            cells = row.find_all(["td", "th"])
+            if len(cells) < 3:
                 continue
 
-            # Look for header with model/pricing columns
-            header_cells = rows[0].find_all(["td", "th"])
-            header_text = " ".join(c.get_text(strip=True) for c in header_cells)
-
-            if not any(kw in header_text for kw in ["模型", "价格", "输入", "输出", "计费", "Model", "Price"]):
+            name = cells[0].get_text(strip=True)
+            if not name or not name.startswith("MiniMax") and not name.startswith("M2"):
                 continue
 
-            # Find columns
-            name_col = input_col = output_col = None
-            for i, h in enumerate(header_cells):
-                ht = h.get_text(strip=True).lower()
-                if "模型" in ht or "model" in ht or "型号" in ht:
-                    name_col = i
-                elif "输入" in ht:
-                    input_col = i
-                elif "输出" in ht:
-                    output_col = i
+            # Columns: 模型 | 输入 | 输出 | 缓存读取 | 缓存写入
+            inp = self._parse_price(cells[1].get_text(strip=True))
+            out = self._parse_price(cells[2].get_text(strip=True))
+            cache_read = self._parse_price(cells[3].get_text(strip=True))
 
-            for row in rows[1:]:
-                cells = row.find_all(["td", "th"])
-                if len(cells) < 3:
-                    continue
+            if inp == 0 and out == 0:
+                continue
 
-                name = cells[name_col].get_text(strip=True) if name_col is not None and name_col < len(cells) else ""
-                if not name or len(name) > 50:
-                    continue
-
-                input_price = self._parse_cny(cells[input_col].get_text(strip=True)) if input_col is not None and input_col < len(cells) else 0
-                output_price = self._parse_cny(cells[output_col].get_text(strip=True)) if output_col is not None and output_col < len(cells) else 0
-
-                if input_price == 0 and output_price == 0:
-                    continue
-
-                models.append(ModelPricing(
-                    name=name.lower().replace(" ", "-"),
-                    display_name=name,
-                    context_window=0,
-                    input_price=round(input_price, 2),
-                    output_price=round(output_price, 2),
-                ))
+            models.append(ModelPricing(
+                name=name.lower().replace(" ", "-"),
+                display_name=name,
+                context_window=245760,
+                input_price=inp,
+                cached_input_price=cache_read if cache_read > 0 else None,
+                output_price=out,
+            ))
 
         return models
 
     @staticmethod
-    def _parse_cny(text: str) -> float:
-        text = text.replace(",", "").replace(" ", "").replace("元", "")
-        m = re.search(r'[¥￥]?(\d+\.?\d*)', text)
-        if m:
-            val = float(m.group(1))
-            if 0 < val < 0.1:  # likely per 1K tokens
-                val *= 1000
-            return val
-        return 0.0
+    def _parse_price(text: str) -> float:
+        text = text.replace(",", "").replace(" ", "").strip()
+        if not text or text in ("-", "", "——"):
+            return 0.0
+        m = re.search(r'(\d+\.?\d*)', text)
+        return float(m.group(1)) if m else 0.0

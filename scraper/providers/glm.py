@@ -1,96 +1,115 @@
-"""GLM (Zhipu) pricing scraper. Fully JS-rendered SPA, requires Playwright."""
+"""GLM (Zhipu) pricing scraper. JS SPA, needs Playwright."""
 
 import re
 from bs4 import BeautifulSoup
-from scraper.base import BaseScraper, ModelPricing, PlaywrightMixin
+from scraper.base import BaseScraper, ModelPricing
 
 
-class GLMScraper(PlaywrightMixin, BaseScraper):
+class GLMScraper(BaseScraper):
     provider_id = "glm"
     provider_name = "GLM"
     website = "https://open.bigmodel.cn"
-    pricing_url = "https://open.bigmodel.cn/pricing"
+    pricing_url = "https://bigmodel.cn/pricing"
     currency = "CNY"
+
+    def fetch_html(self) -> str:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(self.pricing_url, wait_until="domcontentloaded", timeout=60000)
+            page.wait_for_timeout(5000)
+            html = page.content()
+            browser.close()
+            return html
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
         models = []
-
-        # GLM page is an SPA - try to find pricing tables after rendering
         tables = soup.find_all("table")
-        for table in tables:
+        if not tables:
+            return models
+
+        # Only use tables that have the standard pricing format:
+        # [模型名称, 条件, input_price, output_price, cache_storage, cache_hit]
+        # Filter by checking if the first data row's column 1 contains "输入长度"
+        valid_tables = set()
+        for i, table in enumerate(tables):
             rows = table.find_all("tr")
-            if not rows:
-                continue
-
-            headers = [th.get_text(strip=True) for th in rows[0].find_all("th")]
-            if not headers:
-                # Try first row cells
-                headers = [td.get_text(strip=True) for td in rows[0].find_all("td")]
-
-            name_col = input_col = output_col = None
-            for i, h in enumerate(headers):
-                hl = h.lower()
-                if "模型" in hl or "model" in hl:
-                    name_col = i
-                elif "输入" in hl and "缓存" not in hl:
-                    input_col = i
-                elif "输出" in hl:
-                    output_col = i
-
             for row in rows[1:]:
-                cells = row.find_all("td")
-                if len(cells) < 2:
+                cells = row.find_all(["td", "th"])
+                if len(cells) >= 2:
+                    c1 = cells[1].get_text(strip=True) if len(cells) > 1 else ""
+                    if "输入长度" in c1:
+                        valid_tables.add(i)
+                        break
+
+        current_model = ""
+        seen = set()
+
+        for ti, table in enumerate(tables):
+            if ti not in valid_tables:
+                continue
+            rows = table.find_all("tr")
+            for row in rows:
+                cells = row.find_all(["td", "th"])
+                texts = [c.get_text(strip=True) for c in cells]
+                if not texts:
                     continue
 
-                name = cells[name_col].get_text(strip=True) if name_col is not None and name_col < len(cells) else ""
-                if not name or len(name) > 40:
+                c0 = texts[0]
+
+                # Skip header rows
+                if c0 in ("模型名称", "模型", "Model"):
                     continue
 
-                input_price = self._parse_cny(cells[input_col].get_text(strip=True)) if input_col is not None and input_col < len(cells) else 0
-                output_price = self._parse_cny(cells[output_col].get_text(strip=True)) if output_col is not None and output_col < len(cells) else 0
+                # New model row
+                if c0 and len(c0) > 3 and not any(kw in c0 for kw in ["输入长度", "输入", "输出", "缓存"]):
+                    if re.match(r'GLM', c0, re.IGNORECASE):
+                        # Skip vision (V), voice, ASR, fine-tuned models
+                        if re.search(r'GLM-\d.*[Vv]', c0) or "Voice" in c0 or "ASR" in c0:
+                            current_model = "skip"
+                        else:
+                            current_model = c0
 
-                if input_price == 0 and output_price == 0:
+                if not current_model or current_model == "skip" or current_model in seen:
                     continue
 
-                mid = name.lower().replace(" ", "-").replace("/", "-")
+                if len(texts) < 3:
+                    continue
+
+                # Find prices from cells
+                inp = self._parse_price(texts[2]) if len(texts) > 2 else 0
+                out = self._parse_price(texts[3]) if len(texts) > 3 else 0
+                cache = self._parse_price(texts[5]) if len(texts) > 5 else None
+
+                if not inp or inp > 200:
+                    continue
+
                 models.append(ModelPricing(
-                    name=mid, display_name=name, context_window=0,
-                    input_price=round(input_price, 2), output_price=round(output_price, 2),
+                    name=current_model.lower().replace(" ", "-"),
+                    display_name=current_model,
+                    context_window=128000,
+                    input_price=inp or 0,
+                    cached_input_price=cache if cache and cache > 0 else None,
+                    output_price=out if (out is not None and out > 0) else 0,
                 ))
-
-        # If table parsing found nothing, try card-based layout
-        if not models:
-            text = soup.get_text(" ", strip=True)
-            # Look for known GLM model patterns
-            model_patterns = [
-                ("glm-5", "GLM-5", 200000),
-                ("glm-4-plus", "GLM-4 Plus", 128000),
-                ("glm-4-air", "GLM-4 Air", 128000),
-                ("glm-4-flash", "GLM-4 Flash", 128000),
-                ("glm-4-long", "GLM-4 Long", 1000000),
-            ]
-
-            for mid, display, ctx in model_patterns:
-                pos = text.lower().find(mid)
-                if pos == -1:
-                    continue
-                nearby = text[max(0, pos - 200):pos + 500]
-                prices = re.findall(r'[¥￥]?(\d+\.?\d*)\s*元?', nearby)
-                prices = [float(p) for p in prices if float(p) > 0]
-                if len(prices) >= 2:
-                    sorted_p = sorted(set(prices))
-                    models.append(ModelPricing(
-                        name=mid, display_name=display, context_window=ctx,
-                        input_price=round(sorted_p[0], 2),
-                        output_price=round(sorted_p[-1], 2),
-                    ))
+                seen.add(current_model)
 
         return models
 
     @staticmethod
-    def _parse_cny(text: str) -> float:
-        text = text.replace(",", "").replace(" ", "").replace("元", "")
-        m = re.search(r'[¥￥]?(\d+\.?\d*)', text)
+    def _parse_price(text: str):
+        text = re.sub(r'[\u200b\u200c\u200d\ufeff]', '', text)
+        text = text.replace(",", "").replace(" ", "").strip()
+        if not text or text in ("-", "", "限时免费"):
+            return None
+        # Require price indicator for non-obvious numbers
+        has_indicator = bool(re.search(r'[元¥]|/[MT]|[Tt]okens', text))
+        m = re.search(r'(\d+\.?\d*)', text)
         if m:
-            return float(m.group(1))
-        return 0.0
+            val = float(m.group(1))
+            # If value is large (>50) and no price indicator, likely not a price
+            if val > 50 and not has_indicator:
+                return None
+            return val
+        return None
