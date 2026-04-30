@@ -95,9 +95,9 @@ llm-pricing/
 └── requirements.txt                # Python 依赖
 ```
 
-## 如何新增厂商
+Provider 抓取技术详见 [docs/providers.md](docs/providers.md)。
 
-三步即可新增一个 LLM 厂商的价格追踪：
+## 如何新增厂商
 
 ### Step 1: 编辑 `scraper/config.yaml`
 
