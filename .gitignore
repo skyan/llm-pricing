@@ -2,3 +2,5 @@
 .claude/
 .gstack/
 __pycache__/
+data/history/*.json
+!data/history/summary.json

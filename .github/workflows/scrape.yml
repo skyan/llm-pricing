@@ -37,12 +37,61 @@ jobs:
       - name: Run scraper
         run: python -m scraper.main
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Wrangler
+        run: npm install -g wrangler
+
+      - name: Upload daily snapshot to R2
+        run: |
+          SNAPSHOT_DATE=$(python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("data/pricing.json").read_text())
+          print(data["last_updated"][:10])
+          PY
+          )
+          wrangler r2 object put "${R2_BUCKET}/history/${SNAPSHOT_DATE}.json" \
+            --remote \
+            --file data/pricing.json \
+            --content-type "application/json; charset=utf-8" \
+            --cache-control "public, max-age=31536000, immutable"
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+
+      - name: Update R2 history index
+        run: |
+          SNAPSHOT_DATE=$(python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("data/pricing.json").read_text())
+          print(data["last_updated"][:10])
+          PY
+          )
+          python scripts/update_r2_history_index.py --bucket "${R2_BUCKET}" --date "${SNAPSHOT_DATE}"
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+
+      - name: Rebuild summary from R2 snapshots
+        run: python scripts/rebuild_summary_from_r2.py --bucket "${R2_BUCKET}" --days 365
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+
       - name: Commit and push updated data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "update pricing data"
-          file_pattern: 'data/'
+          file_pattern: |
+            data/pricing.json
+            data/history/summary.json
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
-
-

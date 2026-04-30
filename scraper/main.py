@@ -10,12 +10,12 @@ import yaml
 
 from scraper.base import ModelPricing
 from scraper.currency import get_usd_to_cny_rate
+from scraper.history import load_summary, merge_snapshot_into_summary, write_summary
 from scraper.providers import ALL_SCRAPERS
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
-HISTORY_DIR = DATA_DIR / "history"
-HISTORY_SUMMARY = HISTORY_DIR / "summary.json"
+HISTORY_SUMMARY = DATA_DIR / "history" / "summary.json"
 PRICING_FILE = DATA_DIR / "pricing.json"
 CONFIG_FILE = Path(__file__).resolve().parent / "config.yaml"
 
@@ -55,45 +55,9 @@ def has_changed(prev: dict | None, new: dict) -> bool:
 
 
 def update_history_summary(new_data: dict):
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    if HISTORY_SUMMARY.exists():
-        try:
-            summary = json.loads(HISTORY_SUMMARY.read_text())
-        except (json.JSONDecodeError, OSError):
-            summary = {"updated": "", "models": {}}
-    else:
-        summary = {"updated": "", "models": {}}
-
-    for provider in new_data.get("providers", []):
-        for model in provider.get("models", []):
-            key = f"{provider['id']}:{model['name']}"
-            entry = {
-                "d": today,
-                "i": model.get("input_price", 0),
-                "c": model.get("cached_input_price"),
-                "o": model.get("output_price", 0),
-            }
-            if key not in summary["models"]:
-                summary["models"][key] = {
-                    "provider": provider["id"],
-                    "name": model.get("display_name", model["name"]),
-                    "series": [],
-                }
-            series = summary["models"][key]["series"]
-            if series and series[-1].get("d") == today:
-                series[-1] = entry
-            elif not series or (
-                series[-1].get("i") != entry["i"]
-                or series[-1].get("o") != entry["o"]
-                or series[-1].get("c") != entry["c"]
-            ):
-                series.append(entry)
-            if len(series) > 90:
-                summary["models"][key]["series"] = series[-90:]
-
-    summary["updated"] = datetime.now(timezone.utc).isoformat()
-    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
-    HISTORY_SUMMARY.write_text(json.dumps(summary, ensure_ascii=False, indent=2))
+    summary = load_summary(HISTORY_SUMMARY)
+    summary = merge_snapshot_into_summary(summary, new_data)
+    write_summary(HISTORY_SUMMARY, summary)
 
 
 def main():
@@ -163,13 +127,6 @@ def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     PRICING_FILE.write_text(json.dumps(output, ensure_ascii=False, indent=2))
     print(f"[INFO] Wrote {PRICING_FILE}")
-
-    if changed:
-        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-        HISTORY_DIR.mkdir(parents=True, exist_ok=True)
-        snapshot_path = HISTORY_DIR / f"{today}.json"
-        snapshot_path.write_text(json.dumps(output, ensure_ascii=False, indent=2))
-        print(f"[INFO] Wrote snapshot {snapshot_path}")
 
     update_history_summary(output)
     print(f"[INFO] Updated history summary")
