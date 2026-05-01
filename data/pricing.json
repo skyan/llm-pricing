@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-01T14:12:39.213459+00:00",
+  "last_updated": "2026-05-01T14:16:35.824136+00:00",
   "usd_to_cny_rate": 6.8409,
   "providers": [
     {
@@ -545,22 +545,6 @@
       "pricing_page_url": "https://docs.x.ai/developers/models",
       "models": [
         {
-          "name": "grok-4.20-0309-reasoning",
-          "display_name": "Grok 4.20 Reasoning",
-          "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 8.55,
-          "cached_input_price": 1.37,
-          "output_price": 17.1,
-          "price_currency": "CNY",
-          "raw_input_price": 1.25,
-          "raw_cached_input_price": 0.2,
-          "raw_output_price": 2.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
-        },
-        {
           "name": "grok-4-1-fast-reasoning",
           "display_name": "Grok 4.1 Fast Reasoning",
           "context_window": 2000000,
@@ -577,6 +561,22 @@
           "tier": null
         },
         {
+          "name": "grok-4.20-0309-reasoning",
+          "display_name": "Grok 4.20 Reasoning",
+          "context_window": 2000000,
+          "max_output_tokens": null,
+          "input_price": 8.55,
+          "cached_input_price": 1.37,
+          "output_price": 17.1,
+          "price_currency": "CNY",
+          "raw_input_price": 1.25,
+          "raw_cached_input_price": 0.2,
+          "raw_output_price": 2.5,
+          "raw_price_currency": "USD",
+          "notes": null,
+          "tier": null
+        },
+        {
           "name": "grok-4-fast-reasoning",
           "display_name": "Grok 4 Fast Reasoning",
           "context_window": 2000000,
@@ -588,6 +588,22 @@
           "raw_input_price": 0.2,
           "raw_cached_input_price": 0.05,
           "raw_output_price": 0.5,
+          "raw_price_currency": "USD",
+          "notes": null,
+          "tier": null
+        },
+        {
+          "name": "grok-4-0709",
+          "display_name": "Grok 4",
+          "context_window": 256000,
+          "max_output_tokens": null,
+          "input_price": 20.52,
+          "cached_input_price": 5.13,
+          "output_price": 102.61,
+          "price_currency": "CNY",
+          "raw_input_price": 3.0,
+          "raw_cached_input_price": 0.75,
+          "raw_output_price": 15.0,
           "raw_price_currency": "USD",
           "notes": null,
           "tier": null
@@ -620,22 +636,6 @@
           "raw_input_price": 1.25,
           "raw_cached_input_price": 0.2,
           "raw_output_price": 2.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "grok-4-0709",
-          "display_name": "Grok 4",
-          "context_window": 256000,
-          "max_output_tokens": null,
-          "input_price": 20.52,
-          "cached_input_price": 5.13,
-          "output_price": 102.61,
-          "price_currency": "CNY",
-          "raw_input_price": 3.0,
-          "raw_cached_input_price": 0.75,
-          "raw_output_price": 15.0,
           "raw_price_currency": "USD",
           "notes": null,
           "tier": null
