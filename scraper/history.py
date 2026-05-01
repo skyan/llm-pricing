@@ -9,7 +9,6 @@ from pathlib import Path
 MAX_SUMMARY_POINTS = 365
 USD_PROVIDER_IDS = {
     "anthropic",
-    "deepseek",
     "google",
     "openai",
     "xai",

@@ -32,9 +32,9 @@ providers:
 
   - id: deepseek
     name: DeepSeek
-    pricing_url: "https://api-docs.deepseek.com/quick_start/pricing"
+    pricing_url: "https://api-docs.deepseek.com/zh-cn/quick_start/pricing"
     website: "https://api-docs.deepseek.com"
-    currency: USD
+    currency: CNY
     enabled: true
 
   - id: qianwen

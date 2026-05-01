@@ -197,7 +197,7 @@ ALL_SCRAPERS["newprovider"] = NewProviderScraper
 }
 ```
 
-所有价格单位：**人民币元 / 1M tokens**。USD 价格在抓取时按当日汇率自动转换。
+所有价格单位：**人民币元 / 1M tokens**。USD 价格在抓取时按当日汇率自动转换；DeepSeek 以中文定价页为准，直接按人民币抓取。
 
 ## Cloudflare Pages + R2 说明
 

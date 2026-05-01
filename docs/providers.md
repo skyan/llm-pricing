@@ -8,7 +8,7 @@
 | Anthropic | `platform.claude.com/docs/en/about-claude/pricing` | fetch | 11 |
 | Google | `cloud.google.com/vertex-ai/generative-ai/pricing` | fetch | 11 |
 | xAI | `docs.x.ai/developers/models` | fetch 优先，必要时 Playwright 回退 | 5 |
-| DeepSeek | `api-docs.deepseek.com/quick_start/pricing` | fetch | 2 |
+| DeepSeek | `api-docs.deepseek.com/zh-cn/quick_start/pricing` | fetch | 2 |
 | 千问 | `help.aliyun.com/zh/model-studio/model-pricing` | fetch | 6 |
 | 豆包 | `volcengine.com/docs/82379/1544106` | Playwright（等待表格出现） | 4 |
 | 文心 | `cloud.baidu.com/doc/qianfan/s/wmh4sv6ya` | fetch | 8 |
@@ -61,9 +61,9 @@ scraper/
 - 解析: 优先读取页面内嵌的 `languageModels` 元数据，只保留带 input/output 的 Grok 文本模型；同一基础型号优先保留 reasoning 版本
 
 ### DeepSeek
-- URL: `api-docs.deepseek.com/quick_start/pricing`
+- URL: `api-docs.deepseek.com/zh-cn/quick_start/pricing`
 - 方式: 直接 fetch，Docusaurus SSR
-- 解析: 单 table，header 用 `<td>`，有 PRICING 分段行需特殊处理
+- 解析: 以中文定价页为准，单 table，header 用 `<td>`，有 PRICING 分段行需特殊处理；价格直接按人民币抓取，不做 USD→CNY 转换
 
 ### 千问 (Alibaba)
 - URL: `help.aliyun.com/zh/model-studio/model-pricing`
@@ -107,5 +107,6 @@ scraper/
 
 - 抓取器先产出厂商原始币种价格
 - 对美元厂商，站点展示值统一换算为人民币
+- DeepSeek 以中文页人民币价格为准，不属于美元厂商
 - 写入 JSON 时同时保留 `raw_*` 原币值和 `raw_price_currency`
 - 历史趋势按原币值去重，前端再按当前汇率归一化展示，避免纯汇率波动被误判为厂商调价

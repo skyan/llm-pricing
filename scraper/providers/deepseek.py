@@ -9,8 +9,8 @@ class DeepseekScraper(BaseScraper):
     provider_id = "deepseek"
     provider_name = "DeepSeek"
     website = "https://api-docs.deepseek.com"
-    pricing_url = "https://api-docs.deepseek.com/quick_start/pricing"
-    currency = "USD"
+    pricing_url = "https://api-docs.deepseek.com/zh-cn/quick_start/pricing"
+    currency = "CNY"
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
         article = soup.find("article") or soup.find(class_="markdown")
