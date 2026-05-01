@@ -12,6 +12,13 @@ class DeepseekScraper(BaseScraper):
     pricing_url = "https://api-docs.deepseek.com/zh-cn/quick_start/pricing"
     currency = "CNY"
 
+    def fetch_html(self) -> str:
+        with self._build_session() as session:
+            resp = session.get(self.pricing_url, timeout=self.request_timeout)
+            resp.raise_for_status()
+            resp.encoding = "utf-8"
+            return resp.text
+
     def parse_soup(self, soup: BeautifulSoup) -> list:
         article = soup.find("article") or soup.find(class_="markdown")
         if not article:
