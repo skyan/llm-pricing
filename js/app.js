@@ -191,7 +191,7 @@
     var models = [];
     (data.providers || []).forEach(function (prov, pi) {
       (prov.models || []).forEach(function (m) {
-        var tier = m.tier || detectTier(m);
+        var tier = m.tier || detectTier(m, prov.id);
         models.push(Object.assign({}, m, {
           _providerId: prov.id,
           _providerName: prov.name,
@@ -207,10 +207,52 @@
     return models;
   }
 
-  function detectTier(m) {
+  function hasAny(name, patterns) {
+    return patterns.some(function (pattern) { return pattern.test(name); });
+  }
+
+  function detectTier(m, providerId) {
     var name = ((m.display_name || '') + ' ' + (m.name || '')).toLowerCase();
-    if (/flash|lite|mini|nano|air|turbo|speed|haiku/.test(name)) return 'lite';
-    if (/pro|max|opus|plus|preview|sonnet/.test(name)) return 'pro';
+    switch (providerId) {
+      case 'openai':
+        if (hasAny(name, [/mini/, /nano/])) return 'lite';
+        if (hasAny(name, [/\bpro\b/])) return 'pro';
+        return 'none';
+      case 'anthropic':
+        if (hasAny(name, [/haiku/])) return 'lite';
+        if (hasAny(name, [/opus/, /sonnet/])) return 'pro';
+        return 'none';
+      case 'google':
+        if (hasAny(name, [/gemini 3 pro preview/, /gemini-3-pro-preview/, /gemini 2\.5 pro/, /gemini-2\.5-pro/])) return 'pro';
+        if (hasAny(name, [/flash/, /lite/])) return 'lite';
+        return 'none';
+      case 'deepseek':
+        if (hasAny(name, [/\bv4 pro\b/, /deepseek-v4-pro/])) return 'pro';
+        if (hasAny(name, [/flash/])) return 'lite';
+        return 'none';
+      case 'qianwen':
+        if (hasAny(name, [/max/, /plus/])) return 'pro';
+        if (hasAny(name, [/flash/])) return 'lite';
+        return 'none';
+      case 'doubao':
+        if (hasAny(name, [/\bpro\b/])) return 'pro';
+        if (hasAny(name, [/lite/, /mini/])) return 'lite';
+        return 'none';
+      case 'ernie':
+        if (hasAny(name, [/speed pro/, /lite pro/])) return 'pro';
+        if (hasAny(name, [/turbo/])) return 'lite';
+        return 'none';
+      case 'glm':
+        if (hasAny(name, [/flashx/, /air/, /turbo/])) return 'lite';
+        return 'none';
+      case 'minimax':
+        if (hasAny(name, [/minimax-m2\.7/, /minimax-m2\.5/, /highspeed/])) return 'pro';
+        return 'none';
+      default:
+        break;
+    }
+    if (hasAny(name, [/flash/, /lite/, /mini/, /nano/, /air/, /turbo/, /speed/, /haiku/])) return 'lite';
+    if (hasAny(name, [/\bpro\b/, /max/, /opus/, /plus/, /preview/, /sonnet/])) return 'pro';
     return 'none';
   }
 
