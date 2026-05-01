@@ -1,19 +1,23 @@
 {
-  "updated": "2026-04-30T12:09:45.349950+00:00",
+  "updated": "2026-05-01T14:24:45.881818+00:00",
   "models": {
     "openai:gpt-5.5-short": {
       "provider": "openai",
       "name": "GPT 5.5 (≤256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 34.24,
+          "d": "2026-05-01",
+          "i": 34.2,
           "c": 3.42,
-          "o": 205.46
+          "o": 205.23,
+          "ri": 5.0,
+          "rc": 0.5,
+          "ro": 30.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.5-long": {
@@ -21,14 +25,18 @@
       "name": "GPT 5.5 (>256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 68.49,
-          "c": 6.85,
-          "o": 308.19
+          "d": "2026-05-01",
+          "i": 68.41,
+          "c": 6.84,
+          "o": 307.84,
+          "ri": 10.0,
+          "rc": 1.0,
+          "ro": 45.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.5-pro-short": {
@@ -36,14 +44,18 @@
       "name": "GPT 5.5 Pro (≤256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 205.46,
+          "d": "2026-05-01",
+          "i": 205.23,
           "c": null,
-          "o": 1232.76
+          "o": 1231.36,
+          "ri": 30.0,
+          "rc": null,
+          "ro": 180.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.5-pro-long": {
@@ -51,14 +63,18 @@
       "name": "GPT 5.5 Pro (>256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 410.92,
+          "d": "2026-05-01",
+          "i": 410.45,
           "c": null,
-          "o": 1849.13
+          "o": 1847.05,
+          "ri": 60.0,
+          "rc": null,
+          "ro": 270.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.4-short": {
@@ -66,14 +82,18 @@
       "name": "GPT 5.4 (≤256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 17.12,
+          "d": "2026-05-01",
+          "i": 17.1,
           "c": 1.71,
-          "o": 102.73
+          "o": 102.61,
+          "ri": 2.5,
+          "rc": 0.25,
+          "ro": 15.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.4-long": {
@@ -81,14 +101,18 @@
       "name": "GPT 5.4 (>256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 34.24,
+          "d": "2026-05-01",
+          "i": 34.2,
           "c": 3.42,
-          "o": 154.09
+          "o": 153.92,
+          "ri": 5.0,
+          "rc": 0.5,
+          "ro": 22.5,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.4-mini-short": {
@@ -96,14 +120,18 @@
       "name": "GPT 5.4 Mini (≤256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 5.14,
+          "d": "2026-05-01",
+          "i": 5.13,
           "c": 0.51,
-          "o": 30.82
+          "o": 30.78,
+          "ri": 0.75,
+          "rc": 0.075,
+          "ro": 4.5,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.4-nano-short": {
@@ -111,14 +139,18 @@
       "name": "GPT 5.4 Nano (≤256K)",
       "series": [
         {
-          "d": "2026-04-30",
+          "d": "2026-05-01",
           "i": 1.37,
           "c": 0.14,
-          "o": 8.56
+          "o": 8.55,
+          "ri": 0.2,
+          "rc": 0.02,
+          "ro": 1.25,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.4-pro-short": {
@@ -126,14 +158,18 @@
       "name": "GPT 5.4 Pro (≤256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 205.46,
+          "d": "2026-05-01",
+          "i": 205.23,
           "c": null,
-          "o": 1232.76
+          "o": 1231.36,
+          "ri": 30.0,
+          "rc": null,
+          "ro": 180.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "openai:gpt-5.4-pro-long": {
@@ -141,14 +177,18 @@
       "name": "GPT 5.4 Pro (>256K)",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 410.92,
+          "d": "2026-05-01",
+          "i": 410.45,
           "c": null,
-          "o": 1849.13
+          "o": 1847.05,
+          "ri": 60.0,
+          "rc": null,
+          "ro": 270.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-opus-4.7": {
@@ -156,14 +196,18 @@
       "name": "Claude Opus 4.7",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 42.8,
-          "o": 171.22
+          "d": "2026-05-01",
+          "i": 34.2,
+          "c": 42.76,
+          "o": 171.02,
+          "ri": 5.0,
+          "rc": 6.25,
+          "ro": 25.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-opus-4.6": {
@@ -171,14 +215,18 @@
       "name": "Claude Opus 4.6",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 42.8,
-          "o": 171.22
+          "d": "2026-05-01",
+          "i": 34.2,
+          "c": 42.76,
+          "o": 171.02,
+          "ri": 5.0,
+          "rc": 6.25,
+          "ro": 25.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-opus-4.5": {
@@ -186,14 +234,18 @@
       "name": "Claude Opus 4.5",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 42.8,
-          "o": 171.22
+          "d": "2026-05-01",
+          "i": 34.2,
+          "c": 42.76,
+          "o": 171.02,
+          "ri": 5.0,
+          "rc": 6.25,
+          "ro": 25.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-opus-4.1": {
@@ -201,14 +253,18 @@
       "name": "Claude Opus 4.1",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 102.73,
-          "c": 128.41,
-          "o": 513.65
+          "d": "2026-05-01",
+          "i": 102.61,
+          "c": 128.27,
+          "o": 513.07,
+          "ri": 15.0,
+          "rc": 18.75,
+          "ro": 75.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-opus-4": {
@@ -216,14 +272,18 @@
       "name": "Claude Opus 4",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 102.73,
-          "c": 128.41,
-          "o": 513.65
+          "d": "2026-05-01",
+          "i": 102.61,
+          "c": 128.27,
+          "o": 513.07,
+          "ri": 15.0,
+          "rc": 18.75,
+          "ro": 75.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-sonnet-4.6": {
@@ -231,14 +291,18 @@
       "name": "Claude Sonnet 4.6",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 25.68,
-          "o": 102.73
+          "d": "2026-05-01",
+          "i": 20.52,
+          "c": 25.65,
+          "o": 102.61,
+          "ri": 3.0,
+          "rc": 3.75,
+          "ro": 15.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-sonnet-4.5": {
@@ -246,14 +310,18 @@
       "name": "Claude Sonnet 4.5",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 25.68,
-          "o": 102.73
+          "d": "2026-05-01",
+          "i": 20.52,
+          "c": 25.65,
+          "o": 102.61,
+          "ri": 3.0,
+          "rc": 3.75,
+          "ro": 15.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-sonnet-4": {
@@ -261,14 +329,18 @@
       "name": "Claude Sonnet 4",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 25.68,
-          "o": 102.73
+          "d": "2026-05-01",
+          "i": 20.52,
+          "c": 25.65,
+          "o": 102.61,
+          "ri": 3.0,
+          "rc": 3.75,
+          "ro": 15.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-haiku-4.5": {
@@ -276,14 +348,18 @@
       "name": "Claude Haiku 4.5",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 6.85,
-          "c": 8.56,
-          "o": 34.24
+          "d": "2026-05-01",
+          "i": 6.84,
+          "c": 8.55,
+          "o": 34.2,
+          "ri": 1.0,
+          "rc": 1.25,
+          "ro": 5.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-haiku-3.5": {
@@ -291,14 +367,18 @@
       "name": "Claude Haiku 3.5",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 5.48,
-          "c": 6.85,
-          "o": 27.39
+          "d": "2026-05-01",
+          "i": 5.47,
+          "c": 6.84,
+          "o": 27.36,
+          "ri": 0.8,
+          "rc": 1.0,
+          "ro": 4.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "anthropic:claude-haiku-3": {
@@ -306,943 +386,94 @@
       "name": "Claude Haiku 3",
       "series": [
         {
-          "d": "2026-04-30",
+          "d": "2026-05-01",
           "i": 1.71,
           "c": 2.05,
-          "o": 8.56
+          "o": 8.55,
+          "ri": 0.25,
+          "rc": 0.3,
+          "ro": 1.25,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
-    },
-    "google:gemini-3.1-pro-preview": {
-      "provider": "google",
-      "name": "Gemini 3.1 Pro Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.74,
-          "c": 1.37,
-          "o": 27.39
-        }
-      ],
-      "active": false
-    },
-    "google:gemini-3.1-flash-lite-preview": {
-      "provider": "google",
-      "name": "Gemini 3.1 Flash-Lite Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.71,
-          "c": 0.21,
-          "o": 10.27
-        }
-      ],
-      "active": true,
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30"
     },
     "google:gemini-3-pro-preview": {
       "provider": "google",
       "name": "Gemini 3 Pro Preview",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 13.7,
+          "d": "2026-05-01",
+          "i": 13.68,
           "c": 1.37,
-          "o": 82.18
+          "o": 82.09,
+          "ri": 2.0,
+          "rc": 0.2,
+          "ro": 12.0,
+          "cur": "USD"
         }
       ],
-      "active": true,
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30"
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "google:gemini-3.1-flash-lite-preview": {
+      "provider": "google",
+      "name": "Gemini 3.1 Flash-Lite Preview",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 1.71,
+          "c": 0.21,
+          "o": 10.26,
+          "ri": 0.25,
+          "rc": 0.03,
+          "ro": 1.5,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
     },
     "google:gemini-3-flash-preview": {
       "provider": "google",
       "name": "Gemini 3 Flash Preview",
       "series": [
         {
-          "d": "2026-04-30",
+          "d": "2026-05-01",
           "i": 3.42,
           "c": 0.34,
-          "o": 20.55
+          "o": 20.52,
+          "ri": 0.5,
+          "rc": 0.05,
+          "ro": 3.0,
+          "cur": "USD"
         }
       ],
-      "active": true,
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30"
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
     },
     "google:gemini-2.5-pro": {
       "provider": "google",
       "name": "Gemini 2.5 Pro",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 8.56,
+          "d": "2026-05-01",
+          "i": 8.55,
           "c": 0.89,
-          "o": 68.49
+          "o": 68.41,
+          "ri": 1.25,
+          "rc": 0.13,
+          "ro": 10.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-2.5-procomputer-use-preview": {
-      "provider": "google",
-      "name": "Gemini 2.5 ProComputer Use-Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 17.12,
-          "c": 8.56,
-          "o": 17.12
-        }
-      ],
-      "active": false
-    },
-    "google:gemini-2.5flash": {
-      "provider": "google",
-      "name": "Gemini 2.5Flash",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.05,
-          "c": 0.21,
-          "o": 2.05
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-2.5-flash-live-api": {
-      "provider": "google",
-      "name": "Gemini 2.5 Flash Live API",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 3.42,
-          "c": null,
-          "o": 13.7
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-2.5-flash-lite": {
-      "provider": "google",
-      "name": "Gemini 2.5 Flash Lite",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.68,
-          "c": 0.07,
-          "o": 2.74
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-2.5flash-image": {
-      "provider": "google",
-      "name": "Gemini 2.5Flash Image",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 8.56,
-          "c": 1.03,
-          "o": 102.73
-        }
-      ],
-      "active": false
-    },
-    "google:gemini-2.0-flash": {
-      "provider": "google",
-      "name": "Gemini 2.0 Flash",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.03,
-          "c": null,
-          "o": 4.11
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-2.0-flash-lite": {
-      "provider": "google",
-      "name": "Gemini 2.0 Flash Lite",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.51,
-          "c": null,
-          "o": 2.05
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:customer-preference": {
-      "provider": "google",
-      "name": "Customer Preference",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 4.31,
-          "c": 1.1,
-          "o": 17.12
-        }
-      ],
-      "active": false
-    },
-    "google:gemini-1.5-flash": {
-      "provider": "google",
-      "name": "Gemini 1.5 Flash",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.0,
-          "c": 0.0,
-          "o": 0.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-1.5-pro": {
-      "provider": "google",
-      "name": "Gemini 1.5 Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.0,
-          "c": 0.0,
-          "o": 0.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:translation-llm-002": {
-      "provider": "google",
-      "name": "Translation LLM 002",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 30.82,
-          "c": null,
-          "o": 30.82
-        }
-      ],
-      "active": false
-    },
-    "google:duration": {
-      "provider": "google",
-      "name": "Duration",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 34.24,
-          "c": 20.55,
-          "o": 34.24
-        }
-      ],
-      "active": false
-    },
-    "google:tool": {
-      "provider": "google",
-      "name": "Tool",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.51,
-          "c": null,
-          "o": 1.51
-        }
-      ],
-      "active": false
-    },
-    "xai:grok-4.20-0309-reasoning": {
-      "provider": "xai",
-      "name": "Grok 4.20 Reasoning",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 13.7,
-          "c": 1.37,
-          "o": 41.09
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "xai:grok-4.20-multi-agent": {
-      "provider": "xai",
-      "name": "Grok 4.20 Multi Agent",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 13.7,
-          "c": null,
-          "o": 41.09
-        }
-      ],
-      "active": false
-    },
-    "xai:grok-4-1-fast-reasoning": {
-      "provider": "xai",
-      "name": "Grok 4.1 Fast Reasoning",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.37,
-          "c": 0.34,
-          "o": 3.42
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "deepseek:deepseek-v4-flash": {
-      "provider": "deepseek",
-      "name": "Deepseek V4 Flash",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.96,
-          "c": 0.02,
-          "o": 1.92
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "deepseek:deepseek-v4-pro": {
-      "provider": "deepseek",
-      "name": "Deepseek V4 Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.98,
-          "c": 0.02,
-          "o": 5.96
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "qianwen:qwen3.6-max-preview": {
-      "provider": "qianwen",
-      "name": "Qwen3.6-Max-Preview",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 9.0,
-          "c": null,
-          "o": 54.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "qianwen:qwen3.6-plus": {
-      "provider": "qianwen",
-      "name": "Qwen3.6-Plus",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.0,
-          "c": null,
-          "o": 12.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "qianwen:qwen3.6-flash": {
-      "provider": "qianwen",
-      "name": "Qwen3.6-Flash",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.2,
-          "c": null,
-          "o": 7.2
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "qianwen:qwen3-max": {
-      "provider": "qianwen",
-      "name": "Qwen3-Max",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.5,
-          "c": null,
-          "o": 10.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "qianwen:千问-plus": {
-      "provider": "qianwen",
-      "name": "千问 Plus",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.8,
-          "c": null,
-          "o": 8.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "qianwen:千问-flash": {
-      "provider": "qianwen",
-      "name": "千问 Flash",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.15,
-          "c": null,
-          "o": 1.5
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "doubao:doubao-seed-2.0-pro": {
-      "provider": "doubao",
-      "name": "doubao-seed-2.0-pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 3.2,
-          "c": 0.64,
-          "o": 16.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "doubao:doubao-seed-2.0-lite": {
-      "provider": "doubao",
-      "name": "doubao-seed-2.0-lite",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.6,
-          "c": 0.12,
-          "o": 3.6
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "doubao:doubao-seed-2.0-mini": {
-      "provider": "doubao",
-      "name": "doubao-seed-2.0-mini",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.2,
-          "c": 0.04,
-          "o": 2.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "doubao:doubao-seed-2.0-code": {
-      "provider": "doubao",
-      "name": "doubao-seed-2.0-code",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 3.2,
-          "c": 0.64,
-          "o": 16.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "ernie:ernie-5.0": {
-      "provider": "ernie",
-      "name": "ERNIE 5.0",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 10.0,
-          "c": null,
-          "o": 40.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "ernie:ernie-4.5-turbo": {
-      "provider": "ernie",
-      "name": "ERNIE 4.5 Turbo",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 3.0,
-          "c": 0.75,
-          "o": 9.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "ernie:ernie-4.5-turbo-32k": {
-      "provider": "ernie",
-      "name": "ERNIE-4.5-Turbo-32K",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.8,
-          "c": 0.2,
-          "o": 3.2
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "ernie:ernie-4.5-turbo-20260402": {
-      "provider": "ernie",
-      "name": "ERNIE-4.5-Turbo-20260402",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.8,
-          "c": 0.2,
-          "o": 3.2
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "ernie:ernie-4.5": {
-      "provider": "ernie",
-      "name": "ERNIE 4.5",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 12.0,
-          "c": null,
-          "o": 24.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "ernie:ernie-speed-pro": {
-      "provider": "ernie",
-      "name": "ERNIE Speed Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.3,
-          "c": null,
-          "o": 0.6
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "ernie:ernie-lite-pro": {
-      "provider": "ernie",
-      "name": "ERNIE Lite Pro",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.2,
-          "c": null,
-          "o": 0.4
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "ernie:ernie-character": {
-      "provider": "ernie",
-      "name": "ERNIE Character",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 9.0,
-          "c": null,
-          "o": 36.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "kimi:kimi-k2.6": {
-      "provider": "kimi",
-      "name": "Kimi K2.6",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 6.5,
-          "c": 1.1,
-          "o": 27.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "kimi:kimi-k2.5": {
-      "provider": "kimi",
-      "name": "Kimi K2.5",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 4.0,
-          "c": 0.7,
-          "o": 21.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "glm:glm-5.1新品": {
-      "provider": "glm",
-      "name": "GLM-5.1新品",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 6.0,
-          "c": 1.3,
-          "o": 24.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "glm:glm-5-turbo": {
-      "provider": "glm",
-      "name": "GLM-5-Turbo",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 5.0,
-          "c": 1.2,
-          "o": 22.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "glm:glm-5": {
-      "provider": "glm",
-      "name": "GLM-5",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 4.0,
-          "c": 1.0,
-          "o": 18.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "glm:glm-4.7": {
-      "provider": "glm",
-      "name": "GLM-4.7",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.0,
-          "c": 0.4,
-          "o": 8.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "glm:glm-4.5-air": {
-      "provider": "glm",
-      "name": "GLM-4.5-Air",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.8,
-          "c": 0.16,
-          "o": 2.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "glm:glm-4.7-flashx": {
-      "provider": "glm",
-      "name": "GLM-4.7-FlashX",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 0.5,
-          "c": 0.1,
-          "o": 3.0
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "minimax:minimax-m2.7": {
-      "provider": "minimax",
-      "name": "MiniMax-M2.7",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.1,
-          "c": 0.42,
-          "o": 8.4
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "minimax:minimax-m2.7-highspeed": {
-      "provider": "minimax",
-      "name": "MiniMax-M2.7-highspeed",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 4.2,
-          "c": 0.42,
-          "o": 16.8
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "minimax:minimax-m2.5": {
-      "provider": "minimax",
-      "name": "MiniMax-M2.5",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.1,
-          "c": 0.21,
-          "o": 8.4
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "minimax:minimax-m2.5-highspeed": {
-      "provider": "minimax",
-      "name": "MiniMax-M2.5-highspeed",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 4.2,
-          "c": 0.21,
-          "o": 16.8
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "minimax:m2-her": {
-      "provider": "minimax",
-      "name": "M2-her",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.1,
-          "c": null,
-          "o": 8.4
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-3-pro-预览版": {
-      "provider": "google",
-      "name": "Gemini 3 Pro 预览版",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 2.74,
-          "c": 1.37,
-          "o": 27.39
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-3.1-flash-lite-预览版": {
-      "provider": "google",
-      "name": "Gemini 3.1 Flash-Lite 预览版",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.71,
-          "c": 0.21,
-          "o": 1.71
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-3-flash-预览版": {
-      "provider": "google",
-      "name": "Gemini 3 Flash 预览版",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 3.42,
-          "c": 0.34,
-          "o": 3.42
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:gemini-2.5-pro计算机使用---预览版": {
-      "provider": "google",
-      "name": "Gemini 2.5 Pro计算机使用 - 预览版",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 17.12,
-          "c": 8.56,
-          "o": 17.12
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:客户偏好": {
-      "provider": "google",
-      "name": "客户偏好",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 4.31,
-          "c": 1.1,
-          "o": 17.12
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "google:模型": {
-      "provider": "google",
-      "name": "模型",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 30.82,
-          "c": 20.55,
-          "o": 30.82
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "xai:grok-4.20-multi-agent-0309": {
-      "provider": "xai",
-      "name": "Grok 4.20 Multi Agent",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 13.7,
-          "c": 1.37,
-          "o": 41.09
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "xai:grok-4-fast-reasoning": {
-      "provider": "xai",
-      "name": "Grok 4 Fast Reasoning",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 1.37,
-          "c": 0.34,
-          "o": 3.42
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
-      "active": true
-    },
-    "xai:grok-4-0709": {
-      "provider": "xai",
-      "name": "Grok 4",
-      "series": [
-        {
-          "d": "2026-04-30",
-          "i": 20.55,
-          "c": 5.14,
-          "o": 102.73
-        }
-      ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "google:gemini-2.5-pro-computer-use-preview": {
@@ -1250,14 +481,18 @@
       "name": "Gemini 2.5 Pro Computer Use Preview",
       "series": [
         {
-          "d": "2026-04-30",
-          "i": 8.56,
+          "d": "2026-05-01",
+          "i": 8.55,
           "c": null,
-          "o": 68.49
+          "o": 68.41,
+          "ri": 1.25,
+          "rc": null,
+          "ro": 10.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "google:gemini-2.5-flash": {
@@ -1265,14 +500,75 @@
       "name": "Gemini 2.5 Flash",
       "series": [
         {
-          "d": "2026-04-30",
+          "d": "2026-05-01",
           "i": 2.05,
           "c": 0.21,
-          "o": 17.12
+          "o": 17.1,
+          "ri": 0.3,
+          "rc": 0.03,
+          "ro": 2.5,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "google:gemini-2.5-flash-live-api": {
+      "provider": "google",
+      "name": "Gemini 2.5 Flash Live API",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 3.42,
+          "c": null,
+          "o": 13.68,
+          "ri": 0.5,
+          "rc": null,
+          "ro": 2.0,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "google:gemini-2.5-flash-lite": {
+      "provider": "google",
+      "name": "Gemini 2.5 Flash Lite",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.68,
+          "c": 0.07,
+          "o": 2.74,
+          "ri": 0.1,
+          "rc": 0.01,
+          "ro": 0.4,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "google:gemini-2.0-flash": {
+      "provider": "google",
+      "name": "Gemini 2.0 Flash",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 1.03,
+          "c": null,
+          "o": 4.1,
+          "ri": 0.15,
+          "rc": null,
+          "ro": 0.6,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     },
     "google:gemini-2.0-flash-live-api": {
@@ -1280,14 +576,778 @@
       "name": "Gemini 2.0 Flash Live API",
       "series": [
         {
-          "d": "2026-04-30",
+          "d": "2026-05-01",
           "i": 3.42,
           "c": null,
-          "o": 13.7
+          "o": 13.68,
+          "ri": 0.5,
+          "rc": null,
+          "ro": 2.0,
+          "cur": "USD"
         }
       ],
-      "first_seen": "2026-04-30",
-      "last_seen": "2026-04-30",
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "google:gemini-2.0-flash-lite": {
+      "provider": "google",
+      "name": "Gemini 2.0 Flash Lite",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.51,
+          "c": null,
+          "o": 2.05,
+          "ri": 0.075,
+          "rc": null,
+          "ro": 0.3,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "xai:grok-4.20-0309-reasoning": {
+      "provider": "xai",
+      "name": "Grok 4.20 Reasoning",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 8.55,
+          "c": 1.37,
+          "o": 17.1,
+          "ri": 1.25,
+          "rc": 0.2,
+          "ro": 2.5,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "xai:grok-4.3": {
+      "provider": "xai",
+      "name": "Grok 4.3",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 8.55,
+          "c": 1.37,
+          "o": 17.1,
+          "ri": 1.25,
+          "rc": 0.2,
+          "ro": 2.5,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "xai:grok-4-1-fast-reasoning": {
+      "provider": "xai",
+      "name": "Grok 4.1 Fast Reasoning",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 1.37,
+          "c": 0.34,
+          "o": 3.42,
+          "ri": 0.2,
+          "rc": 0.05,
+          "ro": 0.5,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "xai:grok-4-0709": {
+      "provider": "xai",
+      "name": "Grok 4",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 20.52,
+          "c": 5.13,
+          "o": 102.61,
+          "ri": 3.0,
+          "rc": 0.75,
+          "ro": 15.0,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "xai:grok-4-fast-reasoning": {
+      "provider": "xai",
+      "name": "Grok 4 Fast Reasoning",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 1.37,
+          "c": 0.34,
+          "o": 3.42,
+          "ri": 0.2,
+          "rc": 0.05,
+          "ro": 0.5,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "xai:grok-4.20-multi-agent-0309": {
+      "provider": "xai",
+      "name": "Grok 4.20 Multi Agent",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 8.55,
+          "c": 1.37,
+          "o": 17.1,
+          "ri": 1.25,
+          "rc": 0.2,
+          "ro": 2.5,
+          "cur": "USD"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "deepseek:deepseek-v4-flash": {
+      "provider": "deepseek",
+      "name": "DeepSeek V4 Flash",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 1.0,
+          "c": 0.02,
+          "o": 2.0,
+          "ri": 1.0,
+          "rc": 0.02,
+          "ro": 2.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "deepseek:deepseek-v4-pro": {
+      "provider": "deepseek",
+      "name": "DeepSeek V4 Pro",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 3.0,
+          "c": 0.025,
+          "o": 6.0,
+          "ri": 3.0,
+          "rc": 0.025,
+          "ro": 6.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "qianwen:qwen3.6-max-preview": {
+      "provider": "qianwen",
+      "name": "Qwen3.6-Max-Preview",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 9.0,
+          "c": null,
+          "o": 54.0,
+          "ri": 9.0,
+          "rc": null,
+          "ro": 54.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "qianwen:qwen3-max": {
+      "provider": "qianwen",
+      "name": "Qwen3-Max",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 2.5,
+          "c": null,
+          "o": 10.0,
+          "ri": 2.5,
+          "rc": null,
+          "ro": 10.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "qianwen:qwen3.6-plus": {
+      "provider": "qianwen",
+      "name": "Qwen3.6-Plus",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 2.0,
+          "c": null,
+          "o": 12.0,
+          "ri": 2.0,
+          "rc": null,
+          "ro": 12.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "qianwen:qwen3.6-flash": {
+      "provider": "qianwen",
+      "name": "Qwen3.6-Flash",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 1.2,
+          "c": null,
+          "o": 7.2,
+          "ri": 1.2,
+          "rc": null,
+          "ro": 7.2,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "qianwen:千问-plus": {
+      "provider": "qianwen",
+      "name": "千问 Plus",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.8,
+          "c": null,
+          "o": 8.0,
+          "ri": 0.8,
+          "rc": null,
+          "ro": 8.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "qianwen:千问-flash": {
+      "provider": "qianwen",
+      "name": "千问 Flash",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.15,
+          "c": null,
+          "o": 1.5,
+          "ri": 0.15,
+          "rc": null,
+          "ro": 1.5,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "doubao:doubao-seed-2.0-pro": {
+      "provider": "doubao",
+      "name": "doubao-seed-2.0-pro",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 3.2,
+          "c": 0.64,
+          "o": 16.0,
+          "ri": 3.2,
+          "rc": 0.64,
+          "ro": 16.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "doubao:doubao-seed-2.0-lite": {
+      "provider": "doubao",
+      "name": "doubao-seed-2.0-lite",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.6,
+          "c": 0.12,
+          "o": 3.6,
+          "ri": 0.6,
+          "rc": 0.12,
+          "ro": 3.6,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "doubao:doubao-seed-2.0-mini": {
+      "provider": "doubao",
+      "name": "doubao-seed-2.0-mini",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.2,
+          "c": 0.04,
+          "o": 2.0,
+          "ri": 0.2,
+          "rc": 0.04,
+          "ro": 2.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "doubao:doubao-seed-2.0-code": {
+      "provider": "doubao",
+      "name": "doubao-seed-2.0-code",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 3.2,
+          "c": 0.64,
+          "o": 16.0,
+          "ri": 3.2,
+          "rc": 0.64,
+          "ro": 16.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "ernie:ernie-5.0": {
+      "provider": "ernie",
+      "name": "ERNIE 5.0",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 10.0,
+          "c": null,
+          "o": 40.0,
+          "ri": 10.0,
+          "rc": null,
+          "ro": 40.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "ernie:ernie-4.5-turbo": {
+      "provider": "ernie",
+      "name": "ERNIE 4.5 Turbo",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 3.0,
+          "c": 0.75,
+          "o": 9.0,
+          "ri": 3.0,
+          "rc": 0.75,
+          "ro": 9.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "ernie:ernie-4.5-turbo-32k": {
+      "provider": "ernie",
+      "name": "ERNIE-4.5-Turbo-32K",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.8,
+          "c": 0.2,
+          "o": 3.2,
+          "ri": 0.8,
+          "rc": 0.2,
+          "ro": 3.2,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "ernie:ernie-4.5-turbo-20260402": {
+      "provider": "ernie",
+      "name": "ERNIE-4.5-Turbo-20260402",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.8,
+          "c": 0.2,
+          "o": 3.2,
+          "ri": 0.8,
+          "rc": 0.2,
+          "ro": 3.2,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "ernie:ernie-4.5": {
+      "provider": "ernie",
+      "name": "ERNIE 4.5",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 12.0,
+          "c": null,
+          "o": 24.0,
+          "ri": 12.0,
+          "rc": null,
+          "ro": 24.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "ernie:ernie-speed-pro": {
+      "provider": "ernie",
+      "name": "ERNIE Speed Pro",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.3,
+          "c": null,
+          "o": 0.6,
+          "ri": 0.3,
+          "rc": null,
+          "ro": 0.6,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "ernie:ernie-lite-pro": {
+      "provider": "ernie",
+      "name": "ERNIE Lite Pro",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.2,
+          "c": null,
+          "o": 0.4,
+          "ri": 0.2,
+          "rc": null,
+          "ro": 0.4,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "ernie:ernie-character": {
+      "provider": "ernie",
+      "name": "ERNIE Character",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 9.0,
+          "c": null,
+          "o": 36.0,
+          "ri": 9.0,
+          "rc": null,
+          "ro": 36.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "kimi:kimi-k2.6": {
+      "provider": "kimi",
+      "name": "Kimi K2.6",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 6.5,
+          "c": 1.1,
+          "o": 27.0,
+          "ri": 6.5,
+          "rc": 1.1,
+          "ro": 27.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "kimi:kimi-k2.5": {
+      "provider": "kimi",
+      "name": "Kimi K2.5",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 4.0,
+          "c": 0.7,
+          "o": 21.0,
+          "ri": 4.0,
+          "rc": 0.7,
+          "ro": 21.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "glm:glm-5.1新品": {
+      "provider": "glm",
+      "name": "GLM-5.1新品",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 6.0,
+          "c": 1.3,
+          "o": 24.0,
+          "ri": 6.0,
+          "rc": 1.3,
+          "ro": 24.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "glm:glm-5-turbo": {
+      "provider": "glm",
+      "name": "GLM-5-Turbo",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 5.0,
+          "c": 1.2,
+          "o": 22.0,
+          "ri": 5.0,
+          "rc": 1.2,
+          "ro": 22.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "glm:glm-5": {
+      "provider": "glm",
+      "name": "GLM-5",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 4.0,
+          "c": 1.0,
+          "o": 18.0,
+          "ri": 4.0,
+          "rc": 1.0,
+          "ro": 18.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "glm:glm-4.7": {
+      "provider": "glm",
+      "name": "GLM-4.7",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 2.0,
+          "c": 0.4,
+          "o": 8.0,
+          "ri": 2.0,
+          "rc": 0.4,
+          "ro": 8.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "glm:glm-4.5-air": {
+      "provider": "glm",
+      "name": "GLM-4.5-Air",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.8,
+          "c": 0.16,
+          "o": 2.0,
+          "ri": 0.8,
+          "rc": 0.16,
+          "ro": 2.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "glm:glm-4.7-flashx": {
+      "provider": "glm",
+      "name": "GLM-4.7-FlashX",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 0.5,
+          "c": 0.1,
+          "o": 3.0,
+          "ri": 0.5,
+          "rc": 0.1,
+          "ro": 3.0,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "minimax:minimax-m2.7": {
+      "provider": "minimax",
+      "name": "MiniMax-M2.7",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 2.1,
+          "c": 0.42,
+          "o": 8.4,
+          "ri": 2.1,
+          "rc": 0.42,
+          "ro": 8.4,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "minimax:minimax-m2.7-highspeed": {
+      "provider": "minimax",
+      "name": "MiniMax-M2.7-highspeed",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 4.2,
+          "c": 0.42,
+          "o": 16.8,
+          "ri": 4.2,
+          "rc": 0.42,
+          "ro": 16.8,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "minimax:minimax-m2.5": {
+      "provider": "minimax",
+      "name": "MiniMax-M2.5",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 2.1,
+          "c": 0.21,
+          "o": 8.4,
+          "ri": 2.1,
+          "rc": 0.21,
+          "ro": 8.4,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "minimax:minimax-m2.5-highspeed": {
+      "provider": "minimax",
+      "name": "MiniMax-M2.5-highspeed",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 4.2,
+          "c": 0.21,
+          "o": 16.8,
+          "ri": 4.2,
+          "rc": 0.21,
+          "ro": 16.8,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
+      "active": true
+    },
+    "minimax:m2-her": {
+      "provider": "minimax",
+      "name": "M2-her",
+      "series": [
+        {
+          "d": "2026-05-01",
+          "i": 2.1,
+          "c": null,
+          "o": 8.4,
+          "ri": 2.1,
+          "rc": null,
+          "ro": 8.4,
+          "cur": "CNY"
+        }
+      ],
+      "first_seen": "2026-05-01",
+      "last_seen": "2026-05-01",
       "active": true
     }
   }
