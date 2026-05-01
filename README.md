@@ -32,7 +32,7 @@
 - **列排序**: 点击表头按任意列排序（升序/降序）
 - **历史趋势**: 内联 SVG 迷你图表展示价格变化趋势
 - **响应式**: 适配桌面端和移动端
-- **每日更新**: GitHub Action 每天自动抓取最新定价并归档当日快照到 R2
+- **每日更新**: GitHub Action 每天自动抓取最新定价并更新站点数据
 
 ## 本地开发
 
@@ -198,23 +198,6 @@ ALL_SCRAPERS["newprovider"] = NewProviderScraper
 ```
 
 所有价格单位：**人民币元 / 1M tokens**。USD 价格在抓取时按当日汇率自动转换；DeepSeek 以中文定价页为准，直接按人民币抓取。
-
-## Cloudflare Pages + R2 说明
-
-- Cloudflare Pages 负责托管静态站点
-- GitHub Actions 负责每日抓取最新 `pricing.json`，并从 R2 最近 365 天快照重建 `summary.json`
-- 每日全量快照不再长期保存在 Git 历史中，而是上传到 Cloudflare R2
-
-### 需要的 GitHub Secrets
-
-- `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
-- `R2_BUCKET`
-
-抓取 workflow 通过 `wrangler r2 object put` 将 `data/pricing.json` 上传为
-`history/YYYY-MM-DD.json`，并更新 `history/index.json` 快照索引，然后运行
-[scripts/rebuild_summary_from_r2.py](scripts/rebuild_summary_from_r2.py)
-从最近 365 天已存在快照重建 `data/history/summary.json`，因此不需要额外配置 R2 Access Key / Secret。
 
 ## License
 
