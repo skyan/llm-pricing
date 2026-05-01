@@ -115,8 +115,8 @@ class BaseScraper(ABC):
         m = re.search(r'[¥$](\d+\.?\d*)', text)
         if m:
             return float(m.group(1))
-        # Try bare numbers like "0.14"
-        m = re.search(r'(\d+\.\d+)', text)
+        # Try bare decimal or integer numbers like "0.14" or "1元"
+        m = re.search(r'(\d+(?:\.\d+)?)', text)
         if m:
             return float(m.group(1))
         return None

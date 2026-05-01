@@ -16,6 +16,11 @@ class DeepseekScraper(BaseScraper):
         article = soup.find("article") or soup.find(class_="markdown")
         if not article:
             return []
+        article_text = article.get_text(" ", strip=True)
+        if "百万tokens输入" in article_text:
+            models = self._parse_cn_page(article_text)
+            if models:
+                return models
         tables = article.find_all("table")
         if not tables:
             return []
@@ -104,6 +109,40 @@ class DeepseekScraper(BaseScraper):
                 output_price=p.get("output", 0),
             ))
 
+        return models
+
+    def _parse_cn_page(self, article_text: str) -> list[ModelPricing]:
+        compact = re.sub(r'\s+', ' ', article_text)
+
+        def extract_row(pattern: str) -> list[float]:
+            match = re.search(pattern, compact)
+            if not match:
+                return []
+            return [float(value) for value in re.findall(r'(\d+(?:\.\d+)?)元', match.group(1))]
+
+        cache_prices = extract_row(r'百万tokens输入（缓存命中）(.*?)(?:百万tokens输入（缓存未命中）|$)')
+        input_prices = extract_row(r'百万tokens输入（缓存未命中）(.*?)(?:百万tokens输出|$)')
+        output_prices = extract_row(r'百万tokens输出(.*?)(?:\(\d+\)|##|扣费规则|$)')
+        context_match = re.search(r'上下文长度\s+([0-9]+(?:\.[0-9]+)?[MK]?)', compact)
+        context_window = self.extract_context(context_match.group(1)) if context_match else 0
+
+        model_defs = [
+            ("deepseek-v4-flash", "DeepSeek V4 Flash"),
+            ("deepseek-v4-pro", "DeepSeek V4 Pro"),
+        ]
+        models = []
+        for idx, (name, display_name) in enumerate(model_defs):
+            input_price = input_prices[idx] if idx < len(input_prices) else 0.0
+            output_price = output_prices[idx] if idx < len(output_prices) else 0.0
+            cached_price = cache_prices[idx] if idx < len(cache_prices) else None
+            models.append(ModelPricing(
+                name=name,
+                display_name=display_name,
+                context_window=context_window,
+                input_price=input_price,
+                cached_input_price=cached_price,
+                output_price=output_price,
+            ))
         return models
 
     def _parse_sub_row(self, label: str, cells, model_names, prices, context_windows):
