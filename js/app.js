@@ -12,6 +12,7 @@
     '#2563eb','#7c3aed','#0891b2','#059669','#d97706',
     '#dc2626','#db2777','#4f46e5','#0284c7','#65a30d','#9333ea',
   ];
+  var SPARKLINE_MAX_POINTS = 60;
 
   var $ = function(id) { return document.getElementById(id); };
 
@@ -301,25 +302,27 @@
       var cell = document.querySelector('.sparkline-wrap[data-model="' + CSS.escape(key) + '"]');
       if (!cell) return;
       var mergedSeries = getMergedSeries(m, hModels[key]);
+      var comparableSeries = getComparableSeries(mergedSeries);
+      var sparklineSeries = getSparklineSeries(comparableSeries);
       cell.innerHTML = '';
       cell.title = '点击展开价格趋势图';
       cell.style.cursor = 'pointer';
       cell.classList.add('clickable');
 
-      if (mergedSeries.length === 1) {
+      if (sparklineSeries.length === 1) {
         // Single point: show expand hint
         var hint = document.createElement('span');
         hint.className = 'trend-hint'; hint.textContent = '展开';
         cell.appendChild(hint);
       } else {
-        cell.appendChild(buildSparkline(mergedSeries));
+        cell.appendChild(buildSparkline(sparklineSeries));
         // Expand arrow
         var arrow = document.createElement('span');
         arrow.className = 'trend-arrow';
         arrow.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
         cell.appendChild(arrow);
       }
-      cell.addEventListener('click', function () { toggleChart(m, key, mergedSeries); });
+      cell.addEventListener('click', function () { toggleChart(m, key, comparableSeries); });
     });
   }
 
@@ -334,6 +337,10 @@
       i: m.input_price,
       c: m.cached_input_price,
       o: m.output_price,
+      ri: m.raw_input_price,
+      rc: m.raw_cached_input_price,
+      ro: m.raw_output_price,
+      cur: m.raw_price_currency || m.price_currency || 'CNY',
     };
     var series = normalizeSeries(historyEntry && historyEntry.series ? historyEntry.series : []);
     if (!currentDate) return series.length ? series : [currentPoint];
@@ -358,6 +365,35 @@
     return Array.from(byDate.entries())
       .sort(function (a, b) { return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0; })
       .map(function (entry) { return entry[1]; });
+  }
+
+  function normalizeComparablePoint(point) {
+    if (!point) return point;
+    var rate = pricingData && pricingData.usd_to_cny_rate ? Number(pricingData.usd_to_cny_rate) : null;
+    if (point.cur !== 'USD' || !rate) return point;
+    return {
+      d: point.d,
+      i: point.ri != null ? roundTo2(point.ri * rate) : point.i,
+      c: point.rc != null ? roundTo2(point.rc * rate) : point.c,
+      o: point.ro != null ? roundTo2(point.ro * rate) : point.o,
+      ri: point.ri,
+      rc: point.rc,
+      ro: point.ro,
+      cur: point.cur,
+    };
+  }
+
+  function getComparableSeries(series) {
+    return (series || []).map(normalizeComparablePoint);
+  }
+
+  function getSparklineSeries(series) {
+    if (!series || series.length <= SPARKLINE_MAX_POINTS) return series || [];
+    return series.slice(series.length - SPARKLINE_MAX_POINTS);
+  }
+
+  function roundTo2(value) {
+    return Math.round(Number(value) * 100) / 100;
   }
 
   function buildSparkline(series) {

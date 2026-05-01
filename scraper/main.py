@@ -60,6 +60,15 @@ def update_history_summary(new_data: dict):
     write_summary(HISTORY_SUMMARY, summary)
 
 
+def stamp_raw_prices(models: list[ModelPricing], currency: str) -> None:
+    for model in models:
+        model.raw_input_price = model.input_price
+        model.raw_cached_input_price = model.cached_input_price
+        model.raw_output_price = model.output_price
+        model.raw_price_currency = currency
+        model.price_currency = currency
+
+
 def main():
     config = yaml.safe_load(CONFIG_FILE.read_text())
     rate = get_usd_to_cny_rate(
@@ -93,12 +102,14 @@ def main():
                 ]
                 print(f"[INFO] {scraper.provider_id}: using {len(result.models)} fallback models")
 
+        stamp_raw_prices(result.models, scraper.currency)
         if scraper.currency == "USD":
             for m in result.models:
                 m.input_price = round(m.input_price * rate, 2)
                 if m.cached_input_price is not None:
                     m.cached_input_price = round(m.cached_input_price * rate, 2)
                 m.output_price = round(m.output_price * rate, 2)
+                m.price_currency = "CNY"
         results.append(result)
         print(f"[INFO] {scraper.provider_id}: {len(result.models)} models")
 

@@ -21,8 +21,8 @@ GitHub Actions (每日定时) → Python 爬虫 → data/pricing.json + data/his
 
 ## 数据职责
 
-- [data/pricing.json](/Users/yanlin.sky/workspace/github.com/skyan/llm-pricing/data/pricing.json): 最近一次抓取的最新全量价格
-- [data/history/summary.json](/Users/yanlin.sky/workspace/github.com/skyan/llm-pricing/data/history/summary.json): 最近 365 天趋势汇总，供前端直接读取
+- [data/pricing.json](/Users/yanlin.sky/workspace/github.com/skyan/llm-pricing/data/pricing.json): 最近一次抓取的最新全量价格。页面展示价格统一为人民币；对原始美元厂商额外保留原币值与币种，供趋势归一化使用
+- [data/history/summary.json](/Users/yanlin.sky/workspace/github.com/skyan/llm-pricing/data/history/summary.json): 最近 365 天趋势汇总，供前端直接读取。汇总同时保留展示值与原币值，按原币值去重，避免单纯因汇率波动制造“价格变化”
 - `R2 history/YYYY-MM-DD.json`: 每日完整价格快照，用于长期归档与重建 `summary.json`
 - `R2 history/index.json`: 已存在快照日期索引，避免重建时盲扫整段日期范围
 

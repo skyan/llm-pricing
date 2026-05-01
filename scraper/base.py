@@ -19,6 +19,11 @@ class ModelPricing:
     input_price: float = 0.0           # in original currency (USD or CNY)
     cached_input_price: Optional[float] = None
     output_price: float = 0.0
+    price_currency: str = "CNY"        # current currency of input/output fields written to JSON
+    raw_input_price: Optional[float] = None
+    raw_cached_input_price: Optional[float] = None
+    raw_output_price: Optional[float] = None
+    raw_price_currency: Optional[str] = None
     notes: Optional[str] = None
     tier: Optional[str] = None         # "pro", "lite", or None
 

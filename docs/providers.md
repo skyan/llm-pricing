@@ -21,7 +21,7 @@
 ```
 scraper/
 ├── base.py          # BaseScraper (requests) + PlaywrightMixin
-├── main.py          # 编排器：遍历厂商→抓取→汇率转换→写 JSON
+├── main.py          # 编排器：遍历厂商→抓取→保留原币值→汇率转换→写 JSON
 ├── config.yaml      # 厂商注册表（URL、货币、启用状态）
 ├── currency.py      # USD/CNY 汇率（open.er-api.com）
 └── providers/       # 每个厂商一个文件
@@ -102,3 +102,10 @@ scraper/
 - 全部厂商失败 → 保留现有数据，不写入空文件
 - fetch 请求: `requests.Session + Retry`，对 429/5xx 自动重试
 - Playwright 超时: 默认 60s `domcontentloaded`，并优先等待目标 selector，而不是盲等固定秒数
+
+## 价格语义
+
+- 抓取器先产出厂商原始币种价格
+- 对美元厂商，站点展示值统一换算为人民币
+- 写入 JSON 时同时保留 `raw_*` 原币值和 `raw_price_currency`
+- 历史趋势按原币值去重，前端再按当前汇率归一化展示，避免纯汇率波动被误判为厂商调价

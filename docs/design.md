@@ -309,6 +309,8 @@ Trend rendering should use date-normalized series:
 - dedupe repeated records from the same day
 - merge current-day `pricing.json` values into the chart series
 - prefer one effective point per date
+- for USD-priced providers, compare raw USD prices and normalize with the current USD/CNY rate so FX drift does not look like vendor price changes
+- mini sparkline should summarize only the latest 60 effective points; expanded chart keeps the full normalized series
 
 This rule is part of the design because inconsistent dates create misleading visual
 signals.
