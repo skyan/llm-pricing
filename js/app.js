@@ -13,6 +13,8 @@
     '#dc2626','#db2777','#4f46e5','#0284c7','#65a30d','#9333ea',
   ];
   var SPARKLINE_MAX_POINTS = 60;
+  var ECHARTS_URL = 'https://cdn.bootcdn.net/ajax/libs/echarts/6.0.0/echarts.min.js';
+  var echartsLoaderPromise = null;
 
   var $ = function(id) { return document.getElementById(id); };
 
@@ -185,6 +187,31 @@
     updateSortHeaders();
     renderTable();
     bindEvents();
+    warmEChartsLoad();
+  }
+
+  function warmEChartsLoad() {
+    window.setTimeout(function () {
+      ensureECharts().catch(function () {});
+    }, 0);
+  }
+
+  function ensureECharts() {
+    if (window.echarts) return Promise.resolve(window.echarts);
+    if (echartsLoaderPromise) return echartsLoaderPromise;
+
+    echartsLoaderPromise = new Promise(function (resolve, reject) {
+      var script = document.createElement('script');
+      script.src = ECHARTS_URL;
+      script.async = true;
+      script.onload = function () { resolve(window.echarts); };
+      script.onerror = function () {
+        echartsLoaderPromise = null;
+        reject(new Error('Failed to load ECharts'));
+      };
+      document.head.appendChild(script);
+    });
+    return echartsLoaderPromise;
   }
 
   function flattenModels(data) {
@@ -211,12 +238,18 @@
     return patterns.some(function (pattern) { return pattern.test(name); });
   }
 
+  function extractNumericVersion(name, prefixPattern) {
+    var match = name.match(prefixPattern);
+    return match ? parseFloat(match[1]) : NaN;
+  }
+
   function detectTier(m, providerId) {
     var name = ((m.display_name || '') + ' ' + (m.name || '')).toLowerCase();
     switch (providerId) {
       case 'openai':
         if (hasAny(name, [/mini/, /nano/])) return 'lite';
         if (hasAny(name, [/\bpro\b/])) return 'pro';
+        if (extractNumericVersion(name, /gpt[ -](\d+(?:\.\d+)?)/) >= 5) return 'pro';
         return 'none';
       case 'anthropic':
         if (hasAny(name, [/haiku/])) return 'lite';
@@ -239,11 +272,19 @@
         if (hasAny(name, [/lite/, /mini/])) return 'lite';
         return 'none';
       case 'ernie':
-        if (hasAny(name, [/speed pro/, /lite pro/])) return 'pro';
-        if (hasAny(name, [/turbo/])) return 'lite';
+        if (hasAny(name, [/speed pro/, /lite pro/])) return 'lite';
+        if (extractNumericVersion(name, /ernie[- ](\d+(?:\.\d+)?)/) >= 4.5) return 'pro';
+        return 'none';
+      case 'kimi':
+        if (hasAny(name, [/kimi k2(?:\.\d+)?/])) return 'pro';
+        return 'none';
+      case 'xai':
+        if (hasAny(name, [/fast/, /mini/])) return 'lite';
+        if (extractNumericVersion(name, /grok[ -](\d+(?:\.\d+)?)/) >= 4) return 'pro';
         return 'none';
       case 'glm':
         if (hasAny(name, [/flashx/, /air/, /turbo/])) return 'lite';
+        if (extractNumericVersion(name, /glm[ -](\d+(?:\.\d+)?)/) >= 4.7) return 'pro';
         return 'none';
       case 'minimax':
         if (hasAny(name, [/minimax-m2\.7/, /minimax-m2\.5/, /highspeed/])) return 'pro';
@@ -511,6 +552,12 @@
       renderECharts(dom, window.echarts, series);
     } else {
       dom.innerHTML = buildTrendChartMarkup(series);
+      ensureECharts().then(function (echarts) {
+        var liveDom = document.getElementById(chartId);
+        if (!liveDom || expandedModel !== key) return;
+        liveDom.innerHTML = '';
+        renderECharts(liveDom, echarts, series);
+      }).catch(function () {});
     }
 
     // Info table

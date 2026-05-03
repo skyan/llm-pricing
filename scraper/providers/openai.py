@@ -42,7 +42,7 @@ class OpenAIScraper(BaseScraper):
                 continue
 
             # Only GPT-5.x series
-            if not re.match(r'gpt-5', name, re.IGNORECASE):
+            if not re.match(r'gpt-\d', name, re.IGNORECASE):
                 continue
 
             display = self._format_name(name)
@@ -67,6 +67,7 @@ class OpenAIScraper(BaseScraper):
                     input_price=short_inp or 0,
                     cached_input_price=short_cache,
                     output_price=short_out or 0,
+                    tier=self._detect_tier(name),
                 ))
 
             # Long context entry
@@ -79,6 +80,7 @@ class OpenAIScraper(BaseScraper):
                     input_price=long_inp or 0,
                     cached_input_price=long_cache,
                     output_price=long_out or 0,
+                    tier=self._detect_tier(name),
                 ))
 
         return models
@@ -109,3 +111,15 @@ class OpenAIScraper(BaseScraper):
             else:
                 result.append(p.capitalize())
         return " ".join(result)
+
+    @staticmethod
+    def _detect_tier(name: str) -> str | None:
+        normalized = name.lower()
+        if "mini" in normalized or "nano" in normalized:
+            return "lite"
+        if "-pro" in normalized:
+            return "pro"
+        match = re.match(r"gpt-(\d+(?:\.\d+)?)", normalized)
+        if match and float(match.group(1)) >= 5:
+            return "pro"
+        return None

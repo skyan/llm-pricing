@@ -13,7 +13,6 @@ class GLMScraper(PlaywrightMixin, BaseScraper):
     currency = "CNY"
     playwright_wait_selector = "table"
     playwright_post_wait_ms = 2000
-
     def parse_soup(self, soup: BeautifulSoup) -> list:
         models = []
         tables = soup.find_all("table")
@@ -60,7 +59,7 @@ class GLMScraper(PlaywrightMixin, BaseScraper):
                         if re.search(r'GLM-\d.*[Vv]', c0) or "Voice" in c0 or "ASR" in c0:
                             current_model = "skip"
                         else:
-                            current_model = c0
+                            current_model = self._normalize_model_name(c0)
 
                 if not current_model or current_model == "skip" or current_model in seen:
                     continue
@@ -83,6 +82,7 @@ class GLMScraper(PlaywrightMixin, BaseScraper):
                     input_price=inp or 0,
                     cached_input_price=cache if cache and cache > 0 else None,
                     output_price=out if (out is not None and out > 0) else 0,
+                    tier=self._detect_tier(current_model),
                 ))
                 seen.add(current_model)
 
@@ -104,3 +104,17 @@ class GLMScraper(PlaywrightMixin, BaseScraper):
                 return None
             return val
         return None
+
+    @staticmethod
+    def _detect_tier(name: str) -> str | None:
+        normalized = name.lower()
+        if any(key in normalized for key in ("flashx", "air", "turbo")):
+            return "lite"
+        match = re.match(r"glm-(\d+(?:\.\d+)?)", normalized)
+        if match and float(match.group(1)) >= 4.7:
+            return "pro"
+        return None
+
+    @staticmethod
+    def _normalize_model_name(name: str) -> str:
+        return re.sub(r"新品$", "", name).strip()

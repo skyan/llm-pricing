@@ -1,0 +1,14 @@
+[project]
+name = "llm-pricing"
+version = "0.1.0"
+description = "LLM pricing scraper and static site data builder"
+requires-python = ">=3.12"
+dependencies = [
+  "beautifulsoup4>=4.12.0",
+  "playwright>=1.45.0",
+  "pyyaml>=6.0",
+  "requests>=2.31.0",
+]
+
+[tool.uv]
+package = false

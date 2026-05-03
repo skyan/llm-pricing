@@ -70,6 +70,7 @@ class KimiScraper(BaseScraper):
                 input_price=round(prices[1], 2),     # cache miss = input price
                 cached_input_price=round(prices[0], 2),  # cache hit
                 output_price=round(prices[2], 2),
+                tier="pro" if display_name in {"Kimi K2.6", "Kimi K2.5"} else None,
             ))
 
         return models
@@ -114,6 +115,7 @@ class KimiScraper(BaseScraper):
                     input_price=round(prices[1], 2),
                     cached_input_price=round(prices[0], 2),
                     output_price=round(prices[2], 2),
+                    tier="pro" if display in {"Kimi K2.6", "Kimi K2.5"} else None,
                 ))
             return models
 
@@ -132,6 +134,7 @@ class KimiScraper(BaseScraper):
                 input_price=round(float(variant[2]), 2),
                 cached_input_price=round(float(variant[1]), 2),
                 output_price=round(float(variant[3]), 2),
+                tier="pro" if name in {"Kimi K2.6", "Kimi K2.5"} else None,
             ))
 
         return models

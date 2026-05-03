@@ -16,14 +16,7 @@ class QianwenScraper(BaseScraper):
     pricing_url = "https://help.aliyun.com/zh/model-studio/model-pricing"
     currency = "CNY"
 
-    TARGET_MODELS = {
-        "qwen3.6-max-preview": ("qwen3.6-max-preview", "Qwen3.6-Max-Preview"),
-        "qwen3-max": ("qwen3-max", "Qwen3-Max"),
-        "qwen3.6-plus": ("qwen3.6-plus", "Qwen3.6-Plus"),
-        "qwen3.6-flash": ("qwen3.6-flash", "Qwen3.6-Flash"),
-        "qwen-plus": ("千问-plus", "千问 Plus"),
-        "qwen-flash": ("千问-flash", "千问 Flash"),
-    }
+    EXCLUDED_MODELS = {"qwen-plus", "qwen-flash"}
 
     def parse_soup(self, soup: BeautifulSoup) -> list:
         models: dict[str, ModelPricing] = {}
@@ -39,13 +32,12 @@ class QianwenScraper(BaseScraper):
                     continue
 
                 model_id = self._extract_model_id(texts[0])
-                if model_id in self.TARGET_MODELS:
+                if model_id and self._is_supported_model(model_id):
                     current_key = model_id
                     if current_key not in models:
-                        slug, display_name = self.TARGET_MODELS[current_key]
                         models[current_key] = ModelPricing(
-                            name=slug,
-                            display_name=display_name,
+                            name=current_key,
+                            display_name=self._format_display_name(current_key),
                             context_window=0,
                             input_price=0.0,
                             cached_input_price=None,
@@ -73,11 +65,21 @@ class QianwenScraper(BaseScraper):
                     models[current_key].output_price = round(max(prices[1:]), 3)
 
         ordered = []
-        for key in self.TARGET_MODELS:
-            model = models.get(key)
-            if model and model.input_price and model.output_price:
+        for key, model in models.items():
+            if model.input_price and model.output_price:
                 ordered.append(model)
         return ordered
+
+    def _is_supported_model(self, model_id: str) -> bool:
+        if model_id in self.EXCLUDED_MODELS:
+            return False
+        if model_id in {"qwen3-max", "qwen3-max-preview"}:
+            return True
+        match = re.fullmatch(r"qwen3\.(\d+)-(plus|flash|max(?:-preview)?)", model_id)
+        if not match:
+            return False
+        minor = int(match.group(1))
+        return minor >= 6
 
     @staticmethod
     def _is_pricing_table(table) -> bool:
@@ -135,3 +137,13 @@ class QianwenScraper(BaseScraper):
         if unit == "M":
             return value * 1_000_000
         return value * 1_024
+
+    @staticmethod
+    def _format_display_name(model_id: str) -> str:
+        parts = []
+        for part in model_id.split("-"):
+            if part.startswith("qwen"):
+                parts.append("Qwen" + part[4:])
+            else:
+                parts.append(part.capitalize())
+        return "-".join(parts)

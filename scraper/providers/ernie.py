@@ -1,4 +1,4 @@
-"""ERNIE (Baidu Qianfan) pricing scraper. Rowspan-heavy HTML table."""
+"""ERNIE (Baidu Qianfan) pricing scraper."""
 
 import re
 from bs4 import BeautifulSoup
@@ -12,96 +12,177 @@ class ErnieScraper(BaseScraper):
     pricing_url = "https://cloud.baidu.com/doc/qianfan/s/wmh4sv6ya"
     currency = "CNY"
 
+    EXCLUDED_FAMILY_KEYWORDS = ("Speed Pro", "Lite Pro", "Character")
+    FAMILY_DEFAULT_CONTEXT = {
+        "ERNIE 4.5 Turbo": 128000,
+    }
+
     def parse_soup(self, soup: BeautifulSoup) -> list:
-        tables = soup.find_all("table")
-        if not tables:
+        text = soup.get_text("\n", strip=True)
+        lines = [self._normalize_line(line) for line in text.splitlines()]
+        start = self._find_text_postpaid_start(lines)
+        if start is None:
             return []
+        end = self._find_text_postpaid_end(lines, start)
 
-        table = tables[0]
-        rows = table.find_all("tr")
-
-        current_family = ""
-        in_token_section = False
-        models = {}
-
-        for row in rows[1:]:
-            cells = row.find_all(["td", "th"])
-            if not cells:
-                continue
-
-            texts = [c.get_text(strip=True) for c in cells]
-
-            # Check for new model family
-            first_cell = texts[0] if texts else ""
-            if first_cell and first_cell.upper().startswith("ERNIE"):
-                in_token_section = False
-                if first_cell.startswith("ERNIE-"):
-                    current_family = first_cell
-                else:
-                    parts = first_cell.split()
-                    current_family = " ".join(parts[:3]) if len(parts) >= 3 else first_cell
-
-            if not current_family:
-                continue
-
-            # Track whether we're in a token-pricing section (unit is "元/千tokens" with rowspan)
-            if any("千tokens" in t or "千Token" in t for t in texts):
-                in_token_section = True
-            if any("元/次" in t or "元/个" in t or "元/万" in t or "元/张" in t for t in texts):
-                in_token_section = False
-                continue
-            if not in_token_section:
-                continue
-
-            # Find the price column (first numeric like "0.xxx" or "x.xxx", not "-")
-            price = None
-            price_idx = -1
-            for i, t in enumerate(texts):
-                p = self._parse_price(t)
-                if p is not None:
-                    price = p
-                    price_idx = i
+        models = []
+        i = start
+        current_family = None
+        current_tier = None
+        while i < end:
+            family_tier = self._family_tier(lines[i])
+            if family_tier is not None:
+                current_family = lines[i]
+                current_tier = family_tier
+                i += 1
+                if i >= end:
                     break
-
-            if price is None or price_idx <= 0:
+            elif lines[i].startswith("ERNIE "):
+                current_family = None
+                current_tier = None
+                i += 1
+                continue
+            if current_family is None:
+                i += 1
+                continue
+            if not lines[i].startswith("ERNIE-"):
+                i += 1
                 continue
 
-            # The label is in the cell just before the price
-            label = texts[price_idx - 1] if price_idx > 0 else ""
+            versions = []
+            while i < end and lines[i].startswith("ERNIE-"):
+                versions.append(lines[i])
+                i += 1
 
-            # Convert from 元/千tokens to 元/1M tokens
-            price = round(price * 1000, 2)
-
-            # Categorize by label (check output before input since output labels may contain "输入")
-            m = models.setdefault(current_family, {"in": 0, "cache": None, "out": 0})
-            if "命中缓存" in label or "缓存" in label:
-                m["cache"] = max(m.get("cache") or 0, price)
-            elif "输出" in label:
-                m["out"] = max(m["out"], price)
-            elif "输入" in label:
-                m["in"] = max(m["in"], price)
-
-        result = []
-        for family, p in models.items():
-            if p["in"] == 0 and p["out"] == 0:
+            while i < end and lines[i] != "推理服务":
+                if self._family_tier(lines[i]) is not None or lines[i] == "按量包付费":
+                    break
+                i += 1
+            if i >= end or lines[i] != "推理服务":
                 continue
-            result.append(ModelPricing(
-                name=family.lower().replace(" ", "-"),
-                display_name=family,
-                context_window=128000,
-                input_price=p["in"],
-                cached_input_price=p.get("cache"),
-                output_price=p["out"],
-            ))
 
-        return result
+            i += 1
+            section_prices, i = self._parse_price_block(lines, i, end)
+            if not versions or "input" not in section_prices or "output" not in section_prices:
+                continue
+
+            for version in versions:
+                if self._skip_version(version):
+                    continue
+                display_name = version if current_family in {"ERNIE 4.5 Turbo", "ERNIE 4.5"} else current_family
+                models.append(ModelPricing(
+                    name=version.lower(),
+                    display_name=display_name,
+                    context_window=self._infer_context(version, current_family),
+                    input_price=section_prices["input"],
+                    cached_input_price=section_prices.get("cache"),
+                    output_price=section_prices["output"],
+                    tier=current_tier,
+                ))
+
+        return models
+
+    def _parse_price_block(self, lines: list[str], start: int, end: int) -> tuple[dict[str, float], int]:
+        prices: dict[str, float] = {}
+        i = start
+        label_map = {
+            "输入": "input",
+            "命中缓存": "cache",
+            "输出": "output",
+        }
+
+        while i < end:
+            token = lines[i]
+            if self._family_tier(token) is not None or token == "按量包付费" or token.startswith("DeepSeek-"):
+                break
+            if token.startswith("ERNIE-"):
+                break
+
+            key = None
+            if token.startswith("输入"):
+                key = "input"
+            elif token == "命中缓存":
+                key = "cache"
+            elif token.startswith("输出"):
+                key = "output"
+            if key is None:
+                i += 1
+                continue
+
+            i += 1
+            value = None
+            while i < end:
+                token = lines[i]
+                if (
+                    token.startswith("输入")
+                    or token == "命中缓存"
+                    or token.startswith("输出")
+                    or self._family_tier(token) is not None
+                    or token == "按量包付费"
+                    or token.startswith("ERNIE-")
+                    or token.startswith("DeepSeek-")
+                ):
+                    break
+                if re.fullmatch(r"\d+\.?\d*", token) and value is None:
+                    value = self._to_per_million(float(token))
+                if token.startswith("元/"):
+                    i += 1
+                    break
+                i += 1
+            if value is not None and key not in prices:
+                prices[key] = value
+
+        return prices, i
 
     @staticmethod
-    def _parse_price(text: str):
-        text = text.replace(",", "").replace(" ", "").strip()
-        if not text or text in ("-", "", "免费"):
-            return None
-        m = re.search(r'^(\d+\.?\d*)$', text)
-        if m:
-            return float(m.group(1))
+    def _find_text_postpaid_start(lines: list[str]) -> int | None:
+        for i, line in enumerate(lines):
+            if line != "按量后付费":
+                continue
+            for j in range(i + 1, len(lines)):
+                if lines[j] == "按量包付费":
+                    break
+                if lines[j].startswith("ERNIE "):
+                    return j
         return None
+
+    @staticmethod
+    def _find_text_postpaid_end(lines: list[str], start: int) -> int:
+        for i in range(start, len(lines)):
+            if lines[i] == "按量包付费":
+                return i
+        return len(lines)
+
+    def _infer_context(self, version: str, family: str) -> int:
+        match = re.search(r"-(\d+)K(?:-|$)", version, re.IGNORECASE)
+        if match:
+            return int(match.group(1)) * 1000
+        return self.FAMILY_DEFAULT_CONTEXT.get(family, 0)
+
+    def _family_tier(self, line: str) -> str | None:
+        if not line.startswith("ERNIE "):
+            return None
+        if any(keyword in line for keyword in self.EXCLUDED_FAMILY_KEYWORDS):
+            return None
+        match = re.match(r"ERNIE\s+(\d+(?:\.\d+)?)", line)
+        if not match:
+            return None
+        if float(match.group(1)) >= 4.5:
+            return "pro"
+        return None
+
+    @staticmethod
+    def _skip_version(version: str) -> bool:
+        return (
+            "-VL" in version
+            or "Thinking" in version
+            or version == "ERNIE-4.5-Turbo-20260402"
+        )
+
+    @staticmethod
+    def _normalize_line(line: str) -> str:
+        return re.sub(r"\s+", " ", line).strip()
+
+    @staticmethod
+    def _to_per_million(price_per_thousand: float) -> float:
+        return round(price_per_thousand * 1000, 2)

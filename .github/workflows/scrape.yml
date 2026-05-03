@@ -20,25 +20,22 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Cache pip packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: pip-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
-
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
+      - name: Sync Python dependencies
+        run: uv sync --no-dev
 
       - name: Install Playwright Chromium
-        run: playwright install chromium --with-deps
+        run: uv run playwright install chromium --with-deps
 
       - name: Run scraper
-        run: python -m scraper.main
+        run: uv run python -m scraper.main
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -76,14 +73,14 @@ jobs:
           print(data["last_updated"][:10])
           PY
           )
-          python scripts/update_r2_history_index.py --bucket "${R2_BUCKET}" --date "${SNAPSHOT_DATE}"
+          uv run python scripts/update_r2_history_index.py --bucket "${R2_BUCKET}" --date "${SNAPSHOT_DATE}"
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           R2_BUCKET: ${{ secrets.R2_BUCKET }}
 
       - name: Rebuild summary from R2 snapshots
-        run: python scripts/rebuild_summary_from_r2.py --bucket "${R2_BUCKET}" --days 365
+        run: uv run python scripts/rebuild_summary_from_r2.py --bucket "${R2_BUCKET}" --days 365
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
