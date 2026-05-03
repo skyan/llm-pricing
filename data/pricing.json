@@ -1,14 +1,6 @@
 {
-<<<<<<< HEAD
-  "last_updated": "2026-05-02T08:38:37.087714+00:00",
-  "usd_to_cny_rate": 6.8373,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-  "last_updated": "2026-05-01T14:23:41.775344+00:00",
-  "usd_to_cny_rate": 6.8409,
-=======
-  "last_updated": "2026-05-03T08:25:04.588165+00:00",
+  "last_updated": "2026-05-03T08:41:56.718940+00:00",
   "usd_to_cny_rate": 6.8455,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
   "providers": [
     {
       "id": "openai",
@@ -21,21 +13,9 @@
           "display_name": "GPT 5.5 (≤256K)",
           "context_window": 256000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 34.19,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 34.2,
-=======
           "input_price": 34.23,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "cached_input_price": 3.42,
-<<<<<<< HEAD
-          "output_price": 205.12,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 205.23,
-=======
           "output_price": 205.36,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 5.0,
           "raw_cached_input_price": 0.5,
@@ -49,19 +29,9 @@
           "display_name": "GPT 5.5 (>256K)",
           "context_window": 400000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 68.37,
-          "cached_input_price": 6.84,
-          "output_price": 307.68,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 68.41,
-          "cached_input_price": 6.84,
-          "output_price": 307.84,
-=======
           "input_price": 68.45,
           "cached_input_price": 6.85,
           "output_price": 308.05,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 10.0,
           "raw_cached_input_price": 1.0,
@@ -75,21 +45,9 @@
           "display_name": "GPT 5.5 Pro (≤256K)",
           "context_window": 256000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 205.12,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 205.23,
-=======
           "input_price": 205.36,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "cached_input_price": null,
-<<<<<<< HEAD
-          "output_price": 1230.72,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 1231.36,
-=======
           "output_price": 1232.19,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 30.0,
           "raw_cached_input_price": null,
@@ -103,21 +61,9 @@
           "display_name": "GPT 5.5 Pro (>256K)",
           "context_window": 400000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 410.24,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 410.45,
-=======
           "input_price": 410.73,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "cached_input_price": null,
-<<<<<<< HEAD
-          "output_price": 1846.08,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 1847.05,
-=======
           "output_price": 1848.28,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 60.0,
           "raw_cached_input_price": null,
@@ -131,21 +77,9 @@
           "display_name": "GPT 5.4 (≤256K)",
           "context_window": 256000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 17.09,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 17.1,
-=======
           "input_price": 17.11,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "cached_input_price": 1.71,
-<<<<<<< HEAD
-          "output_price": 102.56,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 102.61,
-=======
           "output_price": 102.68,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 2.5,
           "raw_cached_input_price": 0.25,
@@ -159,21 +93,9 @@
           "display_name": "GPT 5.4 (>256K)",
           "context_window": 400000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 34.19,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 34.2,
-=======
           "input_price": 34.23,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "cached_input_price": 3.42,
-<<<<<<< HEAD
-          "output_price": 153.84,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 153.92,
-=======
           "output_price": 154.02,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 5.0,
           "raw_cached_input_price": 0.5,
@@ -189,13 +111,7 @@
           "max_output_tokens": null,
           "input_price": 5.13,
           "cached_input_price": 0.51,
-<<<<<<< HEAD
-          "output_price": 30.77,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 30.78,
-=======
           "output_price": 30.8,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 0.75,
           "raw_cached_input_price": 0.075,
@@ -225,21 +141,9 @@
           "display_name": "GPT 5.4 Pro (≤256K)",
           "context_window": 256000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 205.12,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 205.23,
-=======
           "input_price": 205.36,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "cached_input_price": null,
-<<<<<<< HEAD
-          "output_price": 1230.72,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 1231.36,
-=======
           "output_price": 1232.19,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 30.0,
           "raw_cached_input_price": null,
@@ -253,21 +157,9 @@
           "display_name": "GPT 5.4 Pro (>256K)",
           "context_window": 400000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 410.24,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 410.45,
-=======
           "input_price": 410.73,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "cached_input_price": null,
-<<<<<<< HEAD
-          "output_price": 1846.08,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 1847.05,
-=======
           "output_price": 1848.28,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 60.0,
           "raw_cached_input_price": null,
@@ -289,19 +181,9 @@
           "display_name": "Claude Opus 4.7",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 34.19,
-          "cached_input_price": 42.73,
-          "output_price": 170.93,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 34.2,
-          "cached_input_price": 42.76,
-          "output_price": 171.02,
-=======
           "input_price": 34.23,
           "cached_input_price": 42.78,
           "output_price": 171.14,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 5.0,
           "raw_cached_input_price": 6.25,
@@ -315,19 +197,9 @@
           "display_name": "Claude Opus 4.6",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 34.19,
-          "cached_input_price": 42.73,
-          "output_price": 170.93,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 34.2,
-          "cached_input_price": 42.76,
-          "output_price": 171.02,
-=======
           "input_price": 34.23,
           "cached_input_price": 42.78,
           "output_price": 171.14,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 5.0,
           "raw_cached_input_price": 6.25,
@@ -341,19 +213,9 @@
           "display_name": "Claude Opus 4.5",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 34.19,
-          "cached_input_price": 42.73,
-          "output_price": 170.93,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 34.2,
-          "cached_input_price": 42.76,
-          "output_price": 171.02,
-=======
           "input_price": 34.23,
           "cached_input_price": 42.78,
           "output_price": 171.14,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 5.0,
           "raw_cached_input_price": 6.25,
@@ -367,19 +229,9 @@
           "display_name": "Claude Opus 4.1",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 102.56,
-          "cached_input_price": 128.2,
-          "output_price": 512.8,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 102.61,
-          "cached_input_price": 128.27,
-          "output_price": 513.07,
-=======
           "input_price": 102.68,
           "cached_input_price": 128.35,
           "output_price": 513.41,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 15.0,
           "raw_cached_input_price": 18.75,
@@ -393,19 +245,9 @@
           "display_name": "Claude Opus 4",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 102.56,
-          "cached_input_price": 128.2,
-          "output_price": 512.8,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 102.61,
-          "cached_input_price": 128.27,
-          "output_price": 513.07,
-=======
           "input_price": 102.68,
           "cached_input_price": 128.35,
           "output_price": 513.41,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 15.0,
           "raw_cached_input_price": 18.75,
@@ -419,19 +261,9 @@
           "display_name": "Claude Sonnet 4.6",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 20.51,
-          "cached_input_price": 25.64,
-          "output_price": 102.56,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 20.52,
-          "cached_input_price": 25.65,
-          "output_price": 102.61,
-=======
           "input_price": 20.54,
           "cached_input_price": 25.67,
           "output_price": 102.68,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 3.0,
           "raw_cached_input_price": 3.75,
@@ -445,19 +277,9 @@
           "display_name": "Claude Sonnet 4.5",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 20.51,
-          "cached_input_price": 25.64,
-          "output_price": 102.56,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 20.52,
-          "cached_input_price": 25.65,
-          "output_price": 102.61,
-=======
           "input_price": 20.54,
           "cached_input_price": 25.67,
           "output_price": 102.68,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 3.0,
           "raw_cached_input_price": 3.75,
@@ -471,19 +293,9 @@
           "display_name": "Claude Sonnet 4",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 20.51,
-          "cached_input_price": 25.64,
-          "output_price": 102.56,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 20.52,
-          "cached_input_price": 25.65,
-          "output_price": 102.61,
-=======
           "input_price": 20.54,
           "cached_input_price": 25.67,
           "output_price": 102.68,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 3.0,
           "raw_cached_input_price": 3.75,
@@ -497,19 +309,9 @@
           "display_name": "Claude Haiku 4.5",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 6.84,
-          "cached_input_price": 8.55,
-          "output_price": 34.19,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 6.84,
-          "cached_input_price": 8.55,
-          "output_price": 34.2,
-=======
           "input_price": 6.85,
           "cached_input_price": 8.56,
           "output_price": 34.23,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 1.0,
           "raw_cached_input_price": 1.25,
@@ -523,19 +325,9 @@
           "display_name": "Claude Haiku 3.5",
           "context_window": 200000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 5.47,
-          "cached_input_price": 6.84,
-          "output_price": 27.35,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 5.47,
-          "cached_input_price": 6.84,
-          "output_price": 27.36,
-=======
           "input_price": 5.48,
           "cached_input_price": 6.85,
           "output_price": 27.38,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 0.8,
           "raw_cached_input_price": 1.0,
@@ -573,21 +365,9 @@
           "display_name": "Gemini 3 Pro Preview",
           "context_window": 128000,
           "max_output_tokens": null,
-<<<<<<< HEAD
-          "input_price": 13.67,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "input_price": 13.68,
-=======
           "input_price": 13.69,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "cached_input_price": 1.37,
-<<<<<<< HEAD
-          "output_price": 82.05,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 82.09,
-=======
           "output_price": 82.15,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 2.0,
           "raw_cached_input_price": 0.2,
@@ -619,13 +399,7 @@
           "max_output_tokens": null,
           "input_price": 3.42,
           "cached_input_price": 0.34,
-<<<<<<< HEAD
-          "output_price": 20.51,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 20.52,
-=======
           "output_price": 20.54,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 0.5,
           "raw_cached_input_price": 0.05,
@@ -641,13 +415,7 @@
           "max_output_tokens": null,
           "input_price": 8.56,
           "cached_input_price": 0.89,
-<<<<<<< HEAD
-          "output_price": 68.37,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 68.41,
-=======
           "output_price": 68.45,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 1.25,
           "raw_cached_input_price": 0.13,
@@ -663,13 +431,7 @@
           "max_output_tokens": null,
           "input_price": 8.56,
           "cached_input_price": null,
-<<<<<<< HEAD
-          "output_price": 68.37,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 68.41,
-=======
           "output_price": 68.45,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 1.25,
           "raw_cached_input_price": null,
@@ -685,13 +447,7 @@
           "max_output_tokens": null,
           "input_price": 2.05,
           "cached_input_price": 0.21,
-<<<<<<< HEAD
-          "output_price": 17.09,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 17.1,
-=======
           "output_price": 17.11,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 0.3,
           "raw_cached_input_price": 0.03,
@@ -707,13 +463,7 @@
           "max_output_tokens": null,
           "input_price": 3.42,
           "cached_input_price": null,
-<<<<<<< HEAD
-          "output_price": 13.67,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 13.68,
-=======
           "output_price": 13.69,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 0.5,
           "raw_cached_input_price": null,
@@ -729,7 +479,7 @@
           "max_output_tokens": null,
           "input_price": 0.68,
           "cached_input_price": 0.07,
-          "output_price": 2.73,
+          "output_price": 2.74,
           "price_currency": "CNY",
           "raw_input_price": 0.1,
           "raw_cached_input_price": 0.01,
@@ -761,13 +511,7 @@
           "max_output_tokens": null,
           "input_price": 3.42,
           "cached_input_price": null,
-<<<<<<< HEAD
-          "output_price": 13.67,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 13.68,
-=======
           "output_price": 13.69,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "price_currency": "CNY",
           "raw_input_price": 0.5,
           "raw_cached_input_price": null,
@@ -801,7 +545,6 @@
       "pricing_page_url": "https://docs.x.ai/developers/models",
       "models": [
         {
-<<<<<<< HEAD
           "name": "grok-4-1-fast-reasoning",
           "display_name": "Grok 4.1 Fast Reasoning",
           "context_window": 2000000,
@@ -815,108 +558,9 @@
           "raw_output_price": 0.5,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": null
+          "tier": "lite"
         },
         {
-          "name": "grok-4.20-multi-agent-0309",
-          "display_name": "Grok 4.20 Multi Agent",
-          "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 8.55,
-          "cached_input_price": 1.37,
-          "output_price": 17.09,
-          "price_currency": "CNY",
-          "raw_input_price": 1.25,
-          "raw_cached_input_price": 0.2,
-          "raw_output_price": 2.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
-        },
-        {
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "name": "grok-4.20-0309-reasoning",
-          "display_name": "Grok 4.20 Reasoning",
-          "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 8.55,
-          "cached_input_price": 1.37,
-          "output_price": 17.1,
-          "price_currency": "CNY",
-          "raw_input_price": 1.25,
-          "raw_cached_input_price": 0.2,
-          "raw_output_price": 2.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "grok-4.3",
-          "display_name": "Grok 4.3",
-          "context_window": 1000000,
-          "max_output_tokens": null,
-          "input_price": 8.55,
-          "cached_input_price": 1.37,
-          "output_price": 17.1,
-          "price_currency": "CNY",
-          "raw_input_price": 1.25,
-          "raw_cached_input_price": 0.2,
-          "raw_output_price": 2.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "grok-4-1-fast-reasoning",
-          "display_name": "Grok 4.1 Fast Reasoning",
-          "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 1.37,
-          "cached_input_price": 0.34,
-          "output_price": 3.42,
-          "price_currency": "CNY",
-          "raw_input_price": 0.2,
-          "raw_cached_input_price": 0.05,
-          "raw_output_price": 0.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
-        },
-        {
-          "name": "grok-4-0709",
-          "display_name": "Grok 4",
-          "context_window": 256000,
-          "max_output_tokens": null,
-          "input_price": 20.52,
-          "cached_input_price": 5.13,
-          "output_price": 102.61,
-          "price_currency": "CNY",
-          "raw_input_price": 3.0,
-          "raw_cached_input_price": 0.75,
-          "raw_output_price": 15.0,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
-        },
-        {
-=======
-          "name": "grok-4.20-multi-agent-0309",
-          "display_name": "Grok 4.20 Multi Agent",
-          "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 8.56,
-          "cached_input_price": 1.37,
-          "output_price": 17.11,
-          "price_currency": "CNY",
-          "raw_input_price": 1.25,
-          "raw_cached_input_price": 0.2,
-          "raw_output_price": 2.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
-        },
-        {
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "name": "grok-4-fast-reasoning",
           "display_name": "Grok 4 Fast Reasoning",
           "context_window": 2000000,
@@ -933,38 +577,13 @@
           "tier": "lite"
         },
         {
-<<<<<<< HEAD
-          "name": "grok-4.20-0309-reasoning",
-          "display_name": "Grok 4.20 Reasoning",
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "name": "grok-4.20-multi-agent-0309",
           "display_name": "Grok 4.20 Multi Agent",
-=======
-          "name": "grok-4-1-fast-reasoning",
-          "display_name": "Grok 4.1 Fast Reasoning",
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
           "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 1.37,
-          "cached_input_price": 0.34,
-          "output_price": 3.42,
-          "price_currency": "CNY",
-          "raw_input_price": 0.2,
-          "raw_cached_input_price": 0.05,
-          "raw_output_price": 0.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": "lite"
-        },
-        {
-          "name": "grok-4.3",
-          "display_name": "Grok 4.3",
-          "context_window": 1000000,
           "max_output_tokens": null,
           "input_price": 8.56,
           "cached_input_price": 1.37,
-<<<<<<< HEAD
-          "output_price": 17.09,
+          "output_price": 17.11,
           "price_currency": "CNY",
           "raw_input_price": 1.25,
           "raw_cached_input_price": 0.2,
@@ -974,17 +593,17 @@
           "tier": null
         },
         {
-          "name": "grok-4-0709",
-          "display_name": "Grok 4",
-          "context_window": 256000,
+          "name": "grok-4.20-0309-reasoning",
+          "display_name": "Grok 4.20 Reasoning",
+          "context_window": 2000000,
           "max_output_tokens": null,
-          "input_price": 20.51,
-          "cached_input_price": 5.13,
-          "output_price": 102.56,
+          "input_price": 8.56,
+          "cached_input_price": 1.37,
+          "output_price": 17.11,
           "price_currency": "CNY",
-          "raw_input_price": 3.0,
-          "raw_cached_input_price": 0.75,
-          "raw_output_price": 15.0,
+          "raw_input_price": 1.25,
+          "raw_cached_input_price": 0.2,
+          "raw_output_price": 2.5,
           "raw_price_currency": "USD",
           "notes": null,
           "tier": null
@@ -994,12 +613,8 @@
           "display_name": "Grok 4.3",
           "context_window": 1000000,
           "max_output_tokens": null,
-          "input_price": 8.55,
+          "input_price": 8.56,
           "cached_input_price": 1.37,
-          "output_price": 17.09,
-||||||| parent of ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "output_price": 17.1,
-=======
           "output_price": 17.11,
           "price_currency": "CNY",
           "raw_input_price": 1.25,
@@ -1008,23 +623,6 @@
           "raw_price_currency": "USD",
           "notes": null,
           "tier": "pro"
-        },
-        {
-          "name": "grok-4.20-0309-reasoning",
-          "display_name": "Grok 4.20 Reasoning",
-          "context_window": 2000000,
-          "max_output_tokens": null,
-          "input_price": 8.56,
-          "cached_input_price": 1.37,
-          "output_price": 17.11,
->>>>>>> ac5a8e2 (修正模型抓取规则并接入 uv 工作流)
-          "price_currency": "CNY",
-          "raw_input_price": 1.25,
-          "raw_cached_input_price": 0.2,
-          "raw_output_price": 2.5,
-          "raw_price_currency": "USD",
-          "notes": null,
-          "tier": null
         }
       ]
     },
