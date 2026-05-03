@@ -82,7 +82,6 @@ class GLMScraper(PlaywrightMixin, BaseScraper):
                     input_price=inp or 0,
                     cached_input_price=cache if cache and cache > 0 else None,
                     output_price=out if (out is not None and out > 0) else 0,
-                    tier=self._detect_tier(current_model),
                 ))
                 seen.add(current_model)
 
@@ -103,16 +102,6 @@ class GLMScraper(PlaywrightMixin, BaseScraper):
             if val > 50 and not has_indicator:
                 return None
             return val
-        return None
-
-    @staticmethod
-    def _detect_tier(name: str) -> str | None:
-        normalized = name.lower()
-        if any(key in normalized for key in ("flashx", "air", "turbo")):
-            return "lite"
-        match = re.match(r"glm-(\d+(?:\.\d+)?)", normalized)
-        if match and float(match.group(1)) >= 4.7:
-            return "pro"
         return None
 
     @staticmethod

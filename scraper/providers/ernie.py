@@ -28,18 +28,15 @@ class ErnieScraper(BaseScraper):
         models = []
         i = start
         current_family = None
-        current_tier = None
         while i < end:
             family_tier = self._family_tier(lines[i])
             if family_tier is not None:
                 current_family = lines[i]
-                current_tier = family_tier
                 i += 1
                 if i >= end:
                     break
             elif lines[i].startswith("ERNIE "):
                 current_family = None
-                current_tier = None
                 i += 1
                 continue
             if current_family is None:
@@ -77,7 +74,6 @@ class ErnieScraper(BaseScraper):
                     input_price=section_prices["input"],
                     cached_input_price=section_prices.get("cache"),
                     output_price=section_prices["output"],
-                    tier=current_tier,
                 ))
 
         return models
@@ -170,6 +166,7 @@ class ErnieScraper(BaseScraper):
         if float(match.group(1)) >= 4.5:
             return "pro"
         return None
+
 
     @staticmethod
     def _skip_version(version: str) -> bool:

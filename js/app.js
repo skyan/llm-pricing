@@ -264,8 +264,8 @@
         if (hasAny(name, [/flash/])) return 'lite';
         return 'none';
       case 'qianwen':
-        if (hasAny(name, [/max/, /plus/])) return 'pro';
-        if (hasAny(name, [/flash/])) return 'lite';
+        if (hasAny(name, [/plus/, /flash/])) return 'lite';
+        if (hasAny(name, [/max/])) return 'pro';
         return 'none';
       case 'doubao':
         if (hasAny(name, [/\bpro\b/])) return 'pro';
@@ -273,6 +273,7 @@
         return 'none';
       case 'ernie':
         if (hasAny(name, [/speed pro/, /lite pro/])) return 'lite';
+        if (hasAny(name, [/ernie[- ]4\.5[- ]0\.3b/, /ernie-4\.5-0\.3b/, /ernie[- ]4\.5[- ]turbo/, /ernie-4\.5-turbo/])) return 'lite';
         if (extractNumericVersion(name, /ernie[- ](\d+(?:\.\d+)?)/) >= 4.5) return 'pro';
         return 'none';
       case 'kimi':

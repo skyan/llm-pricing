@@ -90,7 +90,6 @@ class XaiScraper(PlaywrightMixin, BaseScraper):
                     context_window=ctx if ctx > 0 else 131072,
                     input_price=inp,
                     output_price=out,
-                    tier=self._detect_tier(name, display),
                 ))
 
         return models
@@ -131,7 +130,6 @@ class XaiScraper(PlaywrightMixin, BaseScraper):
                 input_price=input_price,
                 cached_input_price=cached_price,
                 output_price=output_price,
-                tier=self._detect_tier(raw_name, self._clean_name(raw_name)),
             )
 
             if candidate.display_name == "Grok 4":
@@ -185,14 +183,3 @@ class XaiScraper(PlaywrightMixin, BaseScraper):
     @staticmethod
     def _cents_per_100m_to_usd_per_1m(value: str) -> float:
         return round(int(value) / 10000, 4)
-
-    @staticmethod
-    def _detect_tier(raw_name: str, display_name: str) -> str | None:
-        lowered = raw_name.lower()
-        if any(token in lowered for token in ("fast", "mini")):
-            return "lite"
-        if re.fullmatch(r'grok-\d+(?:\.\d+)?(?:-\d{4,})?', lowered):
-            return "pro"
-        if re.fullmatch(r'Grok \d+(?:\.\d+)?', display_name):
-            return "pro"
-        return None

@@ -22,7 +22,7 @@
           "raw_output_price": 30.0,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "gpt-5.5-long",
@@ -38,7 +38,7 @@
           "raw_output_price": 45.0,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "gpt-5.5-pro-short",
@@ -54,7 +54,7 @@
           "raw_output_price": 180.0,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "gpt-5.5-pro-long",
@@ -70,7 +70,7 @@
           "raw_output_price": 270.0,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "gpt-5.4-short",
@@ -86,7 +86,7 @@
           "raw_output_price": 15.0,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "gpt-5.4-long",
@@ -102,7 +102,7 @@
           "raw_output_price": 22.5,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "gpt-5.4-mini-short",
@@ -118,7 +118,7 @@
           "raw_output_price": 4.5,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "lite"
+          "tier": null
         },
         {
           "name": "gpt-5.4-nano-short",
@@ -134,7 +134,7 @@
           "raw_output_price": 1.25,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "lite"
+          "tier": null
         },
         {
           "name": "gpt-5.4-pro-short",
@@ -150,7 +150,7 @@
           "raw_output_price": 180.0,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "gpt-5.4-pro-long",
@@ -166,7 +166,7 @@
           "raw_output_price": 270.0,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         }
       ]
     },
@@ -558,7 +558,7 @@
           "raw_output_price": 0.5,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "lite"
+          "tier": null
         },
         {
           "name": "grok-4-fast-reasoning",
@@ -574,7 +574,7 @@
           "raw_output_price": 0.5,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "lite"
+          "tier": null
         },
         {
           "name": "grok-4.20-multi-agent-0309",
@@ -622,7 +622,7 @@
           "raw_output_price": 2.5,
           "raw_price_currency": "USD",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         }
       ]
     },
@@ -846,7 +846,7 @@
           "raw_output_price": 24.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "ernie-4.5-turbo-128k-preview",
@@ -862,7 +862,7 @@
           "raw_output_price": 3.2,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "ernie-4.5-turbo-32k",
@@ -878,7 +878,7 @@
           "raw_output_price": 3.2,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "ernie-4.5-8k",
@@ -894,7 +894,7 @@
           "raw_output_price": 16.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "ernie-4.5-0.3b",
@@ -910,7 +910,7 @@
           "raw_output_price": 0.4,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         }
       ]
     },
@@ -934,7 +934,7 @@
           "raw_output_price": 27.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "kimi-k2.5",
@@ -950,7 +950,7 @@
           "raw_output_price": 21.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         }
       ]
     },
@@ -974,7 +974,7 @@
           "raw_output_price": 24.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "glm-5-turbo",
@@ -990,7 +990,7 @@
           "raw_output_price": 22.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "lite"
+          "tier": null
         },
         {
           "name": "glm-5",
@@ -1006,7 +1006,7 @@
           "raw_output_price": 18.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "glm-4.7",
@@ -1022,7 +1022,7 @@
           "raw_output_price": 8.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "pro"
+          "tier": null
         },
         {
           "name": "glm-4.5-air",
@@ -1038,7 +1038,7 @@
           "raw_output_price": 2.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "lite"
+          "tier": null
         },
         {
           "name": "glm-4.7-flashx",
@@ -1054,7 +1054,7 @@
           "raw_output_price": 3.0,
           "raw_price_currency": "CNY",
           "notes": null,
-          "tier": "lite"
+          "tier": null
         }
       ]
     },
